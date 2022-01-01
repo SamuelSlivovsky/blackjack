@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/tmp/tmp.KEEDIXj7zi/krupier.h
+stdlib.h
+-
+stdbool.h
+-
+stdio.h
+-
+
+/tmp/tmp.KEEDIXj7zi/main.c
+stdio.h
+-
+pthread.h
+-
+stdlib.h
+-
+unistd.h
+-
+krupier.h
+/tmp/tmp.KEEDIXj7zi/krupier.h
+
