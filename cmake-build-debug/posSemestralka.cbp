@@ -8,38 +8,38 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/tmp/tmp.KEEDIXj7zi/cmake-build-debug"/>
+				<Option working_dir="/tmp/tmp.8LAr6GaV08/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -f &quot;/tmp/tmp.KEEDIXj7zi/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/gmake -f &quot;/tmp/tmp.KEEDIXj7zi/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -f &quot;/tmp/tmp.KEEDIXj7zi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -f &quot;/tmp/tmp.KEEDIXj7zi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -f &quot;/tmp/tmp.8LAr6GaV08/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/gmake -f &quot;/tmp/tmp.8LAr6GaV08/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -f &quot;/tmp/tmp.8LAr6GaV08/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -f &quot;/tmp/tmp.8LAr6GaV08/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/tmp/tmp.KEEDIXj7zi/cmake-build-debug"/>
+				<Option working_dir="/tmp/tmp.8LAr6GaV08/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -f &quot;/tmp/tmp.KEEDIXj7zi/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/gmake -f &quot;/tmp/tmp.KEEDIXj7zi/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -f &quot;/tmp/tmp.KEEDIXj7zi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -f &quot;/tmp/tmp.KEEDIXj7zi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -f &quot;/tmp/tmp.8LAr6GaV08/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/gmake -f &quot;/tmp/tmp.8LAr6GaV08/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -f &quot;/tmp/tmp.8LAr6GaV08/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -f &quot;/tmp/tmp.8LAr6GaV08/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/tmp/tmp.KEEDIXj7zi/cmake-build-debug"/>
+				<Option working_dir="/tmp/tmp.8LAr6GaV08/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -f &quot;/tmp/tmp.KEEDIXj7zi/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/gmake -f &quot;/tmp/tmp.KEEDIXj7zi/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -f &quot;/tmp/tmp.KEEDIXj7zi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -f &quot;/tmp/tmp.KEEDIXj7zi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -f &quot;/tmp/tmp.8LAr6GaV08/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/gmake -f &quot;/tmp/tmp.8LAr6GaV08/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -f &quot;/tmp/tmp.8LAr6GaV08/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -f &quot;/tmp/tmp.8LAr6GaV08/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="posSemestralka">
-				<Option output="/tmp/tmp.KEEDIXj7zi/cmake-build-debug/posSemestralka" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/tmp/tmp.KEEDIXj7zi/cmake-build-debug"/>
+				<Option output="/tmp/tmp.8LAr6GaV08/cmake-build-debug/posSemestralka" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/tmp/tmp.8LAr6GaV08/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -50,15 +50,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -f &quot;/tmp/tmp.KEEDIXj7zi/cmake-build-debug/Makefile&quot;  VERBOSE=1 posSemestralka"/>
-					<CompileFile command="/usr/bin/gmake -f &quot;/tmp/tmp.KEEDIXj7zi/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -f &quot;/tmp/tmp.KEEDIXj7zi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -f &quot;/tmp/tmp.KEEDIXj7zi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -f &quot;/tmp/tmp.8LAr6GaV08/cmake-build-debug/Makefile&quot;  VERBOSE=1 posSemestralka"/>
+					<CompileFile command="/usr/bin/gmake -f &quot;/tmp/tmp.8LAr6GaV08/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -f &quot;/tmp/tmp.8LAr6GaV08/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -f &quot;/tmp/tmp.8LAr6GaV08/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="posSemestralka/fast">
-				<Option output="/tmp/tmp.KEEDIXj7zi/cmake-build-debug/posSemestralka" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/tmp/tmp.KEEDIXj7zi/cmake-build-debug"/>
+				<Option output="/tmp/tmp.8LAr6GaV08/cmake-build-debug/posSemestralka" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/tmp/tmp.8LAr6GaV08/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -69,23 +69,23 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -f &quot;/tmp/tmp.KEEDIXj7zi/cmake-build-debug/Makefile&quot;  VERBOSE=1 posSemestralka/fast"/>
-					<CompileFile command="/usr/bin/gmake -f &quot;/tmp/tmp.KEEDIXj7zi/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -f &quot;/tmp/tmp.KEEDIXj7zi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -f &quot;/tmp/tmp.KEEDIXj7zi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -f &quot;/tmp/tmp.8LAr6GaV08/cmake-build-debug/Makefile&quot;  VERBOSE=1 posSemestralka/fast"/>
+					<CompileFile command="/usr/bin/gmake -f &quot;/tmp/tmp.8LAr6GaV08/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -f &quot;/tmp/tmp.8LAr6GaV08/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -f &quot;/tmp/tmp.8LAr6GaV08/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/tmp/tmp.KEEDIXj7zi/krupier.c">
+		<Unit filename="/tmp/tmp.8LAr6GaV08/krupier.c">
 			<Option target="posSemestralka"/>
 		</Unit>
-		<Unit filename="/tmp/tmp.KEEDIXj7zi/krupier.h">
+		<Unit filename="/tmp/tmp.8LAr6GaV08/krupier.h">
 			<Option target="posSemestralka"/>
 		</Unit>
-		<Unit filename="/tmp/tmp.KEEDIXj7zi/main.c">
+		<Unit filename="/tmp/tmp.8LAr6GaV08/main.c">
 			<Option target="posSemestralka"/>
 		</Unit>
-		<Unit filename="/tmp/tmp.KEEDIXj7zi/CMakeLists.txt">
+		<Unit filename="/tmp/tmp.8LAr6GaV08/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>
