@@ -33,20 +33,18 @@ bool rovnaka = true;
                 printf("%d %d\n",nahodnaKarta, c++);
                 rovnakaKarta[j] = nahodnaKarta;
             }
-
-
         }
     }
+    printf("rovnake karty:\n");
     for (int i = 0; i < 13; ++i) {
         printf("%d ", rovnakaKarta[i]);
     }
-    printf("\n");
+
+    printf("\nvsetky karty:\n");
     for (int i = 0; i < 4; ++i) {
         for (int j = 0; j < 13; ++j) {
             printf("%d " ,premiesane[i][j]) ;
         }
         printf("\n");
     }
-
-
 }
