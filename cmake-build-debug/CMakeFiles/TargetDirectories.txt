@@ -1,3 +1,3 @@
 /tmp/tmp.KEEDIXj7zi/cmake-build-debug/CMakeFiles/rebuild_cache.dir
 /tmp/tmp.KEEDIXj7zi/cmake-build-debug/CMakeFiles/edit_cache.dir
-/tmp/tmp.KEEDIXj7zi/cmake-build-debug/CMakeFiles/posZapocet.dir
+/tmp/tmp.KEEDIXj7zi/cmake-build-debug/CMakeFiles/posSemestralka.dir

@@ -130,7 +130,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=posZapocet
+CMAKE_PROJECT_NAME:STATIC=posSemestralka
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
@@ -199,6 +199,12 @@ ProcessorCount_cmd_nproc:FILEPATH=/usr/bin/nproc
 
 //Path to a program.
 ProcessorCount_cmd_sysctl:FILEPATH=/sbin/sysctl
+
+//Value Computed by CMake
+posSemestralka_BINARY_DIR:STATIC=/tmp/tmp.KEEDIXj7zi/cmake-build-debug
+
+//Value Computed by CMake
+posSemestralka_SOURCE_DIR:STATIC=/tmp/tmp.KEEDIXj7zi
 
 //Value Computed by CMake
 posZapocet_BINARY_DIR:STATIC=/tmp/tmp.KEEDIXj7zi/cmake-build-debug

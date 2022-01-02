@@ -130,17 +130,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named posZapocet
+# Target rules for targets named posSemestralka
 
 # Build rule for target.
-posZapocet: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 posZapocet
-.PHONY : posZapocet
+posSemestralka: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 posSemestralka
+.PHONY : posSemestralka
 
 # fast build rule for target.
-posZapocet/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/posZapocet.dir/build.make CMakeFiles/posZapocet.dir/build
-.PHONY : posZapocet/fast
+posSemestralka/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/posSemestralka.dir/build.make CMakeFiles/posSemestralka.dir/build
+.PHONY : posSemestralka/fast
 
 krupier.o: krupier.c.o
 
@@ -148,7 +148,7 @@ krupier.o: krupier.c.o
 
 # target to build an object file
 krupier.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/posZapocet.dir/build.make CMakeFiles/posZapocet.dir/krupier.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/posSemestralka.dir/build.make CMakeFiles/posSemestralka.dir/krupier.c.o
 .PHONY : krupier.c.o
 
 krupier.i: krupier.c.i
@@ -157,7 +157,7 @@ krupier.i: krupier.c.i
 
 # target to preprocess a source file
 krupier.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/posZapocet.dir/build.make CMakeFiles/posZapocet.dir/krupier.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/posSemestralka.dir/build.make CMakeFiles/posSemestralka.dir/krupier.c.i
 .PHONY : krupier.c.i
 
 krupier.s: krupier.c.s
@@ -166,7 +166,7 @@ krupier.s: krupier.c.s
 
 # target to generate assembly for a file
 krupier.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/posZapocet.dir/build.make CMakeFiles/posZapocet.dir/krupier.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/posSemestralka.dir/build.make CMakeFiles/posSemestralka.dir/krupier.c.s
 .PHONY : krupier.c.s
 
 main.o: main.c.o
@@ -175,7 +175,7 @@ main.o: main.c.o
 
 # target to build an object file
 main.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/posZapocet.dir/build.make CMakeFiles/posZapocet.dir/main.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/posSemestralka.dir/build.make CMakeFiles/posSemestralka.dir/main.c.o
 .PHONY : main.c.o
 
 main.i: main.c.i
@@ -184,7 +184,7 @@ main.i: main.c.i
 
 # target to preprocess a source file
 main.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/posZapocet.dir/build.make CMakeFiles/posZapocet.dir/main.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/posSemestralka.dir/build.make CMakeFiles/posSemestralka.dir/main.c.i
 .PHONY : main.c.i
 
 main.s: main.c.s
@@ -193,7 +193,7 @@ main.s: main.c.s
 
 # target to generate assembly for a file
 main.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/posZapocet.dir/build.make CMakeFiles/posZapocet.dir/main.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/posSemestralka.dir/build.make CMakeFiles/posSemestralka.dir/main.c.s
 .PHONY : main.c.s
 
 # Help Target
@@ -204,7 +204,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... posZapocet"
+	@echo "... posSemestralka"
 	@echo "... krupier.o"
 	@echo "... krupier.i"
 	@echo "... krupier.s"
