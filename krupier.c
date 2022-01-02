@@ -69,6 +69,7 @@ void rozdajKarty(int (*balicek)[52]) {
     for (int i = 0; i < 52; ++i) {
         printf("%d ", premiesane[i]);
     }
+    printf("\n");
 
     int kartyA[5] = {0};
     int kartyB[5] = {0};
@@ -78,7 +79,7 @@ void rozdajKarty(int (*balicek)[52]) {
     kartyA[1] = premiesane[2];
     kartyB[1] = premiesane[3];
 
-    printf("\nkartyA: %d %d %d %d %d\n", kartyA[0], kartyA[1], kartyA[2], kartyA[3], kartyA[4]);
+    printf("kartyA: %d %d %d %d %d\n", kartyA[0], kartyA[1], kartyA[2], kartyA[3], kartyA[4]);
     printf("kartyB: %d %d %d %d %d\n", kartyB[0], kartyB[1], kartyB[2], kartyB[3], kartyB[4]);
 }
 
@@ -88,37 +89,13 @@ void dajKartu(int (*balicek)[52], int (*karty)[5], int aktualnaKarta, int pocetK
     pocetKariet++;
 }
 
-void porovnaj(int *kartyA[5], int *kartyB[5]) {
-    int sumA = 0;
-    int sumB = 0;
-    int kartaA = 0;
-    int kartaB = 0;
-
-    for (int i = 0; i < 5; ++i) {
-        kartaA = *(kartyA[i]);
-        kartaB = *(kartyB[i]);
-        if (kartaA > 10)
-            kartaA = 10;
-        if (kartaB > 10)
-            kartaB = 10;
-        sumA += kartaA;
-        sumB += kartaB;
-    }
-
-    if (sumA > sumB) {
-        printf("Vyhral hrac A, skore bolo %d : %d\n", sumA, sumB);
+void porovnaj(int *skoreA, int *skoreB) {
+    if (*skoreA > *skoreB) {
+        printf("Vyhral hrac A, skore bolo %d : %d\n", *skoreA, *skoreB);
     } else {
-        printf("Vyhral hrac B, skore bolo %d : %d\n", sumB, sumA);
+        printf("Vyhral hrac B, skore bolo %d : %d\n", *skoreB, *skoreA);
     }
 }
-
-//void porovnaj(int *skoreA, int *skoreB) {
-//    if (*skoreA > *skoreB) {
-//        printf("Vyhral hrac A, skore bolo %d : %d\n", *skoreA, *skoreB);
-//    } else {
-//        printf("Vyhral hrac B, skore bolo %d : %d\n", *skoreB, *skoreA);
-//    }
-//}
 
 void vykresliKartu(int cisloKarty) {
 

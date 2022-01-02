@@ -10,11 +10,12 @@
 typedef struct DataHrac {
     int (*karty)[5];
     int *pocetKariet;
+    int *skore;
 } DATA_H;
 
 int ukazKarty();
 void pridajKartu(int paKarta);
-void rozhodniHodnotuEsa();
-void vypocitajSkore();
+int rozhodniHodnotuEsa(DATA_H *data);
+void vypocitajSkore(DATA_H *data);
 
 #endif //POSSEMESTRALKA_HRAC_H

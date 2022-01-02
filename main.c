@@ -15,10 +15,12 @@ int main() {
     int aktualnaKarta = 4;
     int pocetKarietA = 2;
     int pocetKarietB = 2;
+    int skoreA = 0;
+    int skoreB = 0;
 
     DATA_K dataK = {&balicek, &aktualnaKarta};
-    DATA_H dataH1 = {&kartyA, &pocetKarietA};
-    DATA_H dataH2 = {&kartyB, &pocetKarietB};
+    DATA_H dataH1 = {&kartyA, &pocetKarietA, &skoreA};
+    DATA_H dataH2 = {&kartyB, &pocetKarietB, &skoreB};
 
     hra(dataK);
 

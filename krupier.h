@@ -17,8 +17,7 @@ void premiesajBalicek(int (*balicek)[52]);
 void rozdajKarty(int (*balicek)[52]);
 void dajKartu(int (*balicek)[52], int (*karty)[5], int aktualnaKarta, int pocetKariet);
 void vykresliKartu(int cKarty);
-void porovnaj(int *kartyA[5], int *kartyB[5]);
-//void porovnaj(int *skoreA, int *skoreB);
+void porovnaj(int *skoreA, int *skoreB);
 void hra(DATA_K dataK);
 
 
