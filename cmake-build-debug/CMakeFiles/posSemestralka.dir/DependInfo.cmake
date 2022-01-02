@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
+  "/tmp/tmp.KEEDIXj7zi/hrac.c" "/tmp/tmp.KEEDIXj7zi/cmake-build-debug/CMakeFiles/posSemestralka.dir/hrac.c.o"
   "/tmp/tmp.KEEDIXj7zi/krupier.c" "/tmp/tmp.KEEDIXj7zi/cmake-build-debug/CMakeFiles/posSemestralka.dir/krupier.c.o"
   "/tmp/tmp.KEEDIXj7zi/main.c" "/tmp/tmp.KEEDIXj7zi/cmake-build-debug/CMakeFiles/posSemestralka.dir/main.c.o"
   )

@@ -142,6 +142,33 @@ posSemestralka/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/posSemestralka.dir/build.make CMakeFiles/posSemestralka.dir/build
 .PHONY : posSemestralka/fast
 
+hrac.o: hrac.c.o
+
+.PHONY : hrac.o
+
+# target to build an object file
+hrac.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/posSemestralka.dir/build.make CMakeFiles/posSemestralka.dir/hrac.c.o
+.PHONY : hrac.c.o
+
+hrac.i: hrac.c.i
+
+.PHONY : hrac.i
+
+# target to preprocess a source file
+hrac.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/posSemestralka.dir/build.make CMakeFiles/posSemestralka.dir/hrac.c.i
+.PHONY : hrac.c.i
+
+hrac.s: hrac.c.s
+
+.PHONY : hrac.s
+
+# target to generate assembly for a file
+hrac.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/posSemestralka.dir/build.make CMakeFiles/posSemestralka.dir/hrac.c.s
+.PHONY : hrac.c.s
+
 krupier.o: krupier.c.o
 
 .PHONY : krupier.o
@@ -205,6 +232,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... posSemestralka"
+	@echo "... hrac.o"
+	@echo "... hrac.i"
+	@echo "... hrac.s"
 	@echo "... krupier.o"
 	@echo "... krupier.i"
 	@echo "... krupier.s"

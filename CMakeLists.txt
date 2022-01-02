@@ -3,5 +3,5 @@ project(posSemestralka C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(posSemestralka main.c krupier.c)
+add_executable(posSemestralka main.c krupier.c hrac.c hrac.h krupier.h)
 target_link_libraries(posSemestralka pthread m)

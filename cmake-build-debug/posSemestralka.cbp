@@ -76,6 +76,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/tmp/tmp.KEEDIXj7zi/hrac.c">
+			<Option target="posSemestralka"/>
+		</Unit>
+		<Unit filename="/tmp/tmp.KEEDIXj7zi/hrac.h">
+			<Option target="posSemestralka"/>
+		</Unit>
 		<Unit filename="/tmp/tmp.KEEDIXj7zi/krupier.c">
 			<Option target="posSemestralka"/>
 		</Unit>

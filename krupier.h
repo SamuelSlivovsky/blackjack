@@ -9,6 +9,7 @@
 
 void premiesajBalicek();
 void rozdajKarty();
+void kartaObr(int cKarty);
 void porovnaj();
 
 
