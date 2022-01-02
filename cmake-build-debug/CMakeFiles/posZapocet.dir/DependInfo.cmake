@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/tmp/tmp.KEEDIXj7zi/krupier.c" "/tmp/tmp.KEEDIXj7zi/cmake-build-debug/CMakeFiles/posZapocet.dir/krupier.c.o"
-  "/tmp/tmp.KEEDIXj7zi/main.c" "/tmp/tmp.KEEDIXj7zi/cmake-build-debug/CMakeFiles/posZapocet.dir/main.c.o"
+  "/tmp/tmp.8LAr6GaV08/krupier.c" "/tmp/tmp.8LAr6GaV08/cmake-build-debug/CMakeFiles/posZapocet.dir/krupier.c.o"
+  "/tmp/tmp.8LAr6GaV08/main.c" "/tmp/tmp.8LAr6GaV08/cmake-build-debug/CMakeFiles/posZapocet.dir/main.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
