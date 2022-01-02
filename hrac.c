@@ -1,15 +1,9 @@
-//
-// Created by PC1 on 2. 1. 2022.
-//
-
 #include "hrac.h"
 
 int ukazKarty(){
-    return karta;
-
+    return 0;
 }
 
 void pridajKartu(int paKarta){
-    karta += paKarta;
 
 };

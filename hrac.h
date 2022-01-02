@@ -1,16 +1,20 @@
-//
-// Created by PC1 on 2. 1. 2022.
-//
 #include <stdlib.h>
 #include <stdbool.h>
 #include <stdio.h>
-#include "krupier.h"
+
 #ifndef POSSEMESTRALKA_HRAC_H
 #define POSSEMESTRALKA_HRAC_H
 
-int pocetKariet = 0;
-int karta = 0;
-int pozHraca = 0;
+#include "krupier.h"
+
+typedef struct DataHrac {
+    int (*karty)[5];
+    int *pocetKariet;
+} DATA_H;
+
 int ukazKarty();
 void pridajKartu(int paKarta);
+void rozhodniHodnotuEsa();
+void vypocitajSkore();
+
 #endif //POSSEMESTRALKA_HRAC_H

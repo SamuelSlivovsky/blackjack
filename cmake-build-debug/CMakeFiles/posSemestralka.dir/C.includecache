@@ -6,11 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/tmp/tmp.KEEDIXj7zi/krupier.c
+/tmp/tmp.8LAr6GaV08/krupier.c
 krupier.h
-/tmp/tmp.KEEDIXj7zi/krupier.h
+/tmp/tmp.8LAr6GaV08/krupier.h
 
-/tmp/tmp.KEEDIXj7zi/krupier.h
+/tmp/tmp.8LAr6GaV08/krupier.h
 stdlib.h
 -
 stdbool.h
@@ -18,7 +18,7 @@ stdbool.h
 stdio.h
 -
 
-/tmp/tmp.KEEDIXj7zi/main.c
+/tmp/tmp.8LAr6GaV08/main.c
 stdio.h
 -
 pthread.h
@@ -28,5 +28,5 @@ stdlib.h
 unistd.h
 -
 krupier.h
-/tmp/tmp.KEEDIXj7zi/krupier.h
+/tmp/tmp.8LAr6GaV08/krupier.h
 
