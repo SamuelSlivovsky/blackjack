@@ -1,0 +1,1 @@
+/usr/bin/cc -g CMakeFiles/posSemestralka.dir/main.c.o CMakeFiles/posSemestralka.dir/krupier.c.o -o posSemestralka  -lpthread -lm 

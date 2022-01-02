@@ -63,16 +63,16 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /tmp/tmp.8LAr6GaV08
+CMAKE_SOURCE_DIR = /tmp/tmp.KEEDIXj7zi
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /tmp/tmp.8LAr6GaV08/cmake-build-debug
+CMAKE_BINARY_DIR = /tmp/tmp.KEEDIXj7zi/cmake-build-debug
 
 #=============================================================================
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/posZapocet.dir/all
+all: CMakeFiles/posSemestralka.dir/all
 
 .PHONY : all
 
@@ -82,36 +82,36 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/posZapocet.dir/clean
+clean: CMakeFiles/posSemestralka.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/posZapocet.dir
+# Target rules for target CMakeFiles/posSemestralka.dir
 
 # All Build rule for target.
-CMakeFiles/posZapocet.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/posZapocet.dir/build.make CMakeFiles/posZapocet.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/posZapocet.dir/build.make CMakeFiles/posZapocet.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/tmp/tmp.8LAr6GaV08/cmake-build-debug/CMakeFiles --progress-num=1,2,3 "Built target posZapocet"
-.PHONY : CMakeFiles/posZapocet.dir/all
+CMakeFiles/posSemestralka.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/posSemestralka.dir/build.make CMakeFiles/posSemestralka.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/posSemestralka.dir/build.make CMakeFiles/posSemestralka.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/tmp/tmp.KEEDIXj7zi/cmake-build-debug/CMakeFiles --progress-num=1,2,3 "Built target posSemestralka"
+.PHONY : CMakeFiles/posSemestralka.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/posZapocet.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /tmp/tmp.8LAr6GaV08/cmake-build-debug/CMakeFiles 3
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/posZapocet.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /tmp/tmp.8LAr6GaV08/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/posZapocet.dir/rule
+CMakeFiles/posSemestralka.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /tmp/tmp.KEEDIXj7zi/cmake-build-debug/CMakeFiles 3
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/posSemestralka.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /tmp/tmp.KEEDIXj7zi/cmake-build-debug/CMakeFiles 0
+.PHONY : CMakeFiles/posSemestralka.dir/rule
 
 # Convenience name for target.
-posZapocet: CMakeFiles/posZapocet.dir/rule
+posSemestralka: CMakeFiles/posSemestralka.dir/rule
 
-.PHONY : posZapocet
+.PHONY : posSemestralka
 
 # clean rule for target.
-CMakeFiles/posZapocet.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/posZapocet.dir/build.make CMakeFiles/posZapocet.dir/clean
-.PHONY : CMakeFiles/posZapocet.dir/clean
+CMakeFiles/posSemestralka.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/posSemestralka.dir/build.make CMakeFiles/posSemestralka.dir/clean
+.PHONY : CMakeFiles/posSemestralka.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.
