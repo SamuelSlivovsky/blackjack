@@ -9,8 +9,12 @@ void hra(DATA_K dataK, DATA_H dataH1, DATA_H dataH2) {
     printf("kartyB: %d %d %d %d %d\n", dataH2.karty[0], dataH2.karty[1], dataH2.karty[2], dataH2.karty[3], dataH2.karty[4]);
 
     for (int i = 0; i < 3; ++i) {
-        dajKartu(dataK.balicek, dataH1.karty, dataK.aktualnaKarta, dataH1.pocetKariet);
-        dajKartu(dataK.balicek, dataH2.karty, dataK.aktualnaKarta, dataH2.pocetKariet);
+        int tahaA = rand() % 2;
+        if (tahaA == 0)
+            dajKartu(dataK.balicek, dataH1.karty, dataK.aktualnaKarta, dataH1.pocetKariet);
+        int tahaB = rand() % 2;
+        if (tahaB == 0)
+            dajKartu(dataK.balicek, dataH2.karty, dataK.aktualnaKarta, dataH2.pocetKariet);
     }
 
     printf("\npo tahani kariet:\n");
@@ -81,13 +85,17 @@ void porovnaj(DATA_H dataH1, DATA_H dataH2) {
 
     int skoreA = *(dataH1.skore);
     int skoreB = *(dataH2.skore);
+    int rozdielA = 21 - skoreA;
+    int rozdielB = 21 - skoreB;
 
-    if (skoreA > skoreB) {
-        printf("Vyhral hrac A, skore bolo %d : %d\n", skoreA, skoreB);
-    } else if (skoreA < skoreB) {
-        printf("Vyhral hrac B, skore bolo %d : %d\n", skoreB, skoreA);
+    if (rozdielA >= 0 && rozdielA < rozdielB || rozdielB < 0 && rozdielA >= 0) {
+        printf("Vyhral hrac A, skore bolo - %d : %d (A:B)\n", skoreA, skoreB);
+    } else if (rozdielB >= 0 && rozdielB < rozdielA || rozdielA < 0 && rozdielB >= 0) {
+        printf("Vyhral hrac B, skore bolo - %d : %d (B:A)\n", skoreB, skoreA);
+    } else if (rozdielA == rozdielB && rozdielA >= 0) {
+        printf("Remiza, skore bolo - %d : %d (A:B)\n", skoreA, skoreB);
     } else {
-        printf("Remiza, nikto nevyhral, skore bolo (A:B) %d : %d\n", skoreA, skoreB);
+        printf("Nikto nevyhral, skore bolo - %d : %d (A:B)\n", skoreA, skoreB);
     }
 }
 
