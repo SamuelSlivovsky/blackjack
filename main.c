@@ -16,9 +16,11 @@
 //      - DONE - vypisanie vysledkov
 //      - DONE - ci chcu hrat znova
 
-int main() {
+typedef struct historia {
 
-    srand(time(NULL));
+} HISTORY;
+
+int game() {
     int volba = 1;
     char chr = 'n';
     intro();
@@ -67,4 +69,9 @@ int main() {
             printf("Zadajte iba moznosti z MENU.\n");
         }
     }
+}
+
+int main() {
+    srand(time(NULL));
+    game();
 }

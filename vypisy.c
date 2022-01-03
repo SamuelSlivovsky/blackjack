@@ -17,6 +17,15 @@ void menu() {
     printf("\n");
 }
 
+void hracTah() {
+    printf("\n");
+    printf("Si na tahu, mozes:\n");
+    printf("\t1 - si potiahnut kartu\n");
+    printf("\t2 - vylozit karty\n");
+    printf("\t3 - neurobit nic\n");
+    printf("\n");
+}
+
 void vykresliKartu(int cisloKarty) {
 
     switch (cisloKarty) {
