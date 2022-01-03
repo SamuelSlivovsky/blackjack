@@ -67,10 +67,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /tmp/tmp.8LAr6GaV08
+CMAKE_SOURCE_DIR = /tmp/tmp.ulEBL5fVsW
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /tmp/tmp.8LAr6GaV08/cmake-build-debug
+CMAKE_BINARY_DIR = /tmp/tmp.ulEBL5fVsW/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -99,9 +99,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /tmp/tmp.8LAr6GaV08/cmake-build-debug/CMakeFiles /tmp/tmp.8LAr6GaV08/cmake-build-debug//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /tmp/tmp.ulEBL5fVsW/cmake-build-debug/CMakeFiles /tmp/tmp.ulEBL5fVsW/cmake-build-debug//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /tmp/tmp.8LAr6GaV08/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /tmp/tmp.ulEBL5fVsW/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -223,6 +223,33 @@ main.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/posSemestralka.dir/build.make CMakeFiles/posSemestralka.dir/main.c.s
 .PHONY : main.c.s
 
+vypisy.o: vypisy.c.o
+
+.PHONY : vypisy.o
+
+# target to build an object file
+vypisy.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/posSemestralka.dir/build.make CMakeFiles/posSemestralka.dir/vypisy.c.o
+.PHONY : vypisy.c.o
+
+vypisy.i: vypisy.c.i
+
+.PHONY : vypisy.i
+
+# target to preprocess a source file
+vypisy.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/posSemestralka.dir/build.make CMakeFiles/posSemestralka.dir/vypisy.c.i
+.PHONY : vypisy.c.i
+
+vypisy.s: vypisy.c.s
+
+.PHONY : vypisy.s
+
+# target to generate assembly for a file
+vypisy.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/posSemestralka.dir/build.make CMakeFiles/posSemestralka.dir/vypisy.c.s
+.PHONY : vypisy.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -241,6 +268,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... vypisy.o"
+	@echo "... vypisy.i"
+	@echo "... vypisy.s"
 .PHONY : help
 
 

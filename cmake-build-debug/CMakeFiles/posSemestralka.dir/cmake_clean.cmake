@@ -2,6 +2,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/posSemestralka.dir/hrac.c.o"
   "CMakeFiles/posSemestralka.dir/krupier.c.o"
   "CMakeFiles/posSemestralka.dir/main.c.o"
+  "CMakeFiles/posSemestralka.dir/vypisy.c.o"
   "posSemestralka"
   "posSemestralka.pdb"
 )

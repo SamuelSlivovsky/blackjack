@@ -28,7 +28,7 @@ void hra(DATA_K dataK, DATA_H dataH1, DATA_H dataH2) {
     ukazKarty(&dataH2);
 
     printf("\nvysledok:\n");
-    porovnaj(dataH1, dataH2);
+    porovnaj(dataH1, dataH2, dataK);
 }
 
 void premiesajBalicek(int *balicek) {
@@ -76,7 +76,7 @@ void dajKartu(const int *balicek, int *karty, int *aktualnaKarta, int *pocetKari
     (*pocetKariet)++;
 }
 
-void porovnaj(DATA_H dataH1, DATA_H dataH2) {
+void porovnaj(DATA_H dataH1, DATA_H dataH2, DATA_K dataK) {
     vypocitajSkore(&dataH1);
     vypocitajSkore(&dataH2);
 
@@ -87,11 +87,15 @@ void porovnaj(DATA_H dataH1, DATA_H dataH2) {
 
     if (rozdielA >= 0 && rozdielA < rozdielB || rozdielB < 0 && rozdielA >= 0) {
         printf("Vyhral hrac A, skore bolo - %d : %d (A:B)\n", skoreA, skoreB);
+        *(dataK.harabin) = 'A';
     } else if (rozdielB >= 0 && rozdielB < rozdielA || rozdielA < 0 && rozdielB >= 0) {
         printf("Vyhral hrac B, skore bolo - %d : %d (B:A)\n", skoreB, skoreA);
+        *(dataK.harabin) = 'B';
     } else if (rozdielA == rozdielB && rozdielA >= 0) {
         printf("Remiza, skore bolo - %d : %d (A:B)\n", skoreA, skoreB);
+        *(dataK.harabin) = 'R';
     } else {
         printf("Nikto nevyhral, skore bolo - %d : %d (A:B)\n", skoreA, skoreB);
+        *(dataK.harabin) = 'N';
     }
 }

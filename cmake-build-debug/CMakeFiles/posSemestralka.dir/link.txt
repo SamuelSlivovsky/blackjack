@@ -1,1 +1,1 @@
-/usr/bin/cc -g CMakeFiles/posSemestralka.dir/main.c.o CMakeFiles/posSemestralka.dir/krupier.c.o CMakeFiles/posSemestralka.dir/hrac.c.o -o posSemestralka  -lpthread -lm 
+/usr/bin/cc -g CMakeFiles/posSemestralka.dir/main.c.o CMakeFiles/posSemestralka.dir/krupier.c.o CMakeFiles/posSemestralka.dir/hrac.c.o CMakeFiles/posSemestralka.dir/vypisy.c.o -o posSemestralka  -lpthread -lm 

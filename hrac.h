@@ -15,7 +15,6 @@ typedef struct DataHrac {
 } DATA_H;
 
 void ukazKarty(DATA_H *data);
-void pridajKartu(int paKarta);
 int rozhodniHodnotuEsa(DATA_H *data);
 void vypocitajSkore(DATA_H *data);
 

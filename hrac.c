@@ -6,15 +6,23 @@ void ukazKarty(DATA_H *data){
     }
 }
 
-void pridajKartu(int paKarta){
-
-}
 
 int rozhodniHodnotuEsa(DATA_H *data) {
-    vypocitajSkore(data);
-    if (*(data->skore) > 12)
-        return 1;
-    return 10;
+char chr = ' ';
+while(chr != 'y' || chr != 'n') {
+    printf("\n");
+    printf("Dostali ste Eso, aku chcete aby malo hodnotu?\n");
+    printf(" (y - 1, n - 10)\n");
+    printf("vasa volba: ");
+    scanf(" %c", &chr);
+    printf("\n");
+}
+    if (chr =='y'){
+        data->karty[*(data->pocetKariet)] = 1;
+    }else if (chr == 'n'){
+        data->karty[*(data->pocetKariet)] = 10;
+    }
+
 }
 
 void vypocitajSkore(DATA_H *data) {
