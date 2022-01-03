@@ -1,6 +1,12 @@
-#include <stdlib.h>
-#include <stdbool.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <netdb.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdbool.h>
+#include <unistd.h>
 #include "vypisy.h"
 
 #ifndef POSSEMESTRALKA_HRAC_H

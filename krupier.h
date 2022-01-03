@@ -1,6 +1,11 @@
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
 #include <stdlib.h>
 #include <stdbool.h>
 #include <stdio.h>
+#include <string.h>
+#include <unistd.h>
 #include "vypisy.h"
 
 #ifndef POSSEMESTRALKA_KRUPIER_H
