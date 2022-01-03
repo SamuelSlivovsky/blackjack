@@ -18,7 +18,7 @@ int rozhodniHodnotuEsa(DATA_H *data) {
 void vypocitajSkore(DATA_H *data) {
     int sum = 0;
     for (int i = 0; i < *(data->pocetKariet); ++i) {
-        int karta = *(data->karty[i]);
+        int karta = data->karty[i];
         if (karta > 10)
             karta = 10;
         sum += karta;

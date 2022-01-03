@@ -2,8 +2,8 @@
 #include <pthread.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include "krupier.h"
 #include "hrac.h"
+#include "krupier.h"
 
 int main() {
 
@@ -18,11 +18,11 @@ int main() {
     int skoreA = 0;
     int skoreB = 0;
 
-    DATA_K dataK = {&balicek, &aktualnaKarta};
-    DATA_H dataH1 = {&kartyA, &pocetKarietA, &skoreA};
-    DATA_H dataH2 = {&kartyB, &pocetKarietB, &skoreB};
+    DATA_K dataK = {balicek, &aktualnaKarta};
+    DATA_H dataH1 = {kartyA, &pocetKarietA, &skoreA};
+    DATA_H dataH2 = {kartyB, &pocetKarietB, &skoreB};
 
-    hra(dataK);
+    hra(dataK, dataH1, dataH2);
 
 //    TODO
 //      - komunikacia medzi hracom a krupierom

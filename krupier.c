@@ -1,15 +1,28 @@
 #include "krupier.h"
 
-void hra(DATA_K dataK) {
-//    premiesajBalicek(dataK.balicek);
-//    rozdajKarty(dataK.balicek, dataH1.karty, dataH2.karty);
-    rozdajKarty(dataK.balicek);
-//    dajKartu(dataK.balicek, null, dataK.aktualnaKarta, null)
+void hra(DATA_K dataK, DATA_H dataH1, DATA_H dataH2) {
+    premiesajBalicek(dataK.balicek);
+    rozdajKarty(dataK.balicek, dataH1.karty, dataH2.karty);
+
+    printf("\npo rozdani kariet:\n");
+    printf("kartyA: %d %d %d %d %d\n", dataH1.karty[0], dataH1.karty[1], dataH1.karty[2], dataH1.karty[3], dataH1.karty[4]);
+    printf("kartyB: %d %d %d %d %d\n", dataH2.karty[0], dataH2.karty[1], dataH2.karty[2], dataH2.karty[3], dataH2.karty[4]);
+
+    for (int i = 0; i < 3; ++i) {
+        dajKartu(dataK.balicek, dataH1.karty, dataK.aktualnaKarta, dataH1.pocetKariet);
+        dajKartu(dataK.balicek, dataH2.karty, dataK.aktualnaKarta, dataH2.pocetKariet);
+    }
+
+    printf("\npo tahani kariet:\n");
+    printf("kartyA: %d %d %d %d %d\n", dataH1.karty[0], dataH1.karty[1], dataH1.karty[2], dataH1.karty[3], dataH1.karty[4]);
+    printf("kartyB: %d %d %d %d %d\n", dataH2.karty[0], dataH2.karty[1], dataH2.karty[2], dataH2.karty[3], dataH2.karty[4]);
+
+    printf("\nvysledok:\n");
+    porovnaj(dataH1, dataH2);
 }
 
-void premiesajBalicek(int (*balicek)[52]) {
-    int premiesane[52] = {0};
-    int nahodnaKarta = 0;
+void premiesajBalicek(int *balicek) {
+    int nahodnaKarta;
     bool rovnaka = true;
 
     for (int i = 0; i < 52; ++i) {
@@ -17,10 +30,10 @@ void premiesajBalicek(int (*balicek)[52]) {
             nahodnaKarta = rand() % 13 + 1;
             int opakovanie = 0;
             for (int k = 0; k < 52; ++k) {
-                if (premiesane[k] != nahodnaKarta){
+                if (balicek[k] != nahodnaKarta){
                     rovnaka = false;
                 }
-               if(premiesane[k]== nahodnaKarta && opakovanie < 4){
+               if(balicek[k]== nahodnaKarta && opakovanie < 4){
                    opakovanie++;
                    rovnaka = false;
                }
@@ -31,69 +44,50 @@ void premiesajBalicek(int (*balicek)[52]) {
                }
             }
             if (!rovnaka) {
-                premiesane[i] = nahodnaKarta;
+                balicek[i] = nahodnaKarta;
             }
     }
     for (int i = 0; i < 52; ++i) {
-        printf("%d ", premiesane[i]);
-    }
-}
-
-void rozdajKarty(int (*balicek)[52]) {
-    int premiesane[52] = {0};
-    int nahodnaKarta = 0;
-    bool rovnaka = true;
-
-    for (int i = 0; i < 52; ++i) {
-
-        nahodnaKarta = rand() % 13 + 1;
-        int opakovanie = 0;
-        for (int k = 0; k < 52; ++k) {
-            if (premiesane[k] != nahodnaKarta){
-                rovnaka = false;
-            }
-            if(premiesane[k]== nahodnaKarta && opakovanie < 4){
-                opakovanie++;
-                rovnaka = false;
-            }
-            if(opakovanie > 3){
-                i--;
-                rovnaka = true;
-                break;
-            }
-        }
-        if (!rovnaka) {
-            premiesane[i] = nahodnaKarta;
-        }
-    }
-    for (int i = 0; i < 52; ++i) {
-        printf("%d ", premiesane[i]);
+        printf("%d ", balicek[i]);
     }
     printf("\n");
-
-    int kartyA[5] = {0};
-    int kartyB[5] = {0};
-
-    kartyA[0] = premiesane[0];
-    kartyB[0] = premiesane[1];
-    kartyA[1] = premiesane[2];
-    kartyB[1] = premiesane[3];
-
-    printf("kartyA: %d %d %d %d %d\n", kartyA[0], kartyA[1], kartyA[2], kartyA[3], kartyA[4]);
-    printf("kartyB: %d %d %d %d %d\n", kartyB[0], kartyB[1], kartyB[2], kartyB[3], kartyB[4]);
 }
 
-void dajKartu(int (*balicek)[52], int (*karty)[5], int aktualnaKarta, int pocetKariet) {
-    *(karty[pocetKariet]) = *(balicek[aktualnaKarta]);
-    aktualnaKarta++;
-    pocetKariet++;
+void rozdajKarty(const int *balicek, int *kartyA, int kartyB[5]) {
+    kartyA[0] = balicek[0];
+    kartyB[0] = balicek[1];
+    kartyA[1] = balicek[2];
+    kartyB[1] = balicek[3];
+
+    printf("kartyA:\n");
+    for (int i = 0; i < 2; ++i) {
+        vykresliKartu(kartyA[i]);
+    }
+    printf("kartyB:\n");
+    for (int i = 0; i < 2; ++i) {
+        vykresliKartu(kartyB[i]);
+    }
 }
 
-void porovnaj(int *skoreA, int *skoreB) {
-    if (*skoreA > *skoreB) {
-        printf("Vyhral hrac A, skore bolo %d : %d\n", *skoreA, *skoreB);
+void dajKartu(const int *balicek, int *karty, int *aktualnaKarta, int *pocetKariet) {
+    karty[*pocetKariet] = balicek[*aktualnaKarta];
+    (*aktualnaKarta)++;
+    (*pocetKariet)++;
+}
+
+void porovnaj(DATA_H dataH1, DATA_H dataH2) {
+    vypocitajSkore(&dataH1);
+    vypocitajSkore(&dataH2);
+
+    int skoreA = *(dataH1.skore);
+    int skoreB = *(dataH2.skore);
+
+    if (skoreA > skoreB) {
+        printf("Vyhral hrac A, skore bolo %d : %d\n", skoreA, skoreB);
+    } else if (skoreA < skoreB) {
+        printf("Vyhral hrac B, skore bolo %d : %d\n", skoreB, skoreA);
     } else {
-        printf("Vyhral hrac B, skore bolo %d : %d\n", *skoreB, *skoreA);
+        printf("Remiza, nikto nevyhral, skore bolo (A:B) %d : %d\n", skoreA, skoreB);
     }
 }
 
@@ -153,5 +147,7 @@ void vykresliKartu(int cisloKarty) {
             printf("*******\n");
             break;
         }
+        default:
+            break;
     }
 }

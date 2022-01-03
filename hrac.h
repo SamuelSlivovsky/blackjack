@@ -5,10 +5,10 @@
 #ifndef POSSEMESTRALKA_HRAC_H
 #define POSSEMESTRALKA_HRAC_H
 
-#include "krupier.h"
+//#include "krupier.h"
 
 typedef struct DataHrac {
-    int (*karty)[5];
+    int *karty;
     int *pocetKariet;
     int *skore;
 } DATA_H;

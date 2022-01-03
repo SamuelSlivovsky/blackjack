@@ -8,17 +8,15 @@
 #include "hrac.h"
 
 typedef struct DataKrupier {
-    int (*balicek)[52];
+    int *balicek;
     int *aktualnaKarta;
 } DATA_K;
 
-void premiesajBalicek(int (*balicek)[52]);
-//void rozdajKarty(int (*balicek)[52], int (*kartyA)[5], int (*kartyB)[5]);
-void rozdajKarty(int (*balicek)[52]);
-void dajKartu(int (*balicek)[52], int (*karty)[5], int aktualnaKarta, int pocetKariet);
+void premiesajBalicek(int *balicek);
+void rozdajKarty(const int *balicek, int *kartyA, int *kartyB);
+void dajKartu(const int *balicek, int *karty, int *aktualnaKarta, int *pocetKariet);
 void vykresliKartu(int cKarty);
-void porovnaj(int *skoreA, int *skoreB);
-void hra(DATA_K dataK);
-
+void porovnaj(DATA_H dataH1, DATA_H dataH2);
+void hra(DATA_K dataK, DATA_H dataH1, DATA_H dataH2);
 
 #endif //POSSEMESTRALKA_KRUPIER_H
