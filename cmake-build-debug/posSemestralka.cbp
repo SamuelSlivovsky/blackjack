@@ -91,6 +91,12 @@
 		<Unit filename="/tmp/tmp.8LAr6GaV08/main.c">
 			<Option target="posSemestralka"/>
 		</Unit>
+		<Unit filename="/tmp/tmp.8LAr6GaV08/vypisy.cpp">
+			<Option target="posSemestralka"/>
+		</Unit>
+		<Unit filename="/tmp/tmp.8LAr6GaV08/vypisy.h">
+			<Option target="posSemestralka"/>
+		</Unit>
 		<Unit filename="/tmp/tmp.8LAr6GaV08/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <stdio.h>
+#include "vypisy.h"
 
 #ifndef POSSEMESTRALKA_HRAC_H
 #define POSSEMESTRALKA_HRAC_H
@@ -13,7 +14,7 @@ typedef struct DataHrac {
     int *skore;
 } DATA_H;
 
-int ukazKarty();
+void ukazKarty(DATA_H *data);
 void pridajKartu(int paKarta);
 int rozhodniHodnotuEsa(DATA_H *data);
 void vypocitajSkore(DATA_H *data);

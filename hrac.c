@@ -1,7 +1,9 @@
 #include "hrac.h"
 
-int ukazKarty(){
-    return 0;
+void ukazKarty(DATA_H *data){
+    for (int i = 0; i < 5; ++i) {
+        vykresliKartu(data->karty[i]);
+    }
 }
 
 void pridajKartu(int paKarta){

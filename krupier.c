@@ -21,6 +21,12 @@ void hra(DATA_K dataK, DATA_H dataH1, DATA_H dataH2) {
     printf("kartyA: %d %d %d %d %d\n", dataH1.karty[0], dataH1.karty[1], dataH1.karty[2], dataH1.karty[3], dataH1.karty[4]);
     printf("kartyB: %d %d %d %d %d\n", dataH2.karty[0], dataH2.karty[1], dataH2.karty[2], dataH2.karty[3], dataH2.karty[4]);
 
+    printf("\nKARTY HRAC A:\n");
+    ukazKarty(&dataH1);
+
+    printf("\nKARTY HRAC B:\n");
+    ukazKarty(&dataH2);
+
     printf("\nvysledok:\n");
     porovnaj(dataH1, dataH2);
 }
@@ -62,15 +68,6 @@ void rozdajKarty(const int *balicek, int *kartyA, int kartyB[5]) {
     kartyB[0] = balicek[1];
     kartyA[1] = balicek[2];
     kartyB[1] = balicek[3];
-
-    printf("kartyA:\n");
-    for (int i = 0; i < 2; ++i) {
-        vykresliKartu(kartyA[i]);
-    }
-    printf("kartyB:\n");
-    for (int i = 0; i < 2; ++i) {
-        vykresliKartu(kartyB[i]);
-    }
 }
 
 void dajKartu(const int *balicek, int *karty, int *aktualnaKarta, int *pocetKariet) {
@@ -96,66 +93,5 @@ void porovnaj(DATA_H dataH1, DATA_H dataH2) {
         printf("Remiza, skore bolo - %d : %d (A:B)\n", skoreA, skoreB);
     } else {
         printf("Nikto nevyhral, skore bolo - %d : %d (A:B)\n", skoreA, skoreB);
-    }
-}
-
-void vykresliKartu(int cisloKarty) {
-
-    switch (cisloKarty) {
-        case 1: {
-            printf("*******\n");
-            printf("*     *\n");
-            printf("*     *\n");
-            printf("*   A *\n");
-            printf("*     *\n");
-            printf("*******\n");
-            break;
-        }
-        case 2:
-        case 3:
-        case 4:
-        case 5:
-        case 6:
-        case 7:
-        case 8:
-        case 9:
-        case 10: {
-            printf("*******\n");
-            printf("*     *\n");
-            printf("*     *\n");
-            printf("*  %2d *\n", cisloKarty);
-            printf("*     *\n");
-            printf("*******\n");
-            break;
-        }
-        case 11: {
-            printf("*******\n");
-            printf("*     *\n");
-            printf("*     *\n");
-            printf("*   J *\n");
-            printf("*     *\n");
-            printf("*******\n");
-            break;
-        }
-        case 12: {
-            printf("*******\n");
-            printf("*     *\n");
-            printf("*     *\n");
-            printf("*   Q *\n");
-            printf("*     *\n");
-            printf("*******\n");
-            break;
-        }
-        case 13: {
-            printf("*******\n");
-            printf("*     *\n");
-            printf("*     *\n");
-            printf("*   K *\n");
-            printf("*     *\n");
-            printf("*******\n");
-            break;
-        }
-        default:
-            break;
     }
 }
