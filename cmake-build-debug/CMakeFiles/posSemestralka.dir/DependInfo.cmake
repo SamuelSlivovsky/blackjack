@@ -4,10 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/tmp/tmp.ulEBL5fVsW/hrac.c" "/tmp/tmp.ulEBL5fVsW/cmake-build-debug/CMakeFiles/posSemestralka.dir/hrac.c.o"
-  "/tmp/tmp.ulEBL5fVsW/krupier.c" "/tmp/tmp.ulEBL5fVsW/cmake-build-debug/CMakeFiles/posSemestralka.dir/krupier.c.o"
-  "/tmp/tmp.ulEBL5fVsW/main.c" "/tmp/tmp.ulEBL5fVsW/cmake-build-debug/CMakeFiles/posSemestralka.dir/main.c.o"
-  "/tmp/tmp.ulEBL5fVsW/vypisy.c" "/tmp/tmp.ulEBL5fVsW/cmake-build-debug/CMakeFiles/posSemestralka.dir/vypisy.c.o"
+  "/tmp/tmp.JVtWwAaC2D/hrac.c" "/tmp/tmp.JVtWwAaC2D/cmake-build-debug/CMakeFiles/posSemestralka.dir/hrac.c.o"
+  "/tmp/tmp.JVtWwAaC2D/krupier.c" "/tmp/tmp.JVtWwAaC2D/cmake-build-debug/CMakeFiles/posSemestralka.dir/krupier.c.o"
+  "/tmp/tmp.JVtWwAaC2D/main.c" "/tmp/tmp.JVtWwAaC2D/cmake-build-debug/CMakeFiles/posSemestralka.dir/main.c.o"
+  "/tmp/tmp.JVtWwAaC2D/vypisy.c" "/tmp/tmp.JVtWwAaC2D/cmake-build-debug/CMakeFiles/posSemestralka.dir/vypisy.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

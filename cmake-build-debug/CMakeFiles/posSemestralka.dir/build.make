@@ -62,10 +62,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /tmp/tmp.ulEBL5fVsW
+CMAKE_SOURCE_DIR = /tmp/tmp.JVtWwAaC2D
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /tmp/tmp.ulEBL5fVsW/cmake-build-debug
+CMAKE_BINARY_DIR = /tmp/tmp.JVtWwAaC2D/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/posSemestralka.dir/depend.make
@@ -78,55 +78,55 @@ include CMakeFiles/posSemestralka.dir/flags.make
 
 CMakeFiles/posSemestralka.dir/main.c.o: CMakeFiles/posSemestralka.dir/flags.make
 CMakeFiles/posSemestralka.dir/main.c.o: ../main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.ulEBL5fVsW/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/posSemestralka.dir/main.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/posSemestralka.dir/main.c.o -c /tmp/tmp.ulEBL5fVsW/main.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.JVtWwAaC2D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/posSemestralka.dir/main.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/posSemestralka.dir/main.c.o -c /tmp/tmp.JVtWwAaC2D/main.c
 
 CMakeFiles/posSemestralka.dir/main.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/posSemestralka.dir/main.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tmp/tmp.ulEBL5fVsW/main.c > CMakeFiles/posSemestralka.dir/main.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tmp/tmp.JVtWwAaC2D/main.c > CMakeFiles/posSemestralka.dir/main.c.i
 
 CMakeFiles/posSemestralka.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/posSemestralka.dir/main.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tmp/tmp.ulEBL5fVsW/main.c -o CMakeFiles/posSemestralka.dir/main.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tmp/tmp.JVtWwAaC2D/main.c -o CMakeFiles/posSemestralka.dir/main.c.s
 
 CMakeFiles/posSemestralka.dir/krupier.c.o: CMakeFiles/posSemestralka.dir/flags.make
 CMakeFiles/posSemestralka.dir/krupier.c.o: ../krupier.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.ulEBL5fVsW/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/posSemestralka.dir/krupier.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/posSemestralka.dir/krupier.c.o -c /tmp/tmp.ulEBL5fVsW/krupier.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.JVtWwAaC2D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/posSemestralka.dir/krupier.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/posSemestralka.dir/krupier.c.o -c /tmp/tmp.JVtWwAaC2D/krupier.c
 
 CMakeFiles/posSemestralka.dir/krupier.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/posSemestralka.dir/krupier.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tmp/tmp.ulEBL5fVsW/krupier.c > CMakeFiles/posSemestralka.dir/krupier.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tmp/tmp.JVtWwAaC2D/krupier.c > CMakeFiles/posSemestralka.dir/krupier.c.i
 
 CMakeFiles/posSemestralka.dir/krupier.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/posSemestralka.dir/krupier.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tmp/tmp.ulEBL5fVsW/krupier.c -o CMakeFiles/posSemestralka.dir/krupier.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tmp/tmp.JVtWwAaC2D/krupier.c -o CMakeFiles/posSemestralka.dir/krupier.c.s
 
 CMakeFiles/posSemestralka.dir/hrac.c.o: CMakeFiles/posSemestralka.dir/flags.make
 CMakeFiles/posSemestralka.dir/hrac.c.o: ../hrac.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.ulEBL5fVsW/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/posSemestralka.dir/hrac.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/posSemestralka.dir/hrac.c.o -c /tmp/tmp.ulEBL5fVsW/hrac.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.JVtWwAaC2D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/posSemestralka.dir/hrac.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/posSemestralka.dir/hrac.c.o -c /tmp/tmp.JVtWwAaC2D/hrac.c
 
 CMakeFiles/posSemestralka.dir/hrac.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/posSemestralka.dir/hrac.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tmp/tmp.ulEBL5fVsW/hrac.c > CMakeFiles/posSemestralka.dir/hrac.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tmp/tmp.JVtWwAaC2D/hrac.c > CMakeFiles/posSemestralka.dir/hrac.c.i
 
 CMakeFiles/posSemestralka.dir/hrac.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/posSemestralka.dir/hrac.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tmp/tmp.ulEBL5fVsW/hrac.c -o CMakeFiles/posSemestralka.dir/hrac.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tmp/tmp.JVtWwAaC2D/hrac.c -o CMakeFiles/posSemestralka.dir/hrac.c.s
 
 CMakeFiles/posSemestralka.dir/vypisy.c.o: CMakeFiles/posSemestralka.dir/flags.make
 CMakeFiles/posSemestralka.dir/vypisy.c.o: ../vypisy.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.ulEBL5fVsW/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/posSemestralka.dir/vypisy.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/posSemestralka.dir/vypisy.c.o -c /tmp/tmp.ulEBL5fVsW/vypisy.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.JVtWwAaC2D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/posSemestralka.dir/vypisy.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/posSemestralka.dir/vypisy.c.o -c /tmp/tmp.JVtWwAaC2D/vypisy.c
 
 CMakeFiles/posSemestralka.dir/vypisy.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/posSemestralka.dir/vypisy.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tmp/tmp.ulEBL5fVsW/vypisy.c > CMakeFiles/posSemestralka.dir/vypisy.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tmp/tmp.JVtWwAaC2D/vypisy.c > CMakeFiles/posSemestralka.dir/vypisy.c.i
 
 CMakeFiles/posSemestralka.dir/vypisy.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/posSemestralka.dir/vypisy.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tmp/tmp.ulEBL5fVsW/vypisy.c -o CMakeFiles/posSemestralka.dir/vypisy.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tmp/tmp.JVtWwAaC2D/vypisy.c -o CMakeFiles/posSemestralka.dir/vypisy.c.s
 
 # Object files for target posSemestralka
 posSemestralka_OBJECTS = \
@@ -144,7 +144,7 @@ posSemestralka: CMakeFiles/posSemestralka.dir/hrac.c.o
 posSemestralka: CMakeFiles/posSemestralka.dir/vypisy.c.o
 posSemestralka: CMakeFiles/posSemestralka.dir/build.make
 posSemestralka: CMakeFiles/posSemestralka.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/tmp/tmp.ulEBL5fVsW/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C executable posSemestralka"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/tmp/tmp.JVtWwAaC2D/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C executable posSemestralka"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/posSemestralka.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -157,6 +157,6 @@ CMakeFiles/posSemestralka.dir/clean:
 .PHONY : CMakeFiles/posSemestralka.dir/clean
 
 CMakeFiles/posSemestralka.dir/depend:
-	cd /tmp/tmp.ulEBL5fVsW/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /tmp/tmp.ulEBL5fVsW /tmp/tmp.ulEBL5fVsW /tmp/tmp.ulEBL5fVsW/cmake-build-debug /tmp/tmp.ulEBL5fVsW/cmake-build-debug /tmp/tmp.ulEBL5fVsW/cmake-build-debug/CMakeFiles/posSemestralka.dir/DependInfo.cmake --color=$(COLOR)
+	cd /tmp/tmp.JVtWwAaC2D/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /tmp/tmp.JVtWwAaC2D /tmp/tmp.JVtWwAaC2D /tmp/tmp.JVtWwAaC2D/cmake-build-debug /tmp/tmp.JVtWwAaC2D/cmake-build-debug /tmp/tmp.JVtWwAaC2D/cmake-build-debug/CMakeFiles/posSemestralka.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/posSemestralka.dir/depend
 

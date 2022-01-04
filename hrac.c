@@ -50,14 +50,14 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    server = gethostbyname(argv[1]);
+    server = gethostbyname(argv[1]); // z hostname si ziskame info o serveri
     if (server == NULL)
     {
         fprintf(stderr, "Error, no such host\n");
         return 2;
     }
 
-    bzero((char*)&serv_addr, sizeof(serv_addr));
+    bzero((char*)&serv_addr, sizeof(serv_addr)); // vycistenie struktury
     serv_addr.sin_family = AF_INET;
     bcopy(
             (char*)server->h_addr,

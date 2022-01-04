@@ -102,11 +102,11 @@ void porovnaj(DATA_H dataH1, DATA_H dataH2, DATA_K dataK) {
 
 int main(int argc, char *argv[])
 {
-    int sockfd, newsockfd;
-    socklen_t cli_len;
-    struct sockaddr_in serv_addr, cli_addr;
+    int sockfd, cl_1_sockfd, cl_2_sockfd; // deskriptory socketov pre server a klientov
+    socklen_t cli_1_len, cli_2_len;
+    struct sockaddr_in serv_addr, cli_1_addr, cli_2_addr; // adresy pre server a klientov
     int n;
-    char buffer[256];
+    char buffer[256]; // buffer na komunikaciu
 
     if (argc < 2)
     {
@@ -114,7 +114,7 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    bzero((char*)&serv_addr, sizeof(serv_addr));
+    bzero((char*)&serv_addr, sizeof(serv_addr)); // vycistenie struktury
     serv_addr.sin_family = AF_INET;
     serv_addr.sin_addr.s_addr = INADDR_ANY;
     serv_addr.sin_port = htons(atoi(argv[1]));
@@ -133,19 +133,28 @@ int main(int argc, char *argv[])
     }
 
     listen(sockfd, 5);
-    cli_len = sizeof(cli_addr);
+    cli_1_len = sizeof(cli_1_addr);
 
-    newsockfd = accept(sockfd, (struct sockaddr*)&cli_addr, &cli_len);
-    if (newsockfd < 0)
+    cl_1_sockfd = accept(sockfd, (struct sockaddr*)&cli_1_addr, &cli_1_len);
+    if (cl_1_sockfd < 0)
     {
-        perror("ERROR on accept");
+        perror("ERROR on accept [cl_1]");
+        return 3;
+    }
+
+    cli_2_len = sizeof(cli_2_addr);
+
+    cl_2_sockfd = accept(sockfd, (struct sockaddr*)&cli_2_addr, &cli_2_len);
+    if (cl_2_sockfd < 0)
+    {
+        perror("ERROR on accept [cl_2]");
         return 3;
     }
 
     // uspesne vytvoreny server prijima spojenia
 
 //    bzero(buffer,256);
-//    n = read(newsockfd, buffer, 255);
+//    n = read(cl_1_sockfd, buffer, 255);
 //    if (n < 0)
 //    {
 //        perror("Error reading from socket");
@@ -154,7 +163,7 @@ int main(int argc, char *argv[])
 //    printf("Here is the message: %s\n", buffer);
 //
 //    const char* msg = "I got your message";
-//    n = write(newsockfd, msg, strlen(msg)+1);
+//    n = write(cl_1_sockfd, msg, strlen(msg)+1);
 //    if (n < 0)
 //    {
 //        perror("Error writing to socket");
@@ -163,7 +172,7 @@ int main(int argc, char *argv[])
 
     // ukoncenie serveru
 
-    close(newsockfd);
+    close(cl_1_sockfd);
     close(sockfd);
 
     return 0;
