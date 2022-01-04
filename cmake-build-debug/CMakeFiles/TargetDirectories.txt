@@ -1,3 +1,4 @@
-/tmp/tmp.JVtWwAaC2D/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/tmp/tmp.JVtWwAaC2D/cmake-build-debug/CMakeFiles/edit_cache.dir
-/tmp/tmp.JVtWwAaC2D/cmake-build-debug/CMakeFiles/posSemestralka.dir
+/tmp/tmp.lg3KxXOM4N/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/tmp/tmp.lg3KxXOM4N/cmake-build-debug/CMakeFiles/edit_cache.dir
+/tmp/tmp.lg3KxXOM4N/cmake-build-debug/CMakeFiles/krupier.dir
+/tmp/tmp.lg3KxXOM4N/cmake-build-debug/CMakeFiles/hrac.dir

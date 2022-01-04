@@ -15,13 +15,16 @@
 //#include "krupier.h"
 
 typedef struct DataHrac {
+
     int *karty;
     int *pocetKariet;
     int *skore;
+    char *buffer;
+    int sockfd;
 } DATA_H;
 
 void ukazKarty(DATA_H *data);
 int rozhodniHodnotuEsa(DATA_H *data);
 void vypocitajSkore(DATA_H *data);
-
+int hra(DATA_H *data);
 #endif //POSSEMESTRALKA_HRAC_H

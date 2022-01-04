@@ -36,6 +36,29 @@ void vypocitajSkore(DATA_H *data) {
     *(data->skore) = sum;
 }
 
+int hra(DATA_H *data){
+
+    bzero(data->buffer,256);
+    int n = read(data->sockfd, data->buffer, 255);
+    if (n < 0)
+    {
+        perror("Error reading from socket");
+        return 6;
+    }
+    printf("%s\n", data->buffer);
+
+    printf("Vasa volba: ");
+    bzero(data->buffer, 256);
+    fgets(data->buffer, 255, stdin);
+    n = write(data->sockfd, data->buffer, strlen(data->buffer));
+    if (n < 0)
+    {
+        perror("Error writing to socket");
+       return 5;
+   }
+
+}
+
 int main(int argc, char *argv[])
 {
     int sockfd, n;
@@ -80,6 +103,32 @@ int main(int argc, char *argv[])
     }
 
     //  uspesne pripojeny na server
+    bzero(buffer, 256);
+    int karty[5] = {0};
+    int pocetKariet = 2;
+    int skore = 0;
+    //naplnenie struktur
+    DATA_H dataH = {karty, &pocetKariet, &skore,buffer,sockfd};
+   // hra(&dataH);
+
+    bzero(buffer,256);
+    n = read(sockfd, buffer, 255);
+    if (n < 0)
+    {
+        perror("Error reading from socket");
+        return 6;
+    }
+    printf("%s\n", buffer);
+
+    printf("Vasa volba: ");
+    bzero(buffer, 256);
+    fgets(buffer, 255, stdin);
+    n = write(sockfd, buffer, strlen(buffer));
+    if (n < 0)
+    {
+        perror("Error writing to socket");
+        return 5;
+    }
 
 //    printf("Please enter a message: ");
 //    bzero(buffer,256);

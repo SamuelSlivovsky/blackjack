@@ -63,16 +63,17 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /tmp/tmp.JVtWwAaC2D
+CMAKE_SOURCE_DIR = /tmp/tmp.lg3KxXOM4N
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /tmp/tmp.JVtWwAaC2D/cmake-build-debug
+CMAKE_BINARY_DIR = /tmp/tmp.lg3KxXOM4N/cmake-build-debug
 
 #=============================================================================
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/posSemestralka.dir/all
+all: CMakeFiles/krupier.dir/all
+all: CMakeFiles/hrac.dir/all
 
 .PHONY : all
 
@@ -82,36 +83,64 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/posSemestralka.dir/clean
+clean: CMakeFiles/krupier.dir/clean
+clean: CMakeFiles/hrac.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/posSemestralka.dir
+# Target rules for target CMakeFiles/krupier.dir
 
 # All Build rule for target.
-CMakeFiles/posSemestralka.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/posSemestralka.dir/build.make CMakeFiles/posSemestralka.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/posSemestralka.dir/build.make CMakeFiles/posSemestralka.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/tmp/tmp.JVtWwAaC2D/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5 "Built target posSemestralka"
-.PHONY : CMakeFiles/posSemestralka.dir/all
+CMakeFiles/krupier.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/krupier.dir/build.make CMakeFiles/krupier.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/krupier.dir/build.make CMakeFiles/krupier.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/tmp/tmp.lg3KxXOM4N/cmake-build-debug/CMakeFiles --progress-num=4,5 "Built target krupier"
+.PHONY : CMakeFiles/krupier.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/posSemestralka.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /tmp/tmp.JVtWwAaC2D/cmake-build-debug/CMakeFiles 5
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/posSemestralka.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /tmp/tmp.JVtWwAaC2D/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/posSemestralka.dir/rule
+CMakeFiles/krupier.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /tmp/tmp.lg3KxXOM4N/cmake-build-debug/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/krupier.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /tmp/tmp.lg3KxXOM4N/cmake-build-debug/CMakeFiles 0
+.PHONY : CMakeFiles/krupier.dir/rule
 
 # Convenience name for target.
-posSemestralka: CMakeFiles/posSemestralka.dir/rule
+krupier: CMakeFiles/krupier.dir/rule
 
-.PHONY : posSemestralka
+.PHONY : krupier
 
 # clean rule for target.
-CMakeFiles/posSemestralka.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/posSemestralka.dir/build.make CMakeFiles/posSemestralka.dir/clean
-.PHONY : CMakeFiles/posSemestralka.dir/clean
+CMakeFiles/krupier.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/krupier.dir/build.make CMakeFiles/krupier.dir/clean
+.PHONY : CMakeFiles/krupier.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/hrac.dir
+
+# All Build rule for target.
+CMakeFiles/hrac.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hrac.dir/build.make CMakeFiles/hrac.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hrac.dir/build.make CMakeFiles/hrac.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/tmp/tmp.lg3KxXOM4N/cmake-build-debug/CMakeFiles --progress-num=1,2,3 "Built target hrac"
+.PHONY : CMakeFiles/hrac.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/hrac.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /tmp/tmp.lg3KxXOM4N/cmake-build-debug/CMakeFiles 3
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/hrac.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /tmp/tmp.lg3KxXOM4N/cmake-build-debug/CMakeFiles 0
+.PHONY : CMakeFiles/hrac.dir/rule
+
+# Convenience name for target.
+hrac: CMakeFiles/hrac.dir/rule
+
+.PHONY : hrac
+
+# clean rule for target.
+CMakeFiles/hrac.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hrac.dir/build.make CMakeFiles/hrac.dir/clean
+.PHONY : CMakeFiles/hrac.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

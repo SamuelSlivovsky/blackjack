@@ -8,38 +8,38 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/tmp/tmp.JVtWwAaC2D/cmake-build-debug"/>
+				<Option working_dir="/tmp/tmp.lg3KxXOM4N/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -f &quot;/tmp/tmp.JVtWwAaC2D/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/gmake -f &quot;/tmp/tmp.JVtWwAaC2D/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -f &quot;/tmp/tmp.JVtWwAaC2D/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -f &quot;/tmp/tmp.JVtWwAaC2D/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -f &quot;/tmp/tmp.lg3KxXOM4N/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/gmake -f &quot;/tmp/tmp.lg3KxXOM4N/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -f &quot;/tmp/tmp.lg3KxXOM4N/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -f &quot;/tmp/tmp.lg3KxXOM4N/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/tmp/tmp.JVtWwAaC2D/cmake-build-debug"/>
+				<Option working_dir="/tmp/tmp.lg3KxXOM4N/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -f &quot;/tmp/tmp.JVtWwAaC2D/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/gmake -f &quot;/tmp/tmp.JVtWwAaC2D/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -f &quot;/tmp/tmp.JVtWwAaC2D/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -f &quot;/tmp/tmp.JVtWwAaC2D/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -f &quot;/tmp/tmp.lg3KxXOM4N/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/gmake -f &quot;/tmp/tmp.lg3KxXOM4N/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -f &quot;/tmp/tmp.lg3KxXOM4N/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -f &quot;/tmp/tmp.lg3KxXOM4N/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/tmp/tmp.JVtWwAaC2D/cmake-build-debug"/>
+				<Option working_dir="/tmp/tmp.lg3KxXOM4N/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -f &quot;/tmp/tmp.JVtWwAaC2D/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/gmake -f &quot;/tmp/tmp.JVtWwAaC2D/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -f &quot;/tmp/tmp.JVtWwAaC2D/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -f &quot;/tmp/tmp.JVtWwAaC2D/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -f &quot;/tmp/tmp.lg3KxXOM4N/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/gmake -f &quot;/tmp/tmp.lg3KxXOM4N/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -f &quot;/tmp/tmp.lg3KxXOM4N/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -f &quot;/tmp/tmp.lg3KxXOM4N/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="posSemestralka">
-				<Option output="/tmp/tmp.JVtWwAaC2D/cmake-build-debug/posSemestralka" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/tmp/tmp.JVtWwAaC2D/cmake-build-debug"/>
+			<Target title="krupier">
+				<Option output="/tmp/tmp.lg3KxXOM4N/cmake-build-debug/krupier" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/tmp/tmp.lg3KxXOM4N/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -50,15 +50,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -f &quot;/tmp/tmp.JVtWwAaC2D/cmake-build-debug/Makefile&quot;  VERBOSE=1 posSemestralka"/>
-					<CompileFile command="/usr/bin/gmake -f &quot;/tmp/tmp.JVtWwAaC2D/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -f &quot;/tmp/tmp.JVtWwAaC2D/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -f &quot;/tmp/tmp.JVtWwAaC2D/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -f &quot;/tmp/tmp.lg3KxXOM4N/cmake-build-debug/Makefile&quot;  VERBOSE=1 krupier"/>
+					<CompileFile command="/usr/bin/gmake -f &quot;/tmp/tmp.lg3KxXOM4N/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -f &quot;/tmp/tmp.lg3KxXOM4N/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -f &quot;/tmp/tmp.lg3KxXOM4N/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="posSemestralka/fast">
-				<Option output="/tmp/tmp.JVtWwAaC2D/cmake-build-debug/posSemestralka" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/tmp/tmp.JVtWwAaC2D/cmake-build-debug"/>
+			<Target title="krupier/fast">
+				<Option output="/tmp/tmp.lg3KxXOM4N/cmake-build-debug/krupier" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/tmp/tmp.lg3KxXOM4N/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -69,35 +69,70 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -f &quot;/tmp/tmp.JVtWwAaC2D/cmake-build-debug/Makefile&quot;  VERBOSE=1 posSemestralka/fast"/>
-					<CompileFile command="/usr/bin/gmake -f &quot;/tmp/tmp.JVtWwAaC2D/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -f &quot;/tmp/tmp.JVtWwAaC2D/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -f &quot;/tmp/tmp.JVtWwAaC2D/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -f &quot;/tmp/tmp.lg3KxXOM4N/cmake-build-debug/Makefile&quot;  VERBOSE=1 krupier/fast"/>
+					<CompileFile command="/usr/bin/gmake -f &quot;/tmp/tmp.lg3KxXOM4N/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -f &quot;/tmp/tmp.lg3KxXOM4N/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -f &quot;/tmp/tmp.lg3KxXOM4N/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="hrac">
+				<Option output="/tmp/tmp.lg3KxXOM4N/cmake-build-debug/hrac" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/tmp/tmp.lg3KxXOM4N/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/10/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -f &quot;/tmp/tmp.lg3KxXOM4N/cmake-build-debug/Makefile&quot;  VERBOSE=1 hrac"/>
+					<CompileFile command="/usr/bin/gmake -f &quot;/tmp/tmp.lg3KxXOM4N/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -f &quot;/tmp/tmp.lg3KxXOM4N/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -f &quot;/tmp/tmp.lg3KxXOM4N/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="hrac/fast">
+				<Option output="/tmp/tmp.lg3KxXOM4N/cmake-build-debug/hrac" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/tmp/tmp.lg3KxXOM4N/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/10/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -f &quot;/tmp/tmp.lg3KxXOM4N/cmake-build-debug/Makefile&quot;  VERBOSE=1 hrac/fast"/>
+					<CompileFile command="/usr/bin/gmake -f &quot;/tmp/tmp.lg3KxXOM4N/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -f &quot;/tmp/tmp.lg3KxXOM4N/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -f &quot;/tmp/tmp.lg3KxXOM4N/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/tmp/tmp.JVtWwAaC2D/hrac.c">
-			<Option target="posSemestralka"/>
+		<Unit filename="/tmp/tmp.lg3KxXOM4N/hrac.c">
+			<Option target="hrac"/>
 		</Unit>
-		<Unit filename="/tmp/tmp.JVtWwAaC2D/hrac.h">
-			<Option target="posSemestralka"/>
+		<Unit filename="/tmp/tmp.lg3KxXOM4N/hrac.h">
+			<Option target="hrac"/>
 		</Unit>
-		<Unit filename="/tmp/tmp.JVtWwAaC2D/krupier.c">
-			<Option target="posSemestralka"/>
+		<Unit filename="/tmp/tmp.lg3KxXOM4N/krupier.c">
+			<Option target="krupier"/>
 		</Unit>
-		<Unit filename="/tmp/tmp.JVtWwAaC2D/krupier.h">
-			<Option target="posSemestralka"/>
+		<Unit filename="/tmp/tmp.lg3KxXOM4N/krupier.h">
+			<Option target="krupier"/>
 		</Unit>
-		<Unit filename="/tmp/tmp.JVtWwAaC2D/main.c">
-			<Option target="posSemestralka"/>
+		<Unit filename="/tmp/tmp.lg3KxXOM4N/vypisy.c">
+			<Option target="hrac"/>
 		</Unit>
-		<Unit filename="/tmp/tmp.JVtWwAaC2D/vypisy.c">
-			<Option target="posSemestralka"/>
+		<Unit filename="/tmp/tmp.lg3KxXOM4N/vypisy.h">
+			<Option target="hrac"/>
 		</Unit>
-		<Unit filename="/tmp/tmp.JVtWwAaC2D/vypisy.h">
-			<Option target="posSemestralka"/>
-		</Unit>
-		<Unit filename="/tmp/tmp.JVtWwAaC2D/CMakeLists.txt">
+		<Unit filename="/tmp/tmp.lg3KxXOM4N/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

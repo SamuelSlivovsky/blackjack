@@ -67,10 +67,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /tmp/tmp.JVtWwAaC2D
+CMAKE_SOURCE_DIR = /tmp/tmp.lg3KxXOM4N
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /tmp/tmp.JVtWwAaC2D/cmake-build-debug
+CMAKE_BINARY_DIR = /tmp/tmp.lg3KxXOM4N/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -99,9 +99,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /tmp/tmp.JVtWwAaC2D/cmake-build-debug/CMakeFiles /tmp/tmp.JVtWwAaC2D/cmake-build-debug//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /tmp/tmp.lg3KxXOM4N/cmake-build-debug/CMakeFiles /tmp/tmp.lg3KxXOM4N/cmake-build-debug//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /tmp/tmp.JVtWwAaC2D/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /tmp/tmp.lg3KxXOM4N/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -130,17 +130,30 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named posSemestralka
+# Target rules for targets named krupier
 
 # Build rule for target.
-posSemestralka: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 posSemestralka
-.PHONY : posSemestralka
+krupier: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 krupier
+.PHONY : krupier
 
 # fast build rule for target.
-posSemestralka/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/posSemestralka.dir/build.make CMakeFiles/posSemestralka.dir/build
-.PHONY : posSemestralka/fast
+krupier/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/krupier.dir/build.make CMakeFiles/krupier.dir/build
+.PHONY : krupier/fast
+
+#=============================================================================
+# Target rules for targets named hrac
+
+# Build rule for target.
+hrac: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 hrac
+.PHONY : hrac
+
+# fast build rule for target.
+hrac/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hrac.dir/build.make CMakeFiles/hrac.dir/build
+.PHONY : hrac/fast
 
 hrac.o: hrac.c.o
 
@@ -148,7 +161,7 @@ hrac.o: hrac.c.o
 
 # target to build an object file
 hrac.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/posSemestralka.dir/build.make CMakeFiles/posSemestralka.dir/hrac.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hrac.dir/build.make CMakeFiles/hrac.dir/hrac.c.o
 .PHONY : hrac.c.o
 
 hrac.i: hrac.c.i
@@ -157,7 +170,7 @@ hrac.i: hrac.c.i
 
 # target to preprocess a source file
 hrac.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/posSemestralka.dir/build.make CMakeFiles/posSemestralka.dir/hrac.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hrac.dir/build.make CMakeFiles/hrac.dir/hrac.c.i
 .PHONY : hrac.c.i
 
 hrac.s: hrac.c.s
@@ -166,7 +179,7 @@ hrac.s: hrac.c.s
 
 # target to generate assembly for a file
 hrac.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/posSemestralka.dir/build.make CMakeFiles/posSemestralka.dir/hrac.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hrac.dir/build.make CMakeFiles/hrac.dir/hrac.c.s
 .PHONY : hrac.c.s
 
 krupier.o: krupier.c.o
@@ -175,7 +188,7 @@ krupier.o: krupier.c.o
 
 # target to build an object file
 krupier.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/posSemestralka.dir/build.make CMakeFiles/posSemestralka.dir/krupier.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/krupier.dir/build.make CMakeFiles/krupier.dir/krupier.c.o
 .PHONY : krupier.c.o
 
 krupier.i: krupier.c.i
@@ -184,7 +197,7 @@ krupier.i: krupier.c.i
 
 # target to preprocess a source file
 krupier.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/posSemestralka.dir/build.make CMakeFiles/posSemestralka.dir/krupier.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/krupier.dir/build.make CMakeFiles/krupier.dir/krupier.c.i
 .PHONY : krupier.c.i
 
 krupier.s: krupier.c.s
@@ -193,35 +206,8 @@ krupier.s: krupier.c.s
 
 # target to generate assembly for a file
 krupier.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/posSemestralka.dir/build.make CMakeFiles/posSemestralka.dir/krupier.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/krupier.dir/build.make CMakeFiles/krupier.dir/krupier.c.s
 .PHONY : krupier.c.s
-
-main.o: main.c.o
-
-.PHONY : main.o
-
-# target to build an object file
-main.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/posSemestralka.dir/build.make CMakeFiles/posSemestralka.dir/main.c.o
-.PHONY : main.c.o
-
-main.i: main.c.i
-
-.PHONY : main.i
-
-# target to preprocess a source file
-main.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/posSemestralka.dir/build.make CMakeFiles/posSemestralka.dir/main.c.i
-.PHONY : main.c.i
-
-main.s: main.c.s
-
-.PHONY : main.s
-
-# target to generate assembly for a file
-main.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/posSemestralka.dir/build.make CMakeFiles/posSemestralka.dir/main.c.s
-.PHONY : main.c.s
 
 vypisy.o: vypisy.c.o
 
@@ -229,7 +215,7 @@ vypisy.o: vypisy.c.o
 
 # target to build an object file
 vypisy.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/posSemestralka.dir/build.make CMakeFiles/posSemestralka.dir/vypisy.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hrac.dir/build.make CMakeFiles/hrac.dir/vypisy.c.o
 .PHONY : vypisy.c.o
 
 vypisy.i: vypisy.c.i
@@ -238,7 +224,7 @@ vypisy.i: vypisy.c.i
 
 # target to preprocess a source file
 vypisy.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/posSemestralka.dir/build.make CMakeFiles/posSemestralka.dir/vypisy.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hrac.dir/build.make CMakeFiles/hrac.dir/vypisy.c.i
 .PHONY : vypisy.c.i
 
 vypisy.s: vypisy.c.s
@@ -247,7 +233,7 @@ vypisy.s: vypisy.c.s
 
 # target to generate assembly for a file
 vypisy.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/posSemestralka.dir/build.make CMakeFiles/posSemestralka.dir/vypisy.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/hrac.dir/build.make CMakeFiles/hrac.dir/vypisy.c.s
 .PHONY : vypisy.c.s
 
 # Help Target
@@ -258,16 +244,14 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... posSemestralka"
+	@echo "... hrac"
+	@echo "... krupier"
 	@echo "... hrac.o"
 	@echo "... hrac.i"
 	@echo "... hrac.s"
 	@echo "... krupier.o"
 	@echo "... krupier.i"
 	@echo "... krupier.s"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
 	@echo "... vypisy.o"
 	@echo "... vypisy.i"
 	@echo "... vypisy.s"
