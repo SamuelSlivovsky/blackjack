@@ -21,7 +21,7 @@ void hracTah() {
     printf("\n");
     printf("Si na tahu, mozes:\n");
     printf("\t1 - si potiahnut kartu\n");
-    printf("\t2 - vylozit karty\n");
+    printf("\t2 - zamknut karty (uz si nebudete moct tahat)\n");
     printf("\t3 - neurobit nic\n");
     printf("\n");
 }

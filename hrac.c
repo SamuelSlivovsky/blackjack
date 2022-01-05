@@ -6,7 +6,6 @@ void ukazKarty(DATA_H *data){
     }
 }
 
-
 int rozhodniHodnotuEsa(DATA_H *data) {
 char chr = ' ';
 while(chr != 'y' || chr != 'n') {
@@ -72,6 +71,7 @@ int writeMsg(DATA_H dataK, char* msg) {
 }
 
 int readMsg(DATA_H dataK) {
+    bzero(dataK.buffer,256);
     int n = read(dataK.sockfd, dataK.buffer, 255);
     if (n < 0)
     {
@@ -141,11 +141,22 @@ int main(int argc, char *argv[])
     int karty[5] = {0};
     int pocetKariet = 2;
     int skore = 0;
-    //DATA_H dataH = {karty, &pocetKariet, &skore,buffer,sockfd};
+    DATA_H dataH = {karty, &pocetKariet, &skore,buffer,sockfd};
 
     printf("[INFO] - Data initialized\n");
 
-//    hra(&dataH);
+    pthread_mutex_t mutex;
+    pthread_mutex_init(&mutex,NULL);
+
+    pthread_cond_t canRead;
+    pthread_cond_init(&canRead,NULL);
+
+//    pthread_t thread_read;
+//    pthread_create(&thread_read, NULL,NULL, &dataK);
+//    game(dataK);
+//    pthread_join(thread_read, NULL);
+
+    printf("[INFO] - Thread initialized\n");
 
     printf("\nVitajte v hre blackjack\n hrat 1\n historia 2\n koniec 3\n");
     printf("Vasa volba: ");
@@ -160,6 +171,9 @@ int main(int argc, char *argv[])
     } else {
         printf("[INFO] - Succesfully wrote to socket\n");
     }
+
+//    writeMsg(dataH, buffer);
+//    readMsg(dataH);
 
     bzero(buffer,256);
     n = read(sockfd, buffer, 255);
@@ -187,6 +201,9 @@ int main(int argc, char *argv[])
     printf("%s\n",buffer);
 
 //--------------------------- ukoncenie pripojenia na server ------------------------------------
+
+    pthread_mutex_destroy(&mutex);
+    pthread_cond_destroy(&canRead);
 
     close(sockfd);
 

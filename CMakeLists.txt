@@ -7,4 +7,5 @@ set(CMAKE_C_STANDARD 99)
 add_executable(hrac hrac.c vypisy.c)
 add_executable(krupier krupier.c)
 
-#target_link_libraries(posSemestralka pthread m)
+target_link_libraries(hrac pthread)
+target_link_libraries(krupier pthread)

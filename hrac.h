@@ -7,6 +7,7 @@
 #include <string.h>
 #include <stdbool.h>
 #include <unistd.h>
+#include <pthread.h>
 
 #include "vypisy.h"
 
@@ -22,6 +23,8 @@ typedef struct DataHrac {
     int *skore;
     char *buffer;
     int sockfd;
+    pthread_mutex_t *mutex;
+    pthread_cond_t *canRead;
 } DATA_H;
 
 void ukazKarty(DATA_H *data);

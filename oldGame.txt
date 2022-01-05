@@ -1,0 +1,65 @@
+int game(DATA_K dataK) {
+
+    char chr = 'n';
+    int volba = 1;
+    while (true) {
+        // menu();
+        if (chr != 'y') {
+            printf("vasa volba: ");
+            scanf("%d", &volba);
+        }
+
+        if (volba == 1) {
+            //krupier
+            int balicek[52] = {0};
+            int aktualnaKarta = 4;
+            char harabin = ' ';
+            //hrac A
+            int kartyA[5] = {0};
+            int pocetKarietA = 2;
+            int skoreA = 0;
+
+            //hrac B
+            int kartyB[5] = {0};
+            int pocetKarietB = 2;
+            int skoreB = 0;
+
+            //naplnenie struktur
+
+            DATA_H dataH1 = {kartyA, &pocetKarietA, &skoreA};
+            DATA_H dataH2 = {kartyB, &pocetKarietB, &skoreB};
+
+            //spustenie hry
+            hra(dataK, dataH1, dataH2);
+
+            //naplnenie historie
+            /* history.pocetHier++;
+             char novePole[history.pocetHier];
+             for (int i = 0; i < history.pocetHier; ++i) {
+                 novePole[i] = history.historia[i];
+
+             }
+             //novePole[history.pocetHier] = '\0';
+             history.historia = novePole;
+             history.historia[history.pocetHier] = *(dataK.harabin);
+ */
+            printf("\n");
+            printf("Chcete hrat znova?\n");
+            printf(" (y - ano, n - nie)\n");
+            printf("vasa volba: ");
+            scanf(" %c", &chr);
+            printf("\n");
+
+        } else if (volba == 2) {
+            printf("...coskoro...\n");
+
+            // printf("%c\n", *history.historia);
+
+
+        } else if (volba == 3) {
+            return 0;
+        } else {
+            printf("Zadajte iba moznosti z MENU.\n");
+        }
+    }
+}
