@@ -61,6 +61,9 @@ int hra(DATA_H *data){
 
 int main(int argc, char *argv[])
 {
+
+//--------------------------- uvodne nastavovanie ------------------------------------
+
     int sockfd, n;
     struct sockaddr_in serv_addr;
     struct hostent* server;
@@ -78,6 +81,8 @@ int main(int argc, char *argv[])
     {
         fprintf(stderr, "Error, no such host\n");
         return 2;
+    } else {
+        printf("[INFO] - Succesfully connected to server\n");
     }
 
     bzero((char*)&serv_addr, sizeof(serv_addr)); // vycistenie struktury
@@ -94,22 +99,43 @@ int main(int argc, char *argv[])
     {
         perror("Error creating socket");
         return 3;
+    } else {
+        printf("[INFO] - Succesfully created socket\n");
     }
 
     if(connect(sockfd, (struct sockaddr*)&serv_addr, sizeof(serv_addr)) < 0)
     {
         perror("Error connecting to socket");
         return 4;
+    } else {
+        printf("[INFO] - Succesfully connected to socket\n");
     }
 
-    //  uspesne pripojeny na server
-    bzero(buffer, 256);
+//--------------------------- uspesne pripojeny na server ------------------------------------
+
+    // naplnenie struktur
     int karty[5] = {0};
     int pocetKariet = 2;
     int skore = 0;
-    //naplnenie struktur
-    DATA_H dataH = {karty, &pocetKariet, &skore,buffer,sockfd};
-   // hra(&dataH);
+    //DATA_H dataH = {karty, &pocetKariet, &skore,buffer,sockfd};
+
+    printf("[INFO] - Data initialized\n");
+
+//    hra(&dataH);
+
+    printf("\nVitajte v hre blackjack\n hrat 1\n historia 2\n koniec 3\n");
+    printf("Vasa volba: ");
+    bzero(buffer,256);
+    fgets(buffer, 255, stdin);
+
+    n = write(sockfd, buffer, strlen(buffer));
+    if (n < 0)
+    {
+        perror("Error writing to socket");
+        return 5;
+    } else {
+        printf("[INFO] - Succesfully wrote to socket\n");
+    }
 
     bzero(buffer,256);
     n = read(sockfd, buffer, 255);
@@ -117,41 +143,26 @@ int main(int argc, char *argv[])
     {
         perror("Error reading from socket");
         return 6;
+    } else {
+        printf("[INFO] - Succesfully read from socket\n");
     }
-    printf("%s\n", buffer);
 
-    printf("Vasa volba: ");
-    bzero(buffer, 256);
-    fgets(buffer, 255, stdin);
-    n = write(sockfd, buffer, strlen(buffer));
+    printf("%s\n",buffer);
+    sleep(5);
+
+    bzero(buffer,256);
+    n = read(sockfd, buffer, 255);
     if (n < 0)
     {
-        perror("Error writing to socket");
-        return 5;
+        perror("Error reading from socket");
+        return 6;
+    } else {
+        printf("[INFO] - Succesfully read from socket\n");
     }
 
-//    printf("Please enter a message: ");
-//    bzero(buffer,256);
-//    fgets(buffer, 255, stdin);
-//
-//    n = write(sockfd, buffer, strlen(buffer));
-//    if (n < 0)
-//    {
-//        perror("Error writing to socket");
-//        return 5;
-//    }
-//
-//    bzero(buffer,256);
-//    n = read(sockfd, buffer, 255);
-//    if (n < 0)
-//    {
-//        perror("Error reading from socket");
-//        return 6;
-//    }
-//
-//    printf("%s\n",buffer);
+    printf("%s\n",buffer);
 
-    // ukoncenie pripojenia
+//--------------------------- ukoncenie pripojenia na server ------------------------------------
 
     close(sockfd);
 

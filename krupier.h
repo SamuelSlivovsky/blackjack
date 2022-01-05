@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
+
 #include "vypisy.h"
 
 #ifndef POSSEMESTRALKA_KRUPIER_H

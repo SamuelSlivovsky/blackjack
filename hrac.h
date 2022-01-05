@@ -7,6 +7,7 @@
 #include <string.h>
 #include <stdbool.h>
 #include <unistd.h>
+
 #include "vypisy.h"
 
 #ifndef POSSEMESTRALKA_HRAC_H

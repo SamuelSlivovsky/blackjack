@@ -206,6 +206,9 @@ void porovnaj(DATA_H dataH1, DATA_H dataH2, DATA_K dataK) {
 }
 
 int main(int argc, char *argv[]) {
+
+//--------------------------- uvodne nastavovanie ------------------------------------
+
     int sockfd, cl_1_sockfd, cl_2_sockfd; // deskriptory socketov pre server a klientov
     socklen_t cli_1_len, cli_2_len;
     struct sockaddr_in serv_addr, cli_1_addr, cli_2_addr; // adresy pre server a klientov
@@ -226,11 +229,15 @@ int main(int argc, char *argv[]) {
     if (sockfd < 0) {
         perror("Error creating socket");
         return 1;
+    } else {
+        printf("[INFO] - Succesfully created socket\n");
     }
 
     if (bind(sockfd, (struct sockaddr *) &serv_addr, sizeof(serv_addr)) < 0) {
         perror("Error binding socket address");
         return 2;
+    } else {
+        printf("[INFO] - Succesfully binded socket address\n");
     }
 
     listen(sockfd, 5);
@@ -240,71 +247,80 @@ int main(int argc, char *argv[]) {
     if (cl_1_sockfd < 0) {
         perror("ERROR on accept [cl_1]");
         return 3;
+    } else {
+        printf("[INFO] - Succesfully accepted connection\n");
     }
 
-    cli_2_len = sizeof(cli_2_addr);
+//    cli_2_len = sizeof(cli_2_addr);
+//
+//    cl_2_sockfd = accept(sockfd, (struct sockaddr *) &cli_2_addr, &cli_2_len);
+//    if (cl_2_sockfd < 0) {
+//        perror("ERROR on accept [cl_2]");
+//        return 3;
+//    }
 
-    cl_2_sockfd = accept(sockfd, (struct sockaddr *) &cli_2_addr, &cli_2_len);
-    if (cl_2_sockfd < 0) {
-        perror("ERROR on accept [cl_2]");
-        return 3;
-    }
+//--------------------------- uspesne prijima spojenia ------------------------------------
 
-    // uspesne vytvoreny server prijima spojenia
-
-    bzero(buffer, 256);
     int balicek[52] = {0};
     int aktualnaKarta = 4;
     char harabin = ' ';
-    DATA_K dataK = {balicek, &aktualnaKarta, &harabin, buffer, sockfd, cl_1_sockfd, cl_2_sockfd};
-   // game(dataK);
+    //DATA_K dataK = {balicek, &aktualnaKarta, &harabin, buffer, sockfd, cl_1_sockfd, cl_2_sockfd};
 
-    const char* msg = "Vitajte v hre blackjack\n hrat 1\nhistoria 2\nkoniec 3\n";
+    printf("[INFO] - Data initialized\n");
 
-    int n1 = write(dataK.cl_1_sockfd, msg, strlen(msg)+1);
-    if (n1 < 0) {
-        perror("Error writing to socket");
-        return 5;
-    }
-    /* bzero(dataK.buffer, 256);
-     int n2 = write(dataK.cl_2_sockfd, dataK.buffer, strlen(dataK.buffer) + 1);
-     if (n2 < 0) {
-         perror("Error writing to socket");
-         return 5;
-     }*/
+    //game(dataK);
 
-    //caka na odpovede od hracov
-    bzero(dataK.buffer, 256);
-    n1 = read(dataK.cl_1_sockfd, dataK.buffer, 255);
-    if (n1 < 0) {
+    n = read(cl_1_sockfd, buffer, 255);
+    if (n < 0)
+    {
         perror("Error reading from socket");
         return 4;
+    } else {
+        printf("[INFO] - Succesfully read from socket\n");
     }
-    char volba1 = dataK.buffer[0];
 
-    if (volba1 == '3'){
-        printf("koniec");
-        return 0;
+    printf("Here is the message: %s\n", buffer);
+
+    const char* msg = "I got your message";
+    n = write(cl_1_sockfd, msg, strlen(msg) + 1);
+    if (n < 0)
+    {
+        perror("Error writing to socket");
+        return 5;
+    } else {
+        printf("[INFO] - Succesfully wrote to socket\n");
     }
-//    n = read(cl_1_sockfd, buffer, 255);
-//    if (n < 0)
-//    {
-//        perror("Error reading from socket");
-//        return 4;
-//    }
-//    printf("Here is the message: %s\n", buffer);
-//
-//    const char* msg = "I got your message";
-//    n = write(cl_1_sockfd, msg, strlen(msg)+1);
-//    if (n < 0)
-//    {
-//        perror("Error writing to socket");
-//        return 5;
-//    }
 
-    // ukoncenie serveru
+    char volba = buffer[0];
+    switch (volba) {
+        case '1':
+            msg = "lets play!";
+            printf(" - case 1\n");
+            break;
+        case '2':
+            msg = "...coskoro...";
+            printf(" - case 2\n");
+            break;
+        case '3':
+            printf(" - case 3\n");
+            return 0;
+        default:
+            break;
+    }
+
+    n = write(cl_1_sockfd, msg, strlen(msg) + 1);
+    if (n < 0)
+    {
+        perror("Error writing to socket");
+        return 5;
+    } else {
+        printf("[INFO] - Succesfully wrote to socket\n");
+    }
+
+//--------------------------- ukoncenie prijimania spojeni ------------------------------------
 
     close(cl_1_sockfd);
+//    close(cl_2_sockfd);
     close(sockfd);
 
     return 0;
