@@ -205,6 +205,30 @@ void porovnaj(DATA_H dataH1, DATA_H dataH2, DATA_K dataK) {
     }
 }
 
+int writeMsg(DATA_K dataK, char* msg) {
+    int n = write(dataK.cl_1_sockfd, msg, strlen(msg) + 1);
+    if (n < 0)
+    {
+        perror("Error writing to socket");
+        return 5;
+    } else {
+        printf("[INFO] - Succesfully wrote to socket\n");
+        return 0;
+    }
+}
+
+int readMsg(DATA_K dataK) {
+    int n = read(dataK.cl_1_sockfd, dataK.buffer, 255);
+    if (n < 0)
+    {
+        perror("Error reading from socket");
+        return 4;
+    } else {
+        printf("[INFO] - Succesfully read from socket\n");
+        return 0;
+    }
+}
+
 int main(int argc, char *argv[]) {
 
 //--------------------------- uvodne nastavovanie ------------------------------------

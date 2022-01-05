@@ -59,6 +59,30 @@ int hra(DATA_H *data){
 
 }
 
+int writeMsg(DATA_H dataK, char* msg) {
+    int n = write(dataK.sockfd, msg, strlen(msg) + 1);
+    if (n < 0)
+    {
+        perror("Error writing to socket");
+        return 5;
+    } else {
+        printf("[INFO] - Succesfully wrote to socket\n");
+        return 0;
+    }
+}
+
+int readMsg(DATA_H dataK) {
+    int n = read(dataK.sockfd, dataK.buffer, 255);
+    if (n < 0)
+    {
+        perror("Error reading from socket");
+        return 4;
+    } else {
+        printf("[INFO] - Succesfully read from socket\n");
+        return 0;
+    }
+}
+
 int main(int argc, char *argv[])
 {
 

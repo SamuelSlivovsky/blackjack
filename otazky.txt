@@ -1,0 +1,7 @@
+- problem s viacnasobnym zapisovanim a citanim
+- klient napise spravu, server ju precita a posle klientovi inu spravu a koniec komunikcaie (ide)
+- ked chce server poslat este jednu spravu a klient ju potom precitat, tak to uz nejde
+
+- riesit to cez nejaky readflag, ze kedy moze klient citat a kedy moze server citat (pomocou vlakna a mutexu)
+- co pustit vo vlakne, celu hru alebo iba read write metody, ak pustim najskor vo vlakne read write metody, nebude mi main cakat kym skoncia (ak nedam join, tak asi nie)
+-
