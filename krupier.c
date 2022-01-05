@@ -213,13 +213,13 @@ int main(int argc, char *argv[]) {
         printf("[INFO] - Succesfully accepted connection\n");
     }
 
-//    cli_2_len = sizeof(cli_2_addr);
-//
-//    cl_2_sockfd = accept(sockfd, (struct sockaddr *) &cli_2_addr, &cli_2_len);
-//    if (cl_2_sockfd < 0) {
-//        perror("ERROR on accept [cl_2]");
-//        return 3;
-//    }
+    cli_2_len = sizeof(cli_2_addr);
+
+    cl_2_sockfd = accept(sockfd, (struct sockaddr *) &cli_2_addr, &cli_2_len);
+    if (cl_2_sockfd < 0) {
+        perror("ERROR on accept [cl_2]");
+        return 3;
+    }
 
 //--------------------------- uspesne prijima spojenia ------------------------------------
     // krupier
