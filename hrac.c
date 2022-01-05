@@ -186,7 +186,21 @@ int main(int argc, char *argv[])
     }
 
     printf("%s\n",buffer);
-    sleep(5);
+//    sleep(5);
+
+    hracTah();
+    printf("Vasa volba: ");
+    bzero(buffer,256);
+    fgets(buffer, 255, stdin);
+
+    n = write(sockfd, buffer, strlen(buffer));
+    if (n < 0)
+    {
+        perror("Error writing to socket");
+        return 5;
+    } else {
+        printf("[INFO] - Succesfully wrote to socket\n");
+    }
 
     bzero(buffer,256);
     n = read(sockfd, buffer, 255);

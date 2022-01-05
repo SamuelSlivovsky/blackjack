@@ -81,9 +81,9 @@ void rozdajKarty(DATA_K dataK, DATA_H dataH1, DATA_H dataH2) {
 
     for (int i = 0; i < 2; ++i) {
         dataH1.karty[i] = dataK.balicek[i+i*1];
-        writeIntMsg(dataK, &(dataK.balicek[i+i*1]), dataH1.clsockfd);
+        writeIntMsg(dataK, dataK.balicek[i+i*1], dataH1.clsockfd);
         dataH2.karty[i] = dataK.balicek[i+1+i*1];
-        writeIntMsg(dataK, &(dataK.balicek[i+1+i*1]), dataH2.clsockfd);
+        writeIntMsg(dataK, dataK.balicek[i+1+i*1], dataH2.clsockfd);
     }
 
 }
@@ -94,7 +94,7 @@ void dajKartu(DATA_K dataK, DATA_H dataH) {
     dataH.karty[poc] = karta;
     (*(dataK.aktualnaKarta))++;
     (*(dataH.pocetKariet))++;
-    writeIntMsg(dataK, &karta, dataH.clsockfd);
+    writeIntMsg(dataK, karta, dataH.clsockfd);
 }
 
 void vypocitajSkore(DATA_H *data) {
@@ -213,13 +213,13 @@ int main(int argc, char *argv[]) {
         printf("[INFO] - Succesfully accepted connection\n");
     }
 
-    cli_2_len = sizeof(cli_2_addr);
-
-    cl_2_sockfd = accept(sockfd, (struct sockaddr *) &cli_2_addr, &cli_2_len);
-    if (cl_2_sockfd < 0) {
-        perror("ERROR on accept [cl_2]");
-        return 3;
-    }
+//    cli_2_len = sizeof(cli_2_addr);
+//
+//    cl_2_sockfd = accept(sockfd, (struct sockaddr *) &cli_2_addr, &cli_2_len);
+//    if (cl_2_sockfd < 0) {
+//        perror("ERROR on accept [cl_2]");
+//        return 3;
+//    }
 
 //--------------------------- uspesne prijima spojenia ------------------------------------
     // krupier
@@ -246,6 +246,7 @@ int main(int argc, char *argv[]) {
 
     printf("[INFO] - Data initialized\n");
 
+    // vlakno, mutex a cond
     pthread_mutex_t mutex;
     pthread_mutex_init(&mutex, NULL);
 
@@ -259,27 +260,22 @@ int main(int argc, char *argv[]) {
 
     printf("[INFO] - Thread initialized\n");
 
-    n = read(cl_1_sockfd, buffer, 255);
+    // CITANIE
+    readMsg(dataK, dataK.cl_1_sockfd);
+    /*n = read(cl_1_sockfd, buffer, 255);
     if (n < 0) {
         perror("Error reading from socket");
         return 4;
     } else {
         printf("[INFO] - Succesfully read from socket\n");
-    }
+    }*/
 
-//    readMsg(dataK);
-
+    // VYPIS
     printf("Here is the message: %s\n", dataK.buffer);
 
     char *msg = "I got your message";
-    n = write(cl_1_sockfd, msg, strlen(msg) + 1);
-    if (n < 0) {
-        perror("Error writing to socket");
-        return 5;
-    } else {
-        printf("[INFO] - Succesfully wrote to socket\n");
-    }
 
+    // SPRACOVANIE
     char volba = buffer[0];
     switch (volba) {
         case '1':
@@ -297,13 +293,57 @@ int main(int argc, char *argv[]) {
             break;
     }
 
-    n = write(cl_1_sockfd, msg, strlen(msg) + 1);
+    // ZAPIS
+    writeCharMsg(dataK, msg, dataK.cl_1_sockfd);
+    /*n = write(cl_1_sockfd, msg, strlen(msg) + 1);
     if (n < 0) {
         perror("Error writing to socket");
         return 5;
     } else {
         printf("[INFO] - Succesfully wrote to socket\n");
+    }*/
+
+    // CITANIE
+    readMsg(dataK, dataK.cl_1_sockfd);
+    /*n = read(cl_1_sockfd, buffer, 255);
+    if (n < 0) {
+        perror("Error reading from socket");
+        return 4;
+    } else {
+        printf("[INFO] - Succesfully read from socket\n");
+    }*/
+
+    // VYPIS
+    printf("Here is the message: %s\n", dataK.buffer);
+
+    // SPRACOVANIE
+    volba = buffer[0];
+    switch (volba) {
+        case '1':
+            msg = "karta";
+            printf(" - case 1\n");
+            break;
+        case '2':
+            msg = "lock";
+            printf(" - case 2\n");
+            break;
+        case '3':
+            msg = "nic";
+            printf(" - case 3\n");
+            return 0;
+        default:
+            break;
     }
+
+    // ZAPIS
+    writeCharMsg(dataK, msg, dataK.cl_1_sockfd);
+    /*n = write(cl_1_sockfd, msg, strlen(msg) + 1);
+    if (n < 0) {
+        perror("Error writing to socket");
+        return 5;
+    } else {
+        printf("[INFO] - Succesfully wrote to socket\n");
+    }*/
 
 //--------------------------- ukoncenie prijimania spojeni ------------------------------------
 
