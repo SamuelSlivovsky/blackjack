@@ -63,3 +63,16 @@ int game(DATA_K dataK) {
         }
     }
 }
+
+int writeIntMsg(DATA_K dataK, int msg, int client) {
+    char str[2];
+    sprintf(str, "%d", msg);
+    int n = write(client, str, strlen(str) + 1);
+    if (n < 0) {
+        perror("Error writing to socket");
+        return 5;
+    } else {
+        printf("[INFO] - Succesfully wrote to socket\n");
+        return 0;
+    }
+}

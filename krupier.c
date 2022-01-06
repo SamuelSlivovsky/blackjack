@@ -5,13 +5,8 @@ void hra(DATA_K dataK, DATA_H dataH1, DATA_H dataH2) {
     rozdajKarty(dataK, dataH1, dataH2);
 
     for (int i = 0; i < 3; ++i) {
-        if (*(dataH1.lock) != 1){
-            tah(dataH1, dataK, *(dataH2.lock));
-        }
-        if (*(dataH2.lock) != 1){
-            tah(dataH2, dataK,*(dataH1.lock));
-        }
-
+        tah(dataH1, dataK, *(dataH2.lock));
+        tah(dataH2, dataK, *(dataH1.lock));
     }
 
     printf("Karty hraca 1: \n");
@@ -22,22 +17,22 @@ void hra(DATA_K dataK, DATA_H dataH1, DATA_H dataH2) {
     porovnaj(dataH1, dataH2, dataK);
 }
 
-void tah(DATA_H dataH, DATA_K dataK,int lock) {
-    printf("aktualny lock: %d\n",*(dataH.lock));
+void tah(DATA_H dataH, DATA_K dataK, int lock) {
+    printf("aktualny lock: %d\n", *(dataH.lock));
     if (*(dataH.lock) == 0) {
         writeCharMsg(dataK, "i", dataH.clsockfd);
-        if (dataH.clsockfd == dataK.cl_1_sockfd){
-            if(lock == 0) {
+        if (dataH.clsockfd == dataK.cl_1_sockfd) {
+            if (lock == 0) {
                 writeCharMsg(dataK, "n", dataK.cl_2_sockfd);
                 printf("pls1\n");
             }
-        }else{
-            if(lock == 0) {
+        } else {
+            if (lock == 0) {
                 writeCharMsg(dataK, "n", dataK.cl_1_sockfd);
                 printf("pls2\n");
             }
         }
-        readMsg(dataK,dataH.clsockfd);
+        readMsg(dataK, dataH.clsockfd);
         char volba = dataK.buffer[0];
         switch (volba) {
             case '1':
@@ -92,7 +87,6 @@ void premiesajBalicek(char *balicek) {
         printf("%c ", balicek[i]);
     }
     printf("\n");
-
 }
 
 void rozdajKarty(DATA_K dataK, DATA_H dataH1, DATA_H dataH2) {
@@ -107,9 +101,7 @@ void rozdajKarty(DATA_K dataK, DATA_H dataH1, DATA_H dataH2) {
         printf("%c \n", dataK.balicek[i + 1 + i * 1]);
         writeCharMsg(dataK, &(dataK.balicek[i + 1 + i * 1]), dataH2.clsockfd);
         readMsg(dataK, dataK.cl_2_sockfd);
-
     }
-
 }
 
 void dajKartu(DATA_K dataK, DATA_H dataH) {
@@ -172,44 +164,38 @@ void porovnaj(DATA_H dataH1, DATA_H dataH2, DATA_K dataK) {
     int skoreB = *(dataH2.skore);
     int rozdielA = 21 - skoreA;
     int rozdielB = 21 - skoreB;
+    char *msg1 = " ";
+    char *msg2 = " ";
 
     if (rozdielA >= 0 && rozdielA < rozdielB || rozdielB < 0 && rozdielA >= 0) {
         printf("Vyhral hrac A, skore bolo - %d : %d (A:B)\n", skoreA, skoreB);
         *(dataK.harabin) = 'A';
-        writeCharMsg(dataK,"Vyhral si\n",dataK.cl_1_sockfd);
-        readMsg(dataK,dataK.cl_1_sockfd);
-        writeCharMsg(dataK,dataH2.karty,dataK.cl_1_sockfd);
-        readMsg(dataK,dataK.cl_1_sockfd);
-        writeCharMsg(dataK,"Prehral si\n",dataK.cl_2_sockfd);
-        readMsg(dataK,dataK.cl_2_sockfd);
+        msg1 = "Vyhral si\n";
+        msg2 = "Prehral si\n";
     } else if (rozdielB >= 0 && rozdielB < rozdielA || rozdielA < 0 && rozdielB >= 0) {
         printf("Vyhral hrac B, skore bolo - %d : %d (B:A)\n", skoreB, skoreA);
         *(dataK.harabin) = 'B';
-        writeCharMsg(dataK,"Vyhral si\n",dataK.cl_2_sockfd);
-        readMsg(dataK,dataK.cl_2_sockfd);
-        writeCharMsg(dataK,dataH2.karty,dataK.cl_1_sockfd);
-        readMsg(dataK,dataK.cl_1_sockfd);
-        writeCharMsg(dataK,"Prehral si\n",dataK.cl_1_sockfd);
-
+        msg1 = "Prehral si\n";
+        msg2 = "Vyhral si\n";
     } else if (rozdielA == rozdielB && rozdielA >= 0) {
         printf("Remiza, skore bolo - %d : %d (A:B)\n", skoreA, skoreB);
         *(dataK.harabin) = 'R';
-        writeCharMsg(dataK,"Remiza\n",dataK.cl_1_sockfd);
-        readMsg(dataK,dataK.cl_1_sockfd);
-        writeCharMsg(dataK,dataH2.karty,dataK.cl_1_sockfd);
-        writeCharMsg(dataK,"Remiza\n",dataK.cl_2_sockfd);
-        readMsg(dataK,dataK.cl_2_sockfd);
+        msg1 = "Remiza\n";
+        msg2 = "Remiza\n";
     } else {
         printf("Nikto nevyhral, skore bolo - %d : %d (A:B)\n", skoreA, skoreB);
         *(dataK.harabin) = 'N';
-        writeCharMsg(dataK,"Nikto nevyhral\n",dataK.cl_1_sockfd);
-        readMsg(dataK,dataK.cl_1_sockfd);
-        writeCharMsg(dataK,dataH2.karty,dataK.cl_1_sockfd);
-        writeCharMsg(dataK,"Nikto nevyhral\n",dataK.cl_2_sockfd);
-        readMsg(dataK,dataK.cl_2_sockfd);
+        msg1 = "Nikto nevyhral\n";
+        msg2 = "Nikto nevyhral\n";
     }
 
-
+    // NEMENIT PORADIE
+    writeCharMsg(dataK, msg1, dataK.cl_1_sockfd);
+    readMsg(dataK, dataK.cl_1_sockfd);
+    writeCharMsg(dataK, msg2, dataK.cl_2_sockfd);
+    readMsg(dataK, dataK.cl_2_sockfd);
+    writeCharMsg(dataK, dataH2.karty, dataK.cl_1_sockfd);
+    writeCharMsg(dataK, dataH1.karty, dataK.cl_2_sockfd);
 }
 
 int writeCharMsg(DATA_K dataK, char *msg, int client) {
@@ -218,20 +204,7 @@ int writeCharMsg(DATA_K dataK, char *msg, int client) {
         perror("Error writing to socket");
         return 5;
     } else {
-        printf("[INFO] - Succesfully wrote to socket\n");
-        return 0;
-    }
-}
-
-int writeIntMsg(DATA_K dataK, int msg, int client) {
-    char str[2];
-    sprintf(str, "%d", msg);
-    int n = write(client, str, strlen(str) + 1);
-    if (n < 0) {
-        perror("Error writing to socket");
-        return 5;
-    } else {
-        printf("[INFO] - Succesfully wrote to socket\n");
+        printf("[INFO] - Succesfully wrote to socket %d\n", client);
         return 0;
     }
 }
@@ -243,11 +216,10 @@ int readMsg(DATA_K dataK, int client) {
         perror("Error reading from socket");
         return 4;
     } else {
-        printf("[INFO] - Succesfully read from socket\n");
+        printf("[INFO] - Succesfully read from socket %d\n", client);
         return 0;
     }
 }
-
 
 int start(DATA_K dataK, DATA_H dataH1, DATA_H dataH2) {
 
@@ -263,7 +235,6 @@ int start(DATA_K dataK, DATA_H dataH1, DATA_H dataH2) {
 
             // VYPIS
             printf("Here is the message: %s\n", dataK.buffer);
-            msg = "I got your message";
 
             // SPRACOVANIE HRAC1
             volba = dataK.buffer[0];
@@ -365,7 +336,7 @@ int main(int argc, char *argv[]) {
         perror("ERROR on accept [cl_1]");
         return 3;
     } else {
-        printf("[INFO] - Succesfully accepted connection\n");
+        printf("[INFO] - Succesfully accepted connection [cl_1]\n");
     }
 
     cli_2_len = sizeof(cli_2_addr);
@@ -374,6 +345,8 @@ int main(int argc, char *argv[]) {
     if (cl_2_sockfd < 0) {
         perror("ERROR on accept [cl_2]");
         return 3;
+    } else {
+        printf("[INFO] - Succesfully accepted connection [cl_2]\n");
     }
 
 //--------------------------- uspesne prijima spojenia ------------------------------------

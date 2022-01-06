@@ -27,12 +27,14 @@ typedef struct DataHrac {
     pthread_cond_t *canRead;
 } DATA_H;
 
-void ukazKarty(DATA_H *data);
+void ukazKarty(char *karty);
 int rozhodniHodnotuEsa(DATA_H *data);
 void vypocitajSkore(DATA_H *data);
 int hra(DATA_H *data);
 int start(DATA_H *data);
-int tah(DATA_H *data);
 void vypisKarty(DATA_H *data);
-void ukazKartyProtivnika(char *karty);
+
+int writeMsg(DATA_H dataH, char *msg);
+int readMsg(DATA_H dataH);
+
 #endif //POSSEMESTRALKA_HRAC_H

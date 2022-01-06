@@ -43,8 +43,9 @@ void vylozitKarty(DATA_H dataH);
 void tah(DATA_H dataH, DATA_K dataK,int lock);
 void porovnaj(DATA_H dataH1, DATA_H dataH2, DATA_K dataK);
 void hra(DATA_K dataK, DATA_H dataH1, DATA_H dataH2);
-int writeCharMsg(DATA_K dataK, char *msg, int client);
-int writeIntMsg(DATA_K dataK, int msg, int client);
-int readMsg(DATA_K dataK, int client);
 int start(DATA_K dataK, DATA_H dataH1, DATA_H dataH2);
+
+int writeCharMsg(DATA_K dataK, char *msg, int client);
+int readMsg(DATA_K dataK, int client);
+
 #endif //POSSEMESTRALKA_KRUPIER_H
