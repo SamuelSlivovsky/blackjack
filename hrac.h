@@ -18,7 +18,7 @@
 
 typedef struct DataHrac {
 
-    int *karty;
+    char *karty;
     int *pocetKariet;
     int *skore;
     char *buffer;
@@ -31,4 +31,8 @@ void ukazKarty(DATA_H *data);
 int rozhodniHodnotuEsa(DATA_H *data);
 void vypocitajSkore(DATA_H *data);
 int hra(DATA_H *data);
+int start(DATA_H *data);
+int tah(DATA_H *data);
+void vypisKarty(DATA_H *data);
+void ukazKartyProtivnika(char *karty);
 #endif //POSSEMESTRALKA_HRAC_H

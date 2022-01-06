@@ -1,24 +1,29 @@
 #include "hrac.h"
 
-void ukazKarty(DATA_H *data){
+void ukazKarty(DATA_H *data) {
     for (int i = 0; i < 5; ++i) {
         vykresliKartu(data->karty[i]);
     }
 }
 
-int rozhodniHodnotuEsa(DATA_H *data) {
-char chr = ' ';
-while(chr != 'y' || chr != 'n') {
-    printf("\n");
-    printf("Dostali ste Eso, aku chcete aby malo hodnotu?\n");
-    printf(" (y - 1, n - 10)\n");
-    printf("vasa volba: ");
-    scanf(" %c", &chr);
-    printf("\n");
+void ukazKartyProtivnika(char *karty) {
+    for (int i = 0; i < 5; ++i) {
+        vykresliKartu(karty[i]);
+    }
 }
-    if (chr =='y'){
+int rozhodniHodnotuEsa(DATA_H *data) {
+    char chr = ' ';
+    while (chr != 'y' || chr != 'n') {
+        printf("\n");
+        printf("Dostali ste Eso, aku chcete aby malo hodnotu?\n");
+        printf(" (y - 1, n - 10)\n");
+        printf("vasa volba: ");
+        scanf(" %c", &chr);
+        printf("\n");
+    }
+    if (chr == 'y') {
         data->karty[*(data->pocetKariet)] = 1;
-    }else if (chr == 'n'){
+    } else if (chr == 'n') {
         data->karty[*(data->pocetKariet)] = 10;
     }
 
@@ -35,12 +40,11 @@ void vypocitajSkore(DATA_H *data) {
     *(data->skore) = sum;
 }
 
-int hra(DATA_H *data){
+int hra(DATA_H *data) {
 
-    bzero(data->buffer,256);
+    bzero(data->buffer, 256);
     int n = read(data->sockfd, data->buffer, 255);
-    if (n < 0)
-    {
+    if (n < 0) {
         perror("Error reading from socket");
         return 6;
     }
@@ -50,18 +54,18 @@ int hra(DATA_H *data){
     bzero(data->buffer, 256);
     fgets(data->buffer, 255, stdin);
     n = write(data->sockfd, data->buffer, strlen(data->buffer));
-    if (n < 0)
-    {
+    if (n < 0) {
         perror("Error writing to socket");
-       return 5;
-   }
+        return 5;
+    }
 
 }
 
-int writeMsg(DATA_H dataK, char* msg) {
-    int n = write(dataK.sockfd, msg, strlen(msg) + 1);
-    if (n < 0)
-    {
+int writeMsg(DATA_H dataH, char *msg) {
+    printf("writing\n");
+    int n = write(dataH.sockfd, msg, strlen(msg) + 1);
+
+    if (n < 0) {
         perror("Error writing to socket");
         return 5;
     } else {
@@ -71,64 +75,147 @@ int writeMsg(DATA_H dataK, char* msg) {
 }
 
 int readMsg(DATA_H dataK) {
-    bzero(dataK.buffer,256);
+    printf("reading\n");
+    bzero(dataK.buffer, 256);
     int n = read(dataK.sockfd, dataK.buffer, 255);
-    if (n < 0)
-    {
+    if (n < 0) {
         perror("Error reading from socket");
         return 4;
     } else {
         printf("[INFO] - Succesfully read from socket\n");
         return 0;
     }
+
 }
 
-int main(int argc, char *argv[])
-{
+int start(DATA_H *dataH) {
+    int volba = 0;
+    while (volba != 1) {
+        printf("Vasa volba: ");
+        bzero(dataH->buffer, 256);
+        fgets(dataH->buffer, 255, stdin);
+        volba = atoi(&(dataH->buffer[0]));
+        //ZAPIS
+        writeMsg(*dataH, dataH->buffer);
+
+        //CITAJ
+        readMsg(*dataH);
+
+        printf("%s\n", dataH->buffer);
+    }
+
+    return 0;
+}
+void vypisKarty(DATA_H *data){
+    printf("Vase karty: ");
+    for (int i = 0; i < 5; ++i) {
+
+        printf("%c ", data->karty[i]);
+    }
+    printf("\n");
+}
+int tah(DATA_H *dataH) {
+    char *msg = " ";
+    readMsg(*dataH);
+    writeMsg(*dataH, msg);
+    dataH->karty[0] = dataH->buffer[0];
+    readMsg(*dataH);
+    writeMsg(*dataH, msg);
+    dataH->karty[1] = dataH->buffer[0];
+    readMsg(*dataH);
+
+    ukazKarty(dataH);
+    int pocTahov = 2;
+    while (pocTahov != 5) {
+        printf("125\n");
+        pocTahov++;
+        if (dataH->buffer[0] == 'n') {
+
+            printf("Cakajte dokial druhy hrac ukonci svoje kolo\n");
+        }
+
+        while (dataH->buffer[0] != 'i') {
+            readMsg(*dataH);
+            printf("while\n");
+        }
+        printf("idem citat buffer\n");
+        if (dataH->buffer[0] == 'i') {
+            hracTah();
+            ukazKarty(dataH);
+            int volba = 0;
+            while (volba != 1 && volba != 2 && volba != 3) {
+                printf("Vasa volba: ");
+                bzero(dataH->buffer, 256);
+                fgets(dataH->buffer, 255, stdin);
+                volba = atoi(&(dataH->buffer[0]));
+
+            }
+
+            writeMsg(*dataH, dataH->buffer);
+
+            //CITAJ
+            readMsg(*dataH);
+            if (volba == 1) {
+                int poc = *(dataH->pocetKariet);
+                dataH->karty[poc] = dataH->buffer[0];
+                (*(dataH->pocetKariet))++;
+            }
+            if (volba == 2){
+                pocTahov = 5;
+            }
+
+            if (volba == 3){
+                pocTahov = 5;
+            }
+
+            printf("164\n");
+        }
+
+    }
+    return 0;
+}
+
+int main(int argc, char *argv[]) {
 
 //--------------------------- uvodne nastavovanie ------------------------------------
 
     int sockfd, n;
     struct sockaddr_in serv_addr;
-    struct hostent* server;
+    struct hostent *server;
 
     char buffer[256];
 
-    if (argc < 3)
-    {
-        fprintf(stderr,"usage %s hostname port\n", argv[0]);
+    if (argc < 3) {
+        fprintf(stderr, "usage %s hostname port\n", argv[0]);
         return 1;
     }
 
     server = gethostbyname(argv[1]); // z hostname si ziskame info o serveri
-    if (server == NULL)
-    {
+    if (server == NULL) {
         fprintf(stderr, "Error, no such host\n");
         return 2;
     } else {
         printf("[INFO] - Succesfully connected to server\n");
     }
 
-    bzero((char*)&serv_addr, sizeof(serv_addr)); // vycistenie struktury
+    bzero((char *) &serv_addr, sizeof(serv_addr)); // vycistenie struktury
     serv_addr.sin_family = AF_INET;
     bcopy(
-            (char*)server->h_addr,
-            (char*)&serv_addr.sin_addr.s_addr,
+            (char *) server->h_addr,
+            (char *) &serv_addr.sin_addr.s_addr,
             server->h_length
     );
     serv_addr.sin_port = htons(atoi(argv[2]));
 
     sockfd = socket(AF_INET, SOCK_STREAM, 0);
-    if (sockfd < 0)
-    {
+    if (sockfd < 0) {
         perror("Error creating socket");
         return 3;
     } else {
         printf("[INFO] - Succesfully created socket\n");
     }
 
-    if(connect(sockfd, (struct sockaddr*)&serv_addr, sizeof(serv_addr)) < 0)
-    {
+    if (connect(sockfd, (struct sockaddr *) &serv_addr, sizeof(serv_addr)) < 0) {
         perror("Error connecting to socket");
         return 4;
     } else {
@@ -138,18 +225,18 @@ int main(int argc, char *argv[])
 //--------------------------- uspesne pripojeny na server ------------------------------------
 
     // naplnenie struktur
-    int karty[5] = {0};
+    char karty[5] = {'X', 'X', 'X', 'X', 'X'};
     int pocetKariet = 2;
     int skore = 0;
-    DATA_H dataH = {karty, &pocetKariet, &skore,buffer,sockfd};
+    DATA_H dataH = {karty, &pocetKariet, &skore, buffer, sockfd};
 
     printf("[INFO] - Data initialized\n");
 
     pthread_mutex_t mutex;
-    pthread_mutex_init(&mutex,NULL);
+    pthread_mutex_init(&mutex, NULL);
 
     pthread_cond_t canRead;
-    pthread_cond_init(&canRead,NULL);
+    pthread_cond_init(&canRead, NULL);
 
 //    pthread_t thread_read;
 //    pthread_create(&thread_read, NULL,NULL, &dataK);
@@ -159,61 +246,15 @@ int main(int argc, char *argv[])
     printf("[INFO] - Thread initialized\n");
 
     printf("\nVitajte v hre blackjack\n hrat 1\n historia 2\n koniec 3\n");
-    printf("Vasa volba: ");
-    bzero(buffer,256);
-    fgets(buffer, 255, stdin);
+    start(&dataH);
+    tah(&dataH);
 
-    n = write(sockfd, buffer, strlen(buffer));
-    if (n < 0)
-    {
-        perror("Error writing to socket");
-        return 5;
-    } else {
-        printf("[INFO] - Succesfully wrote to socket\n");
-    }
-
-//    writeMsg(dataH, buffer);
-//    readMsg(dataH);
-
-    bzero(buffer,256);
-    n = read(sockfd, buffer, 255);
-    if (n < 0)
-    {
-        perror("Error reading from socket");
-        return 6;
-    } else {
-        printf("[INFO] - Succesfully read from socket\n");
-    }
-
-    printf("%s\n",buffer);
-//    sleep(5);
-
-    hracTah();
-    printf("Vasa volba: ");
-    bzero(buffer,256);
-    fgets(buffer, 255, stdin);
-
-    n = write(sockfd, buffer, strlen(buffer));
-    if (n < 0)
-    {
-        perror("Error writing to socket");
-        return 5;
-    } else {
-        printf("[INFO] - Succesfully wrote to socket\n");
-    }
-
-    bzero(buffer,256);
-    n = read(sockfd, buffer, 255);
-    if (n < 0)
-    {
-        perror("Error reading from socket");
-        return 6;
-    } else {
-        printf("[INFO] - Succesfully read from socket\n");
-    }
-
-    printf("%s\n",buffer);
-
+    readMsg(dataH);
+    printf("%s", dataH.buffer);
+    writeMsg(dataH," ");
+    readMsg(dataH);
+    ukazKartyProtivnika(dataH.buffer);
+    writeMsg(dataH," ");
 //--------------------------- ukoncenie pripojenia na server ------------------------------------
 
     pthread_mutex_destroy(&mutex);

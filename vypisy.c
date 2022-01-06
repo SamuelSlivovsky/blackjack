@@ -26,10 +26,10 @@ void hracTah() {
     printf("\n");
 }
 
-void vykresliKartu(int cisloKarty) {
+void vykresliKartu(char karta) {
 
-    switch (cisloKarty) {
-        case 1: {
+    switch (karta) {
+        case 'A': {
             printf("*******\n");
             printf("*     *\n");
             printf("*     *\n");
@@ -38,24 +38,80 @@ void vykresliKartu(int cisloKarty) {
             printf("*******\n");
             break;
         }
-        case 2:
-        case 3:
-        case 4:
-        case 5:
-        case 6:
-        case 7:
-        case 8:
-        case 9:
-        case 10: {
+        case '2':
             printf("*******\n");
             printf("*     *\n");
             printf("*     *\n");
-            printf("*  %2d *\n", cisloKarty);
+            printf("*  %2d *\n", 2);
+            printf("*     *\n");
+            printf("*******\n");
+            break;
+        case '3':
+            printf("*******\n");
+            printf("*     *\n");
+            printf("*     *\n");
+            printf("*  %2d *\n", 3);
+            printf("*     *\n");
+            printf("*******\n");
+            break;
+        case '4':
+            printf("*******\n");
+            printf("*     *\n");
+            printf("*     *\n");
+            printf("*  %2d *\n", 4);
+            printf("*     *\n");
+            printf("*******\n");
+            break;
+        case '5':
+            printf("*******\n");
+            printf("*     *\n");
+            printf("*     *\n");
+            printf("*  %2d *\n", 5);
+            printf("*     *\n");
+            printf("*******\n");
+            break;
+        case '6':
+            printf("*******\n");
+            printf("*     *\n");
+            printf("*     *\n");
+            printf("*  %2d *\n", 6);
+            printf("*     *\n");
+            printf("*******\n");
+            break;
+        case '7':
+            printf("*******\n");
+            printf("*     *\n");
+            printf("*     *\n");
+            printf("*  %2d *\n", 7);
+            printf("*     *\n");
+            printf("*******\n");
+            break;
+        case '8':
+            printf("*******\n");
+            printf("*     *\n");
+            printf("*     *\n");
+            printf("*  %2d *\n", 8);
+            printf("*     *\n");
+            printf("*******\n");
+            break;
+        case '9':
+            printf("*******\n");
+            printf("*     *\n");
+            printf("*     *\n");
+            printf("*  %2d *\n", 9);
+            printf("*     *\n");
+            printf("*******\n");
+            break;
+        case '0': {
+            printf("*******\n");
+            printf("*     *\n");
+            printf("*     *\n");
+            printf("*  %2d *\n", 10);
             printf("*     *\n");
             printf("*******\n");
             break;
         }
-        case 11: {
+        case 'J': {
             printf("*******\n");
             printf("*     *\n");
             printf("*     *\n");
@@ -64,7 +120,7 @@ void vykresliKartu(int cisloKarty) {
             printf("*******\n");
             break;
         }
-        case 12: {
+        case 'Q': {
             printf("*******\n");
             printf("*     *\n");
             printf("*     *\n");
@@ -73,7 +129,7 @@ void vykresliKartu(int cisloKarty) {
             printf("*******\n");
             break;
         }
-        case 13: {
+        case 'K': {
             printf("*******\n");
             printf("*     *\n");
             printf("*     *\n");

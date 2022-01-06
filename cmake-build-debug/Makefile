@@ -67,10 +67,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /tmp/tmp.5VBVckTJGR
+CMAKE_SOURCE_DIR = /tmp/tmp.kXNs4XdjV3
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /tmp/tmp.5VBVckTJGR/cmake-build-debug
+CMAKE_BINARY_DIR = /tmp/tmp.kXNs4XdjV3/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -99,9 +99,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /tmp/tmp.5VBVckTJGR/cmake-build-debug/CMakeFiles /tmp/tmp.5VBVckTJGR/cmake-build-debug//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /tmp/tmp.kXNs4XdjV3/cmake-build-debug/CMakeFiles /tmp/tmp.kXNs4XdjV3/cmake-build-debug//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /tmp/tmp.5VBVckTJGR/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /tmp/tmp.kXNs4XdjV3/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -215,6 +215,7 @@ vypisy.o: vypisy.c.o
 
 # target to build an object file
 vypisy.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/krupier.dir/build.make CMakeFiles/krupier.dir/vypisy.c.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/hrac.dir/build.make CMakeFiles/hrac.dir/vypisy.c.o
 .PHONY : vypisy.c.o
 
@@ -224,6 +225,7 @@ vypisy.i: vypisy.c.i
 
 # target to preprocess a source file
 vypisy.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/krupier.dir/build.make CMakeFiles/krupier.dir/vypisy.c.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/hrac.dir/build.make CMakeFiles/hrac.dir/vypisy.c.i
 .PHONY : vypisy.c.i
 
@@ -233,6 +235,7 @@ vypisy.s: vypisy.c.s
 
 # target to generate assembly for a file
 vypisy.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/krupier.dir/build.make CMakeFiles/krupier.dir/vypisy.c.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/hrac.dir/build.make CMakeFiles/hrac.dir/vypisy.c.s
 .PHONY : vypisy.c.s
 

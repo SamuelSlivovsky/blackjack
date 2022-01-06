@@ -5,3 +5,6 @@
 - riesit to cez nejaky readflag, ze kedy moze klient citat a kedy moze server citat (pomocou vlakna a mutexu)
 - co pustit vo vlakne, celu hru alebo iba read write metody, ak pustim najskor vo vlakne read write metody, nebude mi main cakat kym skoncia (ak nedam join, tak asi nie)
 -
+-problem pri ukonceni kola jednym hracom, dalsi je zaseknuty na citani
+-ako vypisat pole charov ktore sa dynamicky zvacsuje
+

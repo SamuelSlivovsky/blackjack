@@ -6,6 +6,6 @@
 void intro();
 void menu();
 void hracTah();
-void vykresliKartu(int cisloKarty);
+void vykresliKartu(char karta);
 
 #endif //POSSEMESTRALKA_VYPISY_H

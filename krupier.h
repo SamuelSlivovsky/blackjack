@@ -14,7 +14,7 @@
 #define POSSEMESTRALKA_KRUPIER_H
 
 typedef struct DataKrupier {
-    int *balicek;
+    char *balicek;
     int *aktualnaKarta;
     char *harabin;
     char *buffer;
@@ -29,22 +29,22 @@ typedef struct historia {
 } HISTORY;
 
 typedef struct DataHrac {
-    int *karty;
+    char *karty;
     int *pocetKariet;
     int *skore;
     int *lock;
     int clsockfd;
 } DATA_H;
 
-void premiesajBalicek(int *balicek);
+void premiesajBalicek(char *balicek);
 void rozdajKarty(DATA_K dataK, DATA_H dataH1, DATA_H dataH2);
 void dajKartu(DATA_K datak, DATA_H dataH);
 void vylozitKarty(DATA_H dataH);
-void tah(DATA_H dataH, DATA_K dataK);
+void tah(DATA_H dataH, DATA_K dataK,int lock);
 void porovnaj(DATA_H dataH1, DATA_H dataH2, DATA_K dataK);
 void hra(DATA_K dataK, DATA_H dataH1, DATA_H dataH2);
 int writeCharMsg(DATA_K dataK, char *msg, int client);
 int writeIntMsg(DATA_K dataK, int msg, int client);
 int readMsg(DATA_K dataK, int client);
-
+int start(DATA_K dataK, DATA_H dataH1, DATA_H dataH2);
 #endif //POSSEMESTRALKA_KRUPIER_H
