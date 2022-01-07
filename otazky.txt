@@ -10,6 +10,6 @@
 
 - vlakna
 - debug v vs code (parametre)
-- historia
+- historia IDE
 - vie klient zisti, ze sa server vypol?
 

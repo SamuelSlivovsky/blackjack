@@ -17,6 +17,14 @@ void menu() {
     printf("\n");
 }
 
+void restart() {
+    printf("\n");
+    printf("HRAT ZNOVA?\n");
+    printf("\ty - ano\n");
+    printf("\tn - nie\n");
+    printf("\n");
+}
+
 void hracTah() {
     printf("\n");
     printf("Si na tahu, mozes:\n");

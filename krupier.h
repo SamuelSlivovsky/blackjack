@@ -25,7 +25,7 @@ typedef struct DataKrupier {
 
 typedef struct historia {
     char *historia;
-    int pocetHier;
+    int *pocetHier;
 } HISTORY;
 
 typedef struct DataHrac {
@@ -41,10 +41,10 @@ void rozdajKarty(DATA_K dataK, DATA_H dataH1, DATA_H dataH2);
 void dajKartu(DATA_K datak, DATA_H dataH);
 void vylozitKarty(DATA_H dataH);
 void tah(DATA_H dataH, DATA_K dataK,int lock);
-void porovnaj(DATA_H dataH1, DATA_H dataH2, DATA_K dataK);
-void hra(DATA_K dataK, DATA_H dataH1, DATA_H dataH2);
+int porovnaj(DATA_H dataH1, DATA_H dataH2, DATA_K dataK);
+void hra(DATA_K dataK, DATA_H dataH1, DATA_H dataH2, HISTORY history);
 int start(DATA_K dataK, DATA_H dataH1, DATA_H dataH2);
-
+void inicializacia(DATA_K dataK, DATA_H dataH1, DATA_H dataH2);
 int writeCharMsg(DATA_K dataK, char *msg, int client);
 int readMsg(DATA_K dataK, int client);
 

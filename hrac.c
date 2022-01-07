@@ -84,10 +84,9 @@ int start(DATA_H *dataH) {
     return 0;
 }
 
-void vypisKarty(DATA_H *data){
+void vypisKarty(DATA_H *data) {
     printf("Vase karty: ");
     for (int i = 0; i < 5; ++i) {
-
         printf("%c ", data->karty[i]);
     }
     vypocitajSkore(data);
@@ -97,88 +96,100 @@ void vypisKarty(DATA_H *data){
 int hra(DATA_H *dataH) {
     char *msg = " ";
 
-    for (int i = 0; i < 2; ++i) {
+    for (int i = 0; i < 5; ++i) {
+        dataH->karty[i] = 'X';
+    }
 
-        for (int j = 0; j < 5; ++j) {
-            dataH->karty[i] = 'X';
+    // potiahne si 2 karty na zaciatok
+    readMsg(*dataH);
+    writeMsg(*dataH, msg);
+    dataH->karty[0] = dataH->buffer[0];
+    readMsg(*dataH);
+    writeMsg(*dataH, msg);
+    dataH->karty[1] = dataH->buffer[0];
+    readMsg(*dataH);
+
+    ukazKarty(dataH->karty);
+
+    *(dataH->pocetKariet) = 2;
+    int pocTahov = 2;
+    printf("\nsom pred while\n");
+    while (pocTahov != 5) {
+        printf("\nsom na zaciatku while\n");
+        pocTahov++;
+
+        if (dataH->buffer[0] != 'i') {
+            printf("\nCakajte dokial druhy hrac ukonci svoje kolo\n");
         }
 
-        printf("zaciatok forka, i = %d\n", i);
-        // potiahne si 2 karty na zaciatok
-        readMsg(*dataH);
-        writeMsg(*dataH, msg);
-        dataH->karty[0] = dataH->buffer[0];
-        readMsg(*dataH);
-        writeMsg(*dataH, msg);
-        dataH->karty[1] = dataH->buffer[0];
-        readMsg(*dataH);
+        // cakam kym budem na tahu
+        while (dataH->buffer[0] != 'i') {
+            readMsg(*dataH);
+        }
 
-        ukazKarty(dataH->karty);
-
-        int pocTahov = 2;
-        printf("\nsom pred while\n");
-        while (pocTahov != 5) {
-            printf("\nsom na zaciatku while\n");
-            pocTahov++;
-
-            if (dataH->buffer[0] != 'i') {
-                printf("\nCakajte dokial druhy hrac ukonci svoje kolo\n");
+        printf("\nidem citat buffer\n");
+        if (dataH->buffer[0] == 'i') {
+            hracTah();
+            ukazKarty(dataH->karty);
+            vypisKarty(dataH);
+            int volba = 0;
+            while (volba != 1 && volba != 2 && volba != 3) {
+                printf("Vasa volba: ");
+                bzero(dataH->buffer, 256);
+                fgets(dataH->buffer, 255, stdin);
+                volba = atoi(&(dataH->buffer[0]));
             }
 
-            // cakam kym budem na tahu
-            while (dataH->buffer[0] != 'i') {
-                readMsg(*dataH);
-            }
+            // poslem svoju volbu
+            writeMsg(*dataH, dataH->buffer);
+            // precitam si odpoved
+            readMsg(*dataH);
 
-            printf("\nidem citat buffer\n");
-            if (dataH->buffer[0] == 'i') {
-                hracTah();
+            if (volba == 1) {
+                int poc = *(dataH->pocetKariet);
+                dataH->karty[poc] = dataH->buffer[0];
+                (*(dataH->pocetKariet))++;
+                printf("Potiahol si %c\n", dataH->buffer[0]);
                 ukazKarty(dataH->karty);
                 vypisKarty(dataH);
-                int volba = 0;
-                while (volba != 1 && volba != 2 && volba != 3) {
-                    printf("Vasa volba: ");
-                    bzero(dataH->buffer, 256);
-                    fgets(dataH->buffer, 255, stdin);
-                    volba = atoi(&(dataH->buffer[0]));
-                }
-
-                // poslem svoju volbu
-                writeMsg(*dataH, dataH->buffer);
-                // precitam si odpoved
-                readMsg(*dataH);
-
-                if (volba == 1) {
-                    int poc = *(dataH->pocetKariet);
-                    dataH->karty[poc] = dataH->buffer[0];
-                    (*(dataH->pocetKariet))++;
-                    printf("Potiahol si %c\n", dataH->buffer[0]);
-                    ukazKarty(dataH->karty);
-                    vypisKarty(dataH);
-                }
-                if (volba == 2) {
-                    pocTahov = 5;
-                }
-                if (volba == 3) {
-                    pocTahov = 5;
-                }
-
-                printf("\nkoniec tahu\n");
-                printf("koniec forka, i = %d\n", i);
+            }
+            if (volba == 2) {
+                pocTahov = 5;
+            }
+            if (volba == 3) {
+                pocTahov = 5;
             }
 
+            printf("\nkoniec tahu\n");
         }
 
-        // precita si vysledky hry
-        readMsg(*dataH);
-        printf("\n%s\n", dataH->buffer);
-        writeMsg(*dataH, " ");
+    }
 
-        // precita si karty protivnika
-        readMsg(*dataH);
-        printf("\nKarty protihraca:\n");
-        ukazKarty(dataH->buffer);
-        writeMsg(*dataH, " ");
+    // precita si vysledky hry
+    readMsg(*dataH);
+    printf("\n%s\n", dataH->buffer);
+    writeMsg(*dataH, " ");
+
+    // precita si karty protivnika
+    readMsg(*dataH);
+    printf("\nKarty protihraca:\n");
+    ukazKarty(dataH->buffer);
+
+    char volba = ' ';
+    while (volba != 'y' && volba != 'n') {
+        restart();
+        printf("Vasa volba: ");
+        bzero(dataH->buffer, 256);
+        fgets(dataH->buffer, 255, stdin);
+        volba = dataH->buffer[0];
+
+
+    }
+
+        writeMsg(*dataH, dataH->buffer);
+    //readMsg(dataH)
+    if (volba == 'y') {
+        hra(dataH);
     }
     return 0;
 }
