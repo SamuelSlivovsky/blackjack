@@ -1,33 +1,77 @@
 #include "krupier.h"
 
 void hra(DATA_K dataK, DATA_H dataH1, DATA_H dataH2) {
-    premiesajBalicek(dataK.balicek);
-    rozdajKarty(dataK, dataH1, dataH2);
 
-    for (int i = 0; i < 3; ++i) {
-        tah(dataH1, dataK, *(dataH2.lock));
-        tah(dataH2, dataK, *(dataH1.lock));
+    char historia[1] = {'X'};
+    int pocetHier = 0;
+    HISTORY history = {historia, pocetHier};
+
+    for (int j = 0; j < 2; ++j) {
+        printf("zaciatok forka, j = %d\n", j);
+
+        printf("aktualny lock 1: %d\n", *(dataH1.lock));
+        printf("aktualny lock 2: %d\n", *(dataH2.lock));
+
+//        dataH1.lock = 0;
+//        dataH2.lock = 0;
+
+        premiesajBalicek(dataK.balicek);
+        rozdajKarty(dataK, dataH1, dataH2);
+
+        for (int i = 0; i < 3; ++i) {
+            tah(dataH1, dataK, *(dataH2.lock));
+            tah(dataH2, dataK, *(dataH1.lock));
+        }
+
+        printf("Karty hraca 1: \n");
+        vylozitKarty(dataH1);
+        printf("Karty hraca 2: \n");
+        vylozitKarty(dataH2);
+
+        porovnaj(dataH1, dataH2, dataK);
+
+        //naplnenie historie
+        history.historia[history.pocetHier] = *(dataK.harabin);
+
+        printf("historia pred>\n");
+        for (int i = 0; i < history.pocetHier; ++i) {
+            printf(" %c ", history.historia[i]);
+        }
+        printf("\n");
+        printf(" %s ", history.historia);
+        printf("\n");
+
+        (history.pocetHier)++;
+        char novePole[history.pocetHier + 1];
+        for (int i = 0; i < history.pocetHier; ++i) {
+            novePole[i] = history.historia[i];
+        }
+        history.historia = novePole;
+
+        printf("historia po>\n");
+        for (int i = 0; i < history.pocetHier; ++i) {
+            printf(" %c ", history.historia[i]);
+        }
+        printf("\n");
+        printf(" %s ", history.historia);
+        printf("\n");
+        printf("koniec forka, j = %d\n", j);
     }
-
-    printf("Karty hraca 1: \n");
-    vylozitKarty(dataH1);
-    printf("Karty hraca 2: \n");
-    vylozitKarty(dataH2);
-
-    porovnaj(dataH1, dataH2, dataK);
 }
 
 void tah(DATA_H dataH, DATA_K dataK, int lock) {
     printf("aktualny lock: %d\n", *(dataH.lock));
-    if (*(dataH.lock) == 0) {
+    if (*(dataH.lock) != 1) {
         writeCharMsg(dataK, "i", dataH.clsockfd);
         if (dataH.clsockfd == dataK.cl_1_sockfd) {
-            if (lock == 0) {
+            printf("lock 2: %d\n", lock);
+            if (lock != 1) {
                 writeCharMsg(dataK, "n", dataK.cl_2_sockfd);
                 printf("pls1\n");
             }
         } else {
-            if (lock == 0) {
+            printf("lock 1: %d\n", lock);
+            if (lock != 1) {
                 writeCharMsg(dataK, "n", dataK.cl_1_sockfd);
                 printf("pls2\n");
             }
@@ -55,10 +99,16 @@ void vylozitKarty(DATA_H dataH) {
 }
 
 void premiesajBalicek(char *balicek) {
+    printf("premiesaj balicek\n");
     int nahodnaKarta;
     char znaky[] = {'A', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'J', 'Q', 'K'};
     bool rovnakaChar = true;
     char znak = ' ';
+
+    for (int i = 0; i < 52; ++i) {
+        balicek[i] = ' ';
+    }
+
     for (int i = 0; i < 52; ++i) {
 
         nahodnaKarta = rand() % 13;
@@ -91,6 +141,7 @@ void premiesajBalicek(char *balicek) {
 
 void rozdajKarty(DATA_K dataK, DATA_H dataH1, DATA_H dataH2) {
 
+    printf("rozdaj karty\n");
     for (int i = 0; i < 2; ++i) {
         dataH1.karty[i] = dataK.balicek[i + i * 1];
         printf("%c \n", dataK.balicek[i + i * 1]);
@@ -189,13 +240,15 @@ void porovnaj(DATA_H dataH1, DATA_H dataH2, DATA_K dataK) {
         msg2 = "Nikto nevyhral\n";
     }
 
-    // NEMENIT PORADIE
+// NEMENIT PORADIE
     writeCharMsg(dataK, msg1, dataK.cl_1_sockfd);
     readMsg(dataK, dataK.cl_1_sockfd);
     writeCharMsg(dataK, msg2, dataK.cl_2_sockfd);
     readMsg(dataK, dataK.cl_2_sockfd);
     writeCharMsg(dataK, dataH2.karty, dataK.cl_1_sockfd);
+    readMsg(dataK, dataK.cl_1_sockfd);
     writeCharMsg(dataK, dataH1.karty, dataK.cl_2_sockfd);
+    readMsg(dataK, dataK.cl_2_sockfd);
 }
 
 int writeCharMsg(DATA_K dataK, char *msg, int client) {
@@ -228,7 +281,7 @@ int start(DATA_K dataK, DATA_H dataH1, DATA_H dataH2) {
     char *msg = "I got your message";
     char volba = ' ';
     while (potvrdH1 != potvrdH2) {
-        // CITANIE Z HRAC1
+// CITANIE Z HRAC1
 
         if (potvrdH1 == 2) {
             readMsg(dataK, dataK.cl_1_sockfd);
@@ -350,31 +403,31 @@ int main(int argc, char *argv[]) {
     }
 
 //--------------------------- uspesne prijima spojenia ------------------------------------
-    // krupier
+// krupier
     char balicek[52] = {' '};
     int aktualnaKarta = 4;
     char harabin = ' ';
 
-    // hrac A
+// hrac A
     char kartyA[5] = {'X', 'X', 'X', 'X', 'X'};
     int pocetKarietA = 2;
     int skoreA = 0;
     int lockA = 0;
 
-    // hrac B
+// hrac B
     char kartyB[5] = {'X', 'X', 'X', 'X', 'X'};
     int pocetKarietB = 2;
     int skoreB = 0;
     int lockB = 0;
 
-    // naplnenie struktur
+// naplnenie struktur
     DATA_H dataH1 = {kartyA, &pocetKarietA, &skoreA, &lockA, cl_1_sockfd};
     DATA_H dataH2 = {kartyB, &pocetKarietB, &skoreB, &lockB, cl_2_sockfd};
     DATA_K dataK = {balicek, &aktualnaKarta, &harabin, buffer, sockfd, cl_1_sockfd, cl_2_sockfd};
 
     printf("[INFO] - Data initialized\n");
 
-    // vlakno, mutex a cond
+// vlakno, mutex a cond
     pthread_mutex_t mutex;
     pthread_mutex_init(&mutex, NULL);
 
@@ -388,8 +441,15 @@ int main(int argc, char *argv[]) {
 
     printf("[INFO] - Thread initialized\n");
 
+//    while () {
+//        if ()
+//            start(dataK, dataH1, dataH2);
+//        hra(dataK, dataH1, dataH2);
+//    }
+
     start(dataK, dataH1, dataH2);
     hra(dataK, dataH1, dataH2);
+
 //--------------------------- ukoncenie prijimania spojeni ------------------------------------
 
     pthread_mutex_destroy(&mutex);
