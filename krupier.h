@@ -46,7 +46,7 @@ int porovnaj(DATA_H dataH1, DATA_H dataH2, DATA_K dataK);
 int hra(DATA_K dataK, DATA_H dataH1, DATA_H dataH2, HISTORY history);
 int start(DATA_K dataK, DATA_H dataH1, DATA_H dataH2);
 void inicializacia(DATA_K dataK, DATA_H dataH1, DATA_H dataH2);
-int writeCharMsg(DATA_K dataK, char *msg);
+int writeMsg(DATA_K dataK, char *msg);
 int readMsg(DATA_K dataK);
 void *reading(void *args);
 

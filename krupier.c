@@ -1,76 +1,5 @@
 #include "krupier.h"
 
-int start(DATA_K dataK, DATA_H dataH1, DATA_H dataH2) {
-
-    int potvrdH1 = 2;
-    int potvrdH2 = 3;
-    char *msg = "I got your message";
-    char volba = ' ';
-    while (potvrdH1 != potvrdH2) {
-// CITANIE Z HRAC1
-
-        if (potvrdH1 == 2) {
-            readMsg(dataK);
-
-            // VYPIS
-            printf("Here is the message: %s\n", dataK.buffer);
-
-            // SPRACOVANIE HRAC1
-            volba = dataK.buffer[0];
-            switch (volba) {
-                case '1':
-                    msg = "lets play!";
-                    potvrdH1 = 1;
-                    printf(" - case 1\n");
-                    break;
-                case '2':
-                    msg = "...coskoro...";
-                    printf(" - case 2\n");
-                    break;
-                case '3':
-                    printf(" - case 3\n");
-                    return 0;
-                default:
-                    break;
-            }
-
-            // ZAPIS HRAC1
-            writeCharMsg(dataK, msg);
-        }
-
-        if (potvrdH2 == 3) {
-            // CITANIE HRAC2
-            readMsg(dataK);
-            printf("Here is the message: %s\n", dataK.buffer);
-
-            msg = "I got your message";
-
-            // SPRACOVANIE HRAC2
-            volba = dataK.buffer[0];
-            switch (volba) {
-                case '1':
-                    msg = "lets play!";
-                    potvrdH2 = 1;
-                    printf(" - case 1\n");
-                    break;
-                case '2':
-                    msg = "...coskoro...";
-                    printf(" - case 2\n");
-                    break;
-                case '3':
-                    printf(" - case 3\n");
-                    return 0;
-                default:
-                    break;
-            }
-
-            // ZAPIS HRAC2
-            writeCharMsg(dataK, msg);
-        }
-    }
-    return 0;
-}
-
 int hra(DATA_K dataK, DATA_H dataH1, DATA_H dataH2, HISTORY history) {
 
     premiesajBalicek(dataK.balicek);
@@ -79,29 +8,36 @@ int hra(DATA_K dataK, DATA_H dataH1, DATA_H dataH2, HISTORY history) {
     int hra = 0;
     int koniec = 0;
     int pocitadlo = 0;
+    char buffer[256];
 
     while (hra != 2) {
         pocitadlo++;
-        pthread_mutex_lock(dataK.mutex);
-        if (pocitadlo % 2 != 0) {
-            dataK.readSockfd = &(dataK.cl_1_sockfd);
-        } else {
-            dataK.readSockfd = &(dataK.cl_2_sockfd);
-        }
-        pthread_mutex_unlock(dataK.mutex);
 
-        printf("idem citat\n");
-        printf("socket pred read: %d\n", *(dataK.readSockfd));
-        readMsg(dataK);
-        printf("precital som\n");
-        volba = dataK.buffer[0];
+        if (pocitadlo % 2 != 0) {
+            // HRAC 1
+            while (volba != '1' && volba != '2' && volba != '3') {
+                menu();
+                printf("Vasa volba: ");
+                bzero(buffer, 256);
+                fgets(buffer, 255, stdin);
+                volba = buffer[0];
+                printf("volba = %c\n", volba);
+            }
+        } else {
+            // HRAC 2
+            readMsg(dataK);
+            volba = dataK.buffer[0];
+        }
 
         switch (volba) {
             case '1':
                 hra++;
                 break;
             case '2':
-                writeCharMsg(dataK, history.historia);
+                if (pocitadlo % 2 == 0)
+                    writeMsg(dataK, history.historia);
+                else
+                    printf("historia hier: %s\n", history.historia);
                 break;
             default:
                 koniec++;
@@ -116,6 +52,7 @@ int hra(DATA_K dataK, DATA_H dataH1, DATA_H dataH2, HISTORY history) {
 
     for (int i = 0; i < 3; ++i) {
         tah(dataH1, dataK, *(dataH2.lock));
+        writeMsg(dataK, "ides");
         tah(dataH2, dataK, *(dataH1.lock));
     }
 
@@ -127,15 +64,10 @@ int hra(DATA_K dataK, DATA_H dataH1, DATA_H dataH2, HISTORY history) {
     int pokracuj = porovnaj(dataH1, dataH2, dataK);
 
     //naplnenie historie
-    history.historia[*(history.pocetHier)] = *(dataK.harabin);
 
-    printf("historia pred>\n");
-    for (int i = 0; i < *(history.pocetHier); ++i) {
-        printf(" %c ", history.historia[i]);
-    }
-    printf("\n");
-    printf(" %s ", history.historia);
-    printf("\n");
+    printf("historia pred: %s\n", history.historia);
+
+    history.historia[*(history.pocetHier)] = *(dataK.harabin);
 
     (*(history.pocetHier))++;
     char novePole[*(history.pocetHier) + 1];
@@ -144,20 +76,13 @@ int hra(DATA_K dataK, DATA_H dataH1, DATA_H dataH2, HISTORY history) {
     }
     history.historia = novePole;
 
-    printf("historia po>\n");
-    for (int i = 0; i < *(history.pocetHier); ++i) {
-        printf(" %c ", history.historia[i]);
-    }
-    printf("\n");
-    printf(" %s ", history.historia);
-    printf("\n");
+    printf("historia po: %s\n", history.historia);
 
     if (pokracuj == 2) {
         inicializacia(dataK, dataH1, dataH2);
 //        hra(dataK, dataH1, dataH2, history);
     }
-    //KONIEC
-
+    return 0;
 }
 
 void inicializacia(DATA_K dataK, DATA_H dataH1, DATA_H dataH2) {
@@ -187,36 +112,36 @@ void inicializacia(DATA_K dataK, DATA_H dataH1, DATA_H dataH2) {
 }
 
 void tah(DATA_H dataH, DATA_K dataK, int lock) {
-    printf("aktualny lock: %d\n", *(dataH.lock));
-    dataK.readSockfd = &(dataH.clsockfd);
-    if (*(dataH.lock) != 1) {
-//        writeCharMsg(dataK, "i");
-//        if (dataH.clsockfd == dataK.cl_1_sockfd) {
-//            printf("lock 2: %d\n", lock);
-//            if (lock != 1) {
-//                writeCharMsg(dataK, "n");
-//                printf("pls1\n");
-//            }
-//        } else {
-//            printf("lock 1: %d\n", lock);
-//            if (lock != 1) {
-//                writeCharMsg(dataK, "n");
-//                printf("pls2\n");
-//            }
-//        }
-        readMsg(dataK);
-        char volba = dataK.buffer[0];
-        switch (volba) {
-            case '1':
-                dajKartu(dataK, dataH);
-                break;
-            case '2':
-                *(dataH.lock) = 1;
-                printf("lock\n");
-                break;
-            default:
-                break;
+    char volba = ' ';
+    char buffer[256];
+    if (dataH.clsockfd == dataK.cl_2_sockfd) {
+        hracTah();
+        while (volba != '1' && volba != '2' && volba != '3') {
+            printf("Vasa volba: ");
+            bzero(buffer, 256);
+            fgets(buffer, 255, stdin);
+            volba = buffer[0];
+            printf("volba = %c\n", volba);
         }
+    } else {
+        readMsg(dataK);
+        volba = dataK.buffer[0];
+    }
+
+    switch (volba) {
+        case '1':
+            printf("idem si potiahnut kartu\n");
+            dajKartu(dataK, dataH);
+            printf("potiahol som si kartu\n");
+            break;
+        case '2':
+            printf("idem si zamknut karty\n");
+            *(dataH.lock) = 1;
+            printf("zamkol som si karty\n");
+            break;
+        default:
+            printf("neurobim nic\n");
+            break;
     }
 }
 
@@ -277,22 +202,10 @@ void rozdajKarty(DATA_K dataK, DATA_H dataH1, DATA_H dataH2) {
         printf("%c \n", dataK.balicek[i + 1 + i * 1]);
     }
 
-    printf("msg1 = %s\n", dataH1.karty);
-    printf("msg2 = %s\n", dataH2.karty);
+    printf("karty1 = %s\n", dataH1.karty);
+    printf("karty2 = %s\n", dataH2.karty);
 
-
-
-    dataK.readSockfd = &(dataK.cl_1_sockfd);
-    writeCharMsg(dataK, dataH1.karty);
-//    readMsg(dataK);
-
-    dataK.readSockfd = &(dataK.cl_2_sockfd);
-    writeCharMsg(dataK, dataH2.karty);
-
-    dataK.readSockfd = &(dataK.cl_1_sockfd);
-    readMsg(dataK);
-    dataK.readSockfd = &(dataK.cl_2_sockfd);
-    readMsg(dataK);
+    writeMsg(dataK, dataH2.karty);
 }
 
 void dajKartu(DATA_K dataK, DATA_H dataH) {
@@ -301,7 +214,8 @@ void dajKartu(DATA_K dataK, DATA_H dataH) {
     dataH.karty[poc] = karta;
     (*(dataK.aktualnaKarta))++;
     (*(dataH.pocetKariet))++;
-    writeCharMsg(dataK, &karta);
+    if (dataH.clsockfd == dataK.cl_1_sockfd)
+        writeMsg(dataK, &karta);
 }
 
 void vypocitajSkore(DATA_H *data) {
@@ -348,70 +262,62 @@ void vypocitajSkore(DATA_H *data) {
 }
 
 int porovnaj(DATA_H dataH1, DATA_H dataH2, DATA_K dataK) {
+
     vypocitajSkore(&dataH1);
     vypocitajSkore(&dataH2);
 
     int skoreA = *(dataH1.skore);
     int skoreB = *(dataH2.skore);
+
     int rozdielA = 21 - skoreA;
     int rozdielB = 21 - skoreB;
-    char *msg1 = " ";
-    char *msg2 = " ";
+    char buffer[256];
 
     if (rozdielA >= 0 && rozdielA < rozdielB || rozdielB < 0 && rozdielA >= 0) {
-        printf("Vyhral hrac A, skore bolo - %d : %d (A:B)\n", skoreA, skoreB);
+        sprintf(buffer, "Vyhral hrac A, skore bolo - %d : %d (A:B)\n", skoreA, skoreB);
         *(dataK.harabin) = 'A';
-        msg1 = "Vyhral si\n";
-        msg2 = "Prehral si\n";
     } else if (rozdielB >= 0 && rozdielB < rozdielA || rozdielA < 0 && rozdielB >= 0) {
-        printf("Vyhral hrac B, skore bolo - %d : %d (B:A)\n", skoreB, skoreA);
+        sprintf(buffer,"Vyhral hrac B, skore bolo - %d : %d (B:A)\n", skoreB, skoreA);
         *(dataK.harabin) = 'B';
-        msg1 = "Prehral si\n";
-        msg2 = "Vyhral si\n";
     } else if (rozdielA == rozdielB && rozdielA >= 0) {
-        printf("Remiza, skore bolo - %d : %d (A:B)\n", skoreA, skoreB);
+        sprintf(buffer,"Remiza, skore bolo - %d : %d (A:B)\n", skoreA, skoreB);
         *(dataK.harabin) = 'R';
-        msg1 = "Remiza\n";
-        msg2 = "Remiza\n";
     } else {
-        printf("Nikto nevyhral, skore bolo - %d : %d (A:B)\n", skoreA, skoreB);
+        sprintf(buffer,"Nikto nevyhral, skore bolo - %d : %d (A:B)\n", skoreA, skoreB);
         *(dataK.harabin) = 'N';
-        msg1 = "Nikto nevyhral\n";
-        msg2 = "Nikto nevyhral\n";
     }
 
+    printf("%s", buffer);
+    writeMsg(dataK, "buffer");
+
     int pokracuj = 0;
-// NEMENIT PORADIE
-//    writeCharMsg(dataK, msg1, dataK.cl_1_sockfd);
-//    readMsg(dataK, dataK.cl_1_sockfd);
-//
-//    writeCharMsg(dataK, msg2, dataK.cl_2_sockfd);
-//    readMsg(dataK, dataK.cl_2_sockfd);
-//
-//    writeCharMsg(dataK, dataH2.karty, dataK.cl_1_sockfd);
-//    readMsg(dataK, dataK.cl_1_sockfd);
-//
-//    if (dataK.buffer[0] == 'y') {
-//        pokracuj++;
-//    }
-//    writeCharMsg(dataK, dataH1.karty, dataK.cl_2_sockfd);
-//    readMsg(dataK, dataK.cl_2_sockfd);
+    char volba = ' ';
+
+    restart();
+    while (volba != 'y' && volba != 'n') {
+        printf("Vasa volba: ");
+        bzero(buffer, 256);
+        fgets(buffer, 255, stdin);
+        volba = buffer[0];
+    }
+
+    writeMsg(dataK, "ides");
+    readMsg(dataK);
 
     if (dataK.buffer[0] == 'y') {
         pokracuj++;
     }
 
-
     return pokracuj;
 }
 
-int writeCharMsg(DATA_K dataK, char *msg) {
-    int n = write(*(dataK.readSockfd), msg, strlen(msg) + 1);
+int writeMsg(DATA_K dataK, char *msg) {
+    int n = write(dataK.cl_1_sockfd, msg, strlen(msg) + 1);
     if (n < 0) {
         perror("Error writing to socket");
         return 5;
     } else {
-        printf("[INFO] - Succesfully wrote to socket %d\n", *(dataK.readSockfd));
+        printf("[INFO] - Succesfully wrote to socket %d\n", dataK.cl_1_sockfd);
         return 0;
     }
 }
@@ -420,34 +326,25 @@ int readMsg(DATA_K dataK) {
     pthread_mutex_lock(dataK.mutex);
     while (*(dataK.readFlag) == 0) {
         pthread_cond_wait(dataK.canRead, dataK.mutex);
-//        printf("1");
     }
     printf("[INFO] - Som precital\n");
     *(dataK.readFlag) = 0;
     pthread_mutex_unlock(dataK.mutex);
-//    bzero(dataK.buffer, 256);
-//    int n = read(*(dataK.readSockfd), dataK.buffer, 255);
-//    if (n < 0) {
-//        perror("Error reading from socket");
-//        return 4;
-//    } else {
-//        printf("[INFO] - Succesfully read from socket %d\n", *(dataK.readSockfd));
-//        return 0;
-//    }
 }
 
 void *reading(void *args) {
     printf("reading...\n");
     DATA_K *dataK = (DATA_K *) args;
     char buffer[256];
-//    int sockfd = *(dataK->readSockfd);
-    printf("socket = %d\n", *(dataK->readSockfd));
+    int sockfd = dataK->cl_1_sockfd;
+//    printf("socket = %d\n", sockfd);
     int n;
+
     do {
-        bzero(buffer, 256*sizeof(char));
+        bzero(buffer, 256 * sizeof(char));
+        n = read(sockfd, buffer, 256);
         pthread_mutex_lock(dataK->mutex);
-        n = read(*(dataK->readSockfd), buffer, 256);
-        memcpy(dataK->buffer,buffer,256);
+        memcpy(dataK->buffer, buffer, 256);
         *(dataK->readFlag) = 1;
         pthread_mutex_unlock(dataK->mutex);
         pthread_cond_signal(dataK->canRead);
@@ -455,9 +352,11 @@ void *reading(void *args) {
             perror("Error reading from socket");
             break;
         } else {
-            printf("[INFO] - Succesfully read from socket\n");
+            printf("[INFO] - Succesfully read from socket n.%d\n", sockfd);
+            printf("[INFO] - n = %d, buffer = %s\n", n, dataK->buffer);
         }
     } while (n > 0);
+
     printf("[INFO] - Koniec citania\n");
     return 0;
 }
@@ -510,14 +409,14 @@ int main(int argc, char *argv[]) {
     }
 
     cli_2_len = sizeof(cli_2_addr);
-
-    cl_2_sockfd = accept(sockfd, (struct sockaddr *) &cli_2_addr, &cli_2_len);
-    if (cl_2_sockfd < 0) {
-        perror("ERROR on accept [cl_2]");
-        return 3;
-    } else {
-        printf("[INFO] - Succesfully accepted connection [cl_2]\n");
-    }
+//
+//    cl_2_sockfd = accept(sockfd, (struct sockaddr *) &cli_2_addr, &cli_2_len);
+//    if (cl_2_sockfd < 0) {
+//        perror("ERROR on accept [cl_2]");
+//        return 3;
+//    } else {
+//        printf("[INFO] - Succesfully accepted connection [cl_2]\n");
+//    }
 
 //--------------------------- uspesne prijima spojenia ------------------------------------
 // krupier
@@ -544,8 +443,8 @@ int main(int argc, char *argv[]) {
     int lockB = 0;
 
 // naplnenie struktur
-    DATA_H dataH1 = {kartyA, &pocetKarietA, &skoreA, &lockA, cl_1_sockfd};
-    DATA_H dataH2 = {kartyB, &pocetKarietB, &skoreB, &lockB, cl_2_sockfd};
+    DATA_H dataH1 = {kartyA, &pocetKarietA, &skoreA, &lockA, cl_2_sockfd};
+    DATA_H dataH2 = {kartyB, &pocetKarietB, &skoreB, &lockB, cl_1_sockfd};
     HISTORY history = {historia, &pocetHier};
     printf("[INFO] - Data initialized\n");
 
@@ -567,17 +466,13 @@ int main(int argc, char *argv[]) {
 
     pthread_join(thread_read, NULL);
 
-
-//    start(dataK, dataH1, dataH2);
-//    hra(dataK, dataH1, dataH2, history);
-
 //--------------------------- ukoncenie prijimania spojeni ------------------------------------
 
     pthread_mutex_destroy(&mutex);
     pthread_cond_destroy(&canRead);
 
     close(cl_1_sockfd);
-    close(cl_2_sockfd);
+//    close(cl_2_sockfd);
     close(sockfd);
 
     return 0;

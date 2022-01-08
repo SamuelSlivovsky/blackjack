@@ -57,8 +57,9 @@ void vypocitajSkore(DATA_H *data) {
             case '9':
                 karta = 9;
                 break;
-            default:
+            case '0':
                 karta = 10;
+            default:
                 break;
         }
 
@@ -104,14 +105,16 @@ int hra(DATA_H *dataH) {
         dataH->karty[i] = 'X';
     }
     dataH->skore = 0;
-    dataH->pocetKariet = 0;
+    *(dataH->pocetKariet) = 2;
 
     int zaciatok = 1;
-    int pocTahov = 0;
+    int pocTahov = 2;
     char buffer[256];
 
-    while (pocTahov <= 5) {
+    while (pocTahov < 5) {
+        printf("pocet tahov %d\n", pocTahov);
         pocTahov++;
+        printf("pocet tahov %d\n", pocTahov);
 
         // zaciatok hry, menu
         if (zaciatok == 1) {
@@ -128,20 +131,20 @@ int hra(DATA_H *dataH) {
 //                    printf("\n%s\n\n", buffer);
                 }
 
-                printf("idem pisat\n");
+                printf("idem pisat volbu\n");
                 writeMsg(*dataH, buffer);
-                printf("napisal som\n");
+                printf("napisal som volbu\n");
 
+                printf("idem citat odpoved\n");
                 readMsg(*dataH);
-                printf("read out\n");
+                printf("precital som odpoved\n");
 
                 if (volba == '1') {
-                    // hrat
-//                    writeMsg(*dataH, "k"); // k ako karty
-//                    readMsg(*dataH);
+                    // hrat, prisli mi karty
                     dataH->karty[0] = dataH->buffer[0];
                     dataH->karty[1] = dataH->buffer[1];
-                    pocTahov = 2;
+//                    pocTahov = 2;
+                    printf("zobral som si karty %s\n", dataH->buffer);
                     break;
                 } else if (volba == '2') {
                     // historia
@@ -156,37 +159,51 @@ int hra(DATA_H *dataH) {
         }
 
         if (zaciatok == -1) {
-            printf("zaciatok 2 = %d\n", zaciatok);
+            printf("obaja hraci chceli skoncit\n");
             break;
         }
 
         printf("som za zaciatkom\n");
+        readMsg(*dataH); // cakam kym budem na rade
 
         // citanie vstupu od hraca
         bzero(buffer, 256);
         int volba = 0;
+        hracTah();
         while (volba != 1 && volba != 2 && volba != 3) {
-            hracTah();
             printf("Vasa volba: ");
             bzero(buffer, 256);
             fgets(buffer, 255, stdin);
             volba = atoi(&(buffer[0]));
-            printf("\n%s\n\n", buffer);
+            printf("volba = %d\n", volba);
         }
+
+        // poslem svoju volbu na server
         writeMsg(*dataH, buffer);
 
-        // citanie dat od servera
-
-        // spracovanie volby a dat od servera
+        // spracovanie volby
         if (volba == 1) {
-            readMsg(*dataH);
             // tahaj kartu
+            readMsg(*dataH);
             int poc = *(dataH->pocetKariet);
             dataH->karty[poc] = dataH->buffer[0];
             (*(dataH->pocetKariet))++;
             printf("Potiahol si %c\n", dataH->buffer[0]);
             ukazKarty(dataH->karty);
-            vypisKarty(dataH);
+            printf("\n");
+
+            for (int i = 0; i < 5; ++i) {
+                if (dataH->karty[i] == '0') {
+                    printf("10 ");
+                } else {
+                    printf("%c ", dataH->karty[i]);
+                }
+            }
+            printf("\n");
+
+//            vypocitajSkore(dataH);
+//            printf(", skore: %d\n", *(dataH->skore));
+
         } else if (volba == 2) {
             pocTahov = 5;
         } else {
@@ -200,6 +217,7 @@ int hra(DATA_H *dataH) {
     }
 
     // vysledky
+    printf("vysledky\n");
     readMsg(*dataH);
     printf("\n%s\n\n", buffer);
 
@@ -226,7 +244,6 @@ int hra(DATA_H *dataH) {
 int writeMsg(DATA_H dataH, char *msg) {
     printf("writing...\n");
     int n = write(dataH.sockfd, msg, strlen(msg) + 1);
-     n = write(dataH.sockfd, msg, strlen(msg) + 1);
 
     if (n < 0) {
         perror("Error writing to socket");
@@ -240,8 +257,9 @@ int writeMsg(DATA_H dataH, char *msg) {
 int readMsg(DATA_H dataH) {
     pthread_mutex_lock(dataH.mutex);
     while (*(dataH.readFlag) == 0) {
+        printf("1\n");
         pthread_cond_wait(dataH.canRead, dataH.mutex);
-//        printf("1");
+        printf("2\n");
     }
     printf("[INFO] - Som precital\n");
     *(dataH.readFlag) = 0;
@@ -254,6 +272,7 @@ void *reading(void *args) {
     char buffer[256];
     int sockfd = dataH->sockfd;
     int n;
+
     do {
         bzero(buffer, 256*sizeof(char));
         n = read(sockfd, buffer, 256);
@@ -270,6 +289,7 @@ void *reading(void *args) {
             printf("n = %d, buffer = %s\n", n, dataH->buffer);
         }
     } while (n > 0);
+
     printf("[INFO] - Koniec citania\n");
     return 0;
 }
