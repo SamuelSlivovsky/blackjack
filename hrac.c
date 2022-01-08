@@ -87,7 +87,11 @@ int start(DATA_H *dataH) {
 void vypisKarty(DATA_H *data) {
     printf("Vase karty: ");
     for (int i = 0; i < 5; ++i) {
-        printf("%c ", data->karty[i]);
+        if (data->karty[i] == '0') {
+            printf("10 ");
+        } else {
+            printf("%c ", data->karty[i]);
+        }
     }
     vypocitajSkore(data);
     printf(", skore: %d\n", *(data->skore));
@@ -124,6 +128,9 @@ int hra(DATA_H *dataH) {
 
         // cakam kym budem na tahu
         while (dataH->buffer[0] != 'i') {
+//            if (readMsg(*dataH) == 0) {
+//                return 0;
+//            }
             readMsg(*dataH);
         }
 

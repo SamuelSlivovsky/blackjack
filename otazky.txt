@@ -9,7 +9,8 @@
 - ako vypisat pole charov ktore sa dynamicky zvacsuje
 
 - vlakna
-- debug v vs code (parametre)
-- historia IDE
-- vie klient zisti, ze sa server vypol?
+    - mate to zle
+- debug vo VS Code (parametre)
+- vie klient zistit, ze sa server vypol?
+    - read by mal vratit 0
 
