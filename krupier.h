@@ -15,10 +15,11 @@
 
 typedef struct DataKrupier {
     char *balicek;
-    int *aktualnaKarta;
+    int *aktualnaKarta, *readFlag;
     char *harabin;
     char *buffer;
     int sockfd, cl_1_sockfd, cl_2_sockfd;
+    int *readSockfd;
     pthread_mutex_t *mutex;
     pthread_cond_t *canRead;
 } DATA_K;
@@ -42,10 +43,11 @@ void dajKartu(DATA_K datak, DATA_H dataH);
 void vylozitKarty(DATA_H dataH);
 void tah(DATA_H dataH, DATA_K dataK,int lock);
 int porovnaj(DATA_H dataH1, DATA_H dataH2, DATA_K dataK);
-void hra(DATA_K dataK, DATA_H dataH1, DATA_H dataH2, HISTORY history);
+int hra(DATA_K dataK, DATA_H dataH1, DATA_H dataH2, HISTORY history);
 int start(DATA_K dataK, DATA_H dataH1, DATA_H dataH2);
 void inicializacia(DATA_K dataK, DATA_H dataH1, DATA_H dataH2);
-int writeCharMsg(DATA_K dataK, char *msg, int client);
-int readMsg(DATA_K dataK, int client);
+int writeCharMsg(DATA_K dataK, char *msg);
+int readMsg(DATA_K dataK);
+void *reading(void *args);
 
 #endif //POSSEMESTRALKA_KRUPIER_H

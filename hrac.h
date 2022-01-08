@@ -14,13 +14,10 @@
 #ifndef POSSEMESTRALKA_HRAC_H
 #define POSSEMESTRALKA_HRAC_H
 
-//#include "krupier.h"
-
 typedef struct DataHrac {
-
     char *karty;
     int *pocetKariet;
-    int *skore;
+    int *skore, *readFlag;
     char *buffer;
     int sockfd;
     pthread_mutex_t *mutex;
@@ -36,5 +33,6 @@ void vypisKarty(DATA_H *data);
 
 int writeMsg(DATA_H dataH, char *msg);
 int readMsg(DATA_H dataH);
+void* reading(void* args);
 
 #endif //POSSEMESTRALKA_HRAC_H
