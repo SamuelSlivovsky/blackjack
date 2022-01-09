@@ -37,16 +37,17 @@ typedef struct DataHrac {
     int clsockfd;
 } DATA_H;
 
+void inicializacia(DATA_K dataK, DATA_H dataH1, DATA_H dataH2);
+int hra(DATA_K dataK, DATA_H dataH1, DATA_H dataH2, HISTORY history);
 void premiesajBalicek(char *balicek);
 void rozdajKarty(DATA_K dataK, DATA_H dataH1, DATA_H dataH2);
 void dajKartu(DATA_K datak, DATA_H dataH);
-void vylozitKarty(DATA_H dataH);
 void tah(DATA_H dataH, DATA_K dataK);
 int porovnaj(DATA_H dataH1, DATA_H dataH2, DATA_K dataK);
+void vypocitajSkore(DATA_H *data);
+void ukazKarty(DATA_H data);
+void vylozitKarty(DATA_H dataH);
 
-int hra(DATA_K dataK, DATA_H dataH1, DATA_H dataH2, HISTORY history);
-int start(DATA_K dataK, DATA_H dataH1, DATA_H dataH2);
-void inicializacia(DATA_K dataK, DATA_H dataH1, DATA_H dataH2);
 int writeMsg(DATA_K dataK, char *msg);
 void readMsg(DATA_K dataK);
 void *reading(void *args);
