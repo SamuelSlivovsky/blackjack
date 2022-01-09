@@ -1,16 +1,17 @@
 #include "krupier.h"
 
+
 int hra(DATA_K dataK, DATA_H dataH1, DATA_H dataH2, HISTORY history) {
 
     premiesajBalicek(dataK.balicek);
 
     char volba = ' ';
-    int hra = 0;
+    int hraj = 0;
     int koniec = 0;
     int pocitadlo = 0;
     char buffer[256];
 
-    while (hra != 2) {
+    while (hraj != 2) {
         pocitadlo++;
 
         if (pocitadlo % 2 != 0) {
@@ -31,7 +32,7 @@ int hra(DATA_K dataK, DATA_H dataH1, DATA_H dataH2, HISTORY history) {
 
         switch (volba) {
             case '1':
-                hra++;
+                hraj++;
                 break;
             case '2':
                 if (pocitadlo % 2 == 0)
@@ -77,10 +78,12 @@ int hra(DATA_K dataK, DATA_H dataH1, DATA_H dataH2, HISTORY history) {
     history.historia = novePole;
 
     printf("historia po: %s\n", history.historia);
-
+    printf("%d\n",pokracuj);
     if (pokracuj == 2) {
+        printf("inicializacia \n");
         inicializacia(dataK, dataH1, dataH2);
-//        hra(dataK, dataH1, dataH2, history);
+        printf("po ini \n");
+        hra(dataK,dataH1,dataH2,history);
     }
     return 0;
 }
@@ -288,7 +291,7 @@ int porovnaj(DATA_H dataH1, DATA_H dataH2, DATA_K dataK) {
     }
 
     printf("%s", buffer);
-    writeMsg(dataK, "buffer");
+    writeMsg(dataK, buffer);
 
     int pokracuj = 0;
     char volba = ' ';
@@ -300,7 +303,11 @@ int porovnaj(DATA_H dataH1, DATA_H dataH2, DATA_K dataK) {
         fgets(buffer, 255, stdin);
         volba = buffer[0];
     }
-
+    printf("Volba je");
+    if ( volba == 'y') {
+        printf("xd");
+        pokracuj++;
+    }
     writeMsg(dataK, "ides");
     readMsg(dataK);
 
