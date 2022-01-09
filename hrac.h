@@ -32,7 +32,7 @@ int start(DATA_H *data);
 void vypisKarty(DATA_H *data);
 
 int writeMsg(DATA_H dataH, char *msg);
-int readMsg(DATA_H dataH);
+void readMsg(DATA_H dataH);
 void* reading(void* args);
 
 #endif //POSSEMESTRALKA_HRAC_H

@@ -26,6 +26,7 @@ int hra(DATA_K dataK, DATA_H dataH1, DATA_H dataH2, HISTORY history) {
             }
         } else {
             // HRAC 2
+            writeMsg(dataK, "ides");
             readMsg(dataK);
             volba = dataK.buffer[0];
         }
@@ -52,9 +53,12 @@ int hra(DATA_K dataK, DATA_H dataH1, DATA_H dataH2, HISTORY history) {
     rozdajKarty(dataK, dataH1, dataH2);
 
     for (int i = 0; i < 3; ++i) {
-        tah(dataH1, dataK, *(dataH2.lock));
-        writeMsg(dataK, "ides");
-        tah(dataH2, dataK, *(dataH1.lock));
+        if (*(dataH1.lock) != 1)
+        tah(dataH1, dataK);
+        if (*(dataH2.lock) != 1) {
+            writeMsg(dataK, "ides");
+            tah(dataH2, dataK);
+        }
     }
 
     printf("Karty hraca 1: \n");
@@ -75,16 +79,19 @@ int hra(DATA_K dataK, DATA_H dataH1, DATA_H dataH2, HISTORY history) {
     for (int i = 0; i < *(history.pocetHier); ++i) {
         novePole[i] = history.historia[i];
     }
+    novePole[*(history.pocetHier)] = '\0';
     history.historia = novePole;
 
     printf("historia po: %s\n", history.historia);
-    printf("%d\n",pokracuj);
+    printf("pokracuj = %d\n",pokracuj);
     if (pokracuj == 2) {
         printf("inicializacia \n");
         inicializacia(dataK, dataH1, dataH2);
         printf("po ini \n");
         hra(dataK,dataH1,dataH2,history);
     }
+    printf("im out\n");
+    writeMsg(dataK, "q");
     return 0;
 }
 
@@ -114,7 +121,7 @@ void inicializacia(DATA_K dataK, DATA_H dataH1, DATA_H dataH2) {
     dataH2.lock = 0;
 }
 
-void tah(DATA_H dataH, DATA_K dataK, int lock) {
+void tah(DATA_H dataH, DATA_K dataK) {
     char volba = ' ';
     char buffer[256];
     if (dataH.clsockfd == dataK.cl_2_sockfd) {
@@ -274,7 +281,9 @@ int porovnaj(DATA_H dataH1, DATA_H dataH2, DATA_K dataK) {
 
     int rozdielA = 21 - skoreA;
     int rozdielB = 21 - skoreB;
-    char buffer[256];
+    char buffer[250];
+    char *msg;
+    bzero(buffer, 250 * sizeof(char));
 
     if (rozdielA >= 0 && rozdielA < rozdielB || rozdielB < 0 && rozdielA >= 0) {
         sprintf(buffer, "Vyhral hrac A, skore bolo - %d : %d (A:B)\n", skoreA, skoreB);
@@ -290,8 +299,9 @@ int porovnaj(DATA_H dataH1, DATA_H dataH2, DATA_K dataK) {
         *(dataK.harabin) = 'N';
     }
 
+    msg = buffer;
     printf("%s", buffer);
-    writeMsg(dataK, buffer);
+    writeMsg(dataK, "nic");
 
     int pokracuj = 0;
     char volba = ' ';
@@ -299,22 +309,25 @@ int porovnaj(DATA_H dataH1, DATA_H dataH2, DATA_K dataK) {
     restart();
     while (volba != 'y' && volba != 'n') {
         printf("Vasa volba: ");
-        bzero(buffer, 256);
-        fgets(buffer, 255, stdin);
+        bzero(buffer, 250);
+        fgets(buffer, 249, stdin);
         volba = buffer[0];
     }
-    printf("Volba je");
+    printf("Volba je\n");
     if ( volba == 'y') {
-        printf("xd");
+        printf("xd\n");
         pokracuj++;
     }
-    writeMsg(dataK, "ides");
+//    writeMsg(dataK, "ides");
+//    writeMsg(dataK, "msg");
+    writeMsg(dataK, msg);
     readMsg(dataK);
 
     if (dataK.buffer[0] == 'y') {
         pokracuj++;
     }
-
+    writeMsg(dataK, &volba);
+    printf("pokracuj = %d\n", pokracuj);
     return pokracuj;
 }
 
@@ -329,7 +342,8 @@ int writeMsg(DATA_K dataK, char *msg) {
     }
 }
 
-int readMsg(DATA_K dataK) {
+void readMsg(DATA_K dataK) {
+    cakaj();
     pthread_mutex_lock(dataK.mutex);
     while (*(dataK.readFlag) == 0) {
         pthread_cond_wait(dataK.canRead, dataK.mutex);
@@ -340,7 +354,7 @@ int readMsg(DATA_K dataK) {
 }
 
 void *reading(void *args) {
-    printf("reading...\n");
+//    printf("reading...\n");
     DATA_K *dataK = (DATA_K *) args;
     char buffer[256];
     int sockfd = dataK->cl_1_sockfd;
@@ -360,8 +374,10 @@ void *reading(void *args) {
             break;
         } else {
             printf("[INFO] - Succesfully read from socket n.%d\n", sockfd);
-            printf("[INFO] - n = %d, buffer = %s\n", n, dataK->buffer);
+            printf("[INFO] - buffer = %s\n", dataK->buffer);
         }
+        if (buffer[0] == 'q')
+            break;
     } while (n > 0);
 
     printf("[INFO] - Koniec citania\n");

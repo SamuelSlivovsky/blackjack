@@ -8,4 +8,5 @@ void menu();
 void hracTah();
 void vykresliKartu(char karta);
 void restart();
+void cakaj();
 #endif //POSSEMESTRALKA_VYPISY_H

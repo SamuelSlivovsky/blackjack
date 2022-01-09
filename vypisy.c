@@ -34,6 +34,12 @@ void hracTah() {
     printf("\n");
 }
 
+void cakaj() {
+    printf("\n");
+    printf("Prosim cakajte...\n");
+    printf("\n");
+}
+
 void vykresliKartu(char karta) {
 
     switch (karta) {
