@@ -32,14 +32,11 @@ void rozhodniHodnotuEsa(DATA_H *data, int pozicia) {
     } else if (chr == 'd') {
         data->karty[pozicia] = '0';
     }
-
-
-
 }
 
 void vypocitajSkore(DATA_H *data) {
     int sum = 0;
-    printf("%s %d\n",data->karty,*(data->pocetKariet));
+    printf("%s %d\n", data->karty, *(data->pocetKariet));
     for (int i = 0; i < *(data->pocetKariet); ++i) {
         int karta = 0;
         char aktKarta = (data->karty[i]);
@@ -80,7 +77,7 @@ void vypocitajSkore(DATA_H *data) {
                 break;
         }
         sum += karta;
-        printf("%d\n",sum);
+        printf("%d\n", sum);
     }
     data->skore = &sum;
 }
@@ -91,12 +88,14 @@ int hra(DATA_H *dataH) {
     for (int i = 0; i < 5; ++i) {
         dataH->karty[i] = '_';
     }
+//    dataH->karty[4] = '\0';
     dataH->skore = 0;
     *(dataH->pocetKariet) = 2;
 
     int zaciatok = 1;
     int pocTahov = 2;
     char buffer[256];
+    bzero(buffer, 256);
 
     while (pocTahov < 5) {
         pocTahov++;
@@ -180,23 +179,9 @@ int hra(DATA_H *dataH) {
             ukazKarty(dataH);
             printf("\n");
 
-            for (int i = 0; i < 5; ++i) {
-                if (dataH->karty[i] == '0') {
-                    printf("10 ");
-                } else {
-                    printf("%c ", dataH->karty[i]);
-                }
-            }
-            printf("\n");
-
-//            vypocitajSkore(dataH);
-//            printf(", skore: %d\n", *(dataH->skore));
-
-        } else {
-            // do nothing
+            writeMsg(*dataH, dataH->karty);
         }
 
-        writeMsg(*dataH, dataH->karty);
     }
 
     if (zaciatok == -1) {
@@ -248,16 +233,13 @@ void readMsg(DATA_H dataH) {
     cakaj();
     pthread_mutex_lock(dataH.mutex);
     while (*(dataH.readFlag) == 0) {
-//        printf("1\n");
         pthread_cond_wait(dataH.canRead, dataH.mutex);
-//        printf("2\n");
     }
     *(dataH.readFlag) = 0;
     pthread_mutex_unlock(dataH.mutex);
 }
 
 void *reading(void *args) {
-//    printf("reading...\n");
     DATA_H *dataH = (DATA_H *) args;
     char buffer[256];
     int sockfd = dataH->sockfd;

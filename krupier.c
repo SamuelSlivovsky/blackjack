@@ -30,14 +30,10 @@ int hra(DATA_K dataK, DATA_H dataH1, DATA_H dataH2, HISTORY history) {
             volba = dataK.buffer[0];
         }
 
-        switch (volba) {
-            case '1':
-                hraj++;
-                break;
-            default:
-                koniec++;
-                break;
-        }
+        if (volba == '1')
+            hraj++;
+        else
+            koniec++;
 
         if (koniec != 0) {
             writeMsg(dataK, "q");
@@ -51,9 +47,6 @@ int hra(DATA_K dataK, DATA_H dataH1, DATA_H dataH2, HISTORY history) {
         if (*(dataH1.lock) != 1)
             tah(dataH1, dataK);
         if (*(dataH2.lock) != 1) {
-//            while (strcmp("idem", dataK.buffer) != 0) {
-//                writeMsg(dataK, "ides");
-//            }
             writeMsg(dataK, "ides");
             tah(dataH2, dataK);
         }
@@ -64,7 +57,7 @@ int hra(DATA_K dataK, DATA_H dataH1, DATA_H dataH2, HISTORY history) {
     printf("Karty hraca 2: \n");
     vylozitKarty(dataH2);
 
-    writeMsg(dataK,"cakaj");
+    writeMsg(dataK, "cakaj");
     int pokracuj = porovnaj(dataH1, dataH2, dataK);
 
     //naplnenie historie
@@ -96,6 +89,7 @@ void inicializacia(DATA_K dataK, DATA_H dataH1, DATA_H dataH2) {
     for (int i = 0; i < 52; ++i) {
         dataK.balicek[i] = ' ';
     }
+    dataK.balicek[51] = '\0';
 
     *(dataK.aktualnaKarta) = 4;
     *(dataK.harabin) = ' ';
@@ -104,6 +98,7 @@ void inicializacia(DATA_K dataK, DATA_H dataH1, DATA_H dataH2) {
     for (int i = 0; i < 5; ++i) {
         dataH1.karty[i] = '_';
     }
+    dataH1.karty[4] = '\0';
     *(dataH1.pocetKariet) = 2;
     dataH1.skore = 0;
     dataH1.lock = 0;
@@ -112,6 +107,7 @@ void inicializacia(DATA_K dataK, DATA_H dataH1, DATA_H dataH2) {
     for (int i = 0; i < 5; ++i) {
         dataH2.karty[i] = '_';
     }
+    dataH2.karty[4] = '\0';
     *(dataH2.pocetKariet) = 2;
     dataH2.skore = 0;
     dataH2.lock = 0;
@@ -133,23 +129,16 @@ void tah(DATA_H dataH, DATA_K dataK) {
         volba = dataK.buffer[0];
     }
 
-    switch (volba) {
-        case '1':
-            dajKartu(dataK, dataH);
-            break;
-        default:
-            break;
-    }
+    if (volba == '1') {
+        dajKartu(dataK, dataH);
+        if (dataH.clsockfd == dataK.cl_1_sockfd) {
 
-    if (dataH.clsockfd != dataK.cl_2_sockfd) {
-
-        readMsg(dataK);
-        for (int i = 0; i < 5; ++i) {
-            dataH.karty[i] = dataK.buffer[i];
-            printf("%c\n",dataH.karty[i]);
+            readMsg(dataK);
+            for (int i = 0; i < 5; ++i) {
+                dataH.karty[i] = dataK.buffer[i];
+                printf("%c\n", dataH.karty[i]);
+            }
         }
-
-
     }
 }
 
@@ -221,10 +210,29 @@ void dajKartu(DATA_K dataK, DATA_H dataH) {
     dataH.karty[poc] = karta;
     (*(dataK.aktualnaKarta))++;
     (*(dataH.pocetKariet))++;
+
     if (dataH.clsockfd == dataK.cl_1_sockfd)
         writeMsg(dataK, &karta);
     else {
         ukazKarty(dataH);
+    }
+}
+
+void rozhodniHodnotuEsa(DATA_H *data, int pozicia) {
+    char chr = ' ';
+
+    while (chr != 'j' && chr != 'd') {
+        printf("\n");
+        printf("Dostali ste Eso, aku chcete aby malo hodnotu?\n");
+        printf(" (j - 1, d - 10)\n");
+        printf("vasa volba: ");
+        scanf(" %c", &chr);
+        printf("\n");
+    }
+    if (chr == 'j') {
+        data->karty[pozicia] = '1';
+    } else if (chr == 'd') {
+        data->karty[pozicia] = '0';
     }
 }
 

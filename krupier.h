@@ -42,6 +42,7 @@ int hra(DATA_K dataK, DATA_H dataH1, DATA_H dataH2, HISTORY history);
 void premiesajBalicek(char *balicek);
 void rozdajKarty(DATA_K dataK, DATA_H dataH1, DATA_H dataH2);
 void dajKartu(DATA_K datak, DATA_H dataH);
+void rozhodniHodnotuEsa(DATA_H *data, int pozicia);
 void tah(DATA_H dataH, DATA_K dataK);
 int porovnaj(DATA_H dataH1, DATA_H dataH2, DATA_K dataK);
 void vypocitajSkore(DATA_H *data);
