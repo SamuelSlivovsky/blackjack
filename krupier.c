@@ -46,16 +46,21 @@ int hra(DATA_K dataK, DATA_H dataH1, DATA_H dataH2, HISTORY history) {
                 break;
         }
 
-        if (koniec == 2)
+        if (koniec != 0) {
+            writeMsg(dataK, "q");
             return 0;
+        }
     }
 
     rozdajKarty(dataK, dataH1, dataH2);
 
     for (int i = 0; i < 3; ++i) {
         if (*(dataH1.lock) != 1)
-        tah(dataH1, dataK);
+            tah(dataH1, dataK);
         if (*(dataH2.lock) != 1) {
+//            while (strcmp("idem", dataK.buffer) != 0) {
+//                writeMsg(dataK, "ides");
+//            }
             writeMsg(dataK, "ides");
             tah(dataH2, dataK);
         }
@@ -83,12 +88,12 @@ int hra(DATA_K dataK, DATA_H dataH1, DATA_H dataH2, HISTORY history) {
     history.historia = novePole;
 
     printf("historia po: %s\n", history.historia);
-    printf("pokracuj = %d\n",pokracuj);
+    printf("pokracuj = %d\n", pokracuj);
     if (pokracuj == 2) {
         printf("inicializacia \n");
         inicializacia(dataK, dataH1, dataH2);
         printf("po ini \n");
-        hra(dataK,dataH1,dataH2,history);
+        hra(dataK, dataH1, dataH2, history);
     }
     printf("im out\n");
     writeMsg(dataK, "q");
@@ -289,13 +294,13 @@ int porovnaj(DATA_H dataH1, DATA_H dataH2, DATA_K dataK) {
         sprintf(buffer, "Vyhral hrac A, skore bolo - %d : %d (A:B)\n", skoreA, skoreB);
         *(dataK.harabin) = 'A';
     } else if (rozdielB >= 0 && rozdielB < rozdielA || rozdielA < 0 && rozdielB >= 0) {
-        sprintf(buffer,"Vyhral hrac B, skore bolo - %d : %d (B:A)\n", skoreB, skoreA);
+        sprintf(buffer, "Vyhral hrac B, skore bolo - %d : %d (B:A)\n", skoreB, skoreA);
         *(dataK.harabin) = 'B';
     } else if (rozdielA == rozdielB && rozdielA >= 0) {
-        sprintf(buffer,"Remiza, skore bolo - %d : %d (A:B)\n", skoreA, skoreB);
+        sprintf(buffer, "Remiza, skore bolo - %d : %d (A:B)\n", skoreA, skoreB);
         *(dataK.harabin) = 'R';
     } else {
-        sprintf(buffer,"Nikto nevyhral, skore bolo - %d : %d (A:B)\n", skoreA, skoreB);
+        sprintf(buffer, "Nikto nevyhral, skore bolo - %d : %d (A:B)\n", skoreA, skoreB);
         *(dataK.harabin) = 'N';
     }
 
@@ -314,7 +319,7 @@ int porovnaj(DATA_H dataH1, DATA_H dataH2, DATA_K dataK) {
         volba = buffer[0];
     }
     printf("Volba je\n");
-    if ( volba == 'y') {
+    if (volba == 'y') {
         printf("xd\n");
         pokracuj++;
     }

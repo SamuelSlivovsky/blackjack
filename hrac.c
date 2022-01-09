@@ -120,6 +120,8 @@ int hra(DATA_H *dataH) {
         if (zaciatok == 1) {
             zaciatok = 0;
             readMsg(*dataH);
+            if (dataH->buffer[0] == 'q')
+                return 0;
             char volba = '0';
             while (1) {
                 while (volba != '1' && volba != '2' && volba != '3') {
@@ -129,7 +131,6 @@ int hra(DATA_H *dataH) {
                     fgets(buffer, 255, stdin);
                     volba = buffer[0];
                     printf("volba = %c\n", volba);
-//                    printf("\n%s\n\n", buffer);
                 }
 
                 printf("idem pisat volbu\n");
@@ -149,6 +150,7 @@ int hra(DATA_H *dataH) {
                     break;
                 } else if (volba == '2') {
                     // historia
+//                    readMsg(*dataH);
                     printf("\n%s\n\n", buffer);
                 } else {
                     // koniec
@@ -168,6 +170,7 @@ int hra(DATA_H *dataH) {
 
         printf("som za zaciatkom\n");
         readMsg(*dataH); // cakam kym budem na rade
+//        writeMsg(*dataH, "idem");
 
         // citanie vstupu od hraca
         bzero(buffer, 256);
