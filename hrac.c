@@ -205,7 +205,7 @@ int hra(DATA_H *dataH) {
 
     writeMsg(*dataH, " ");
     readMsg(*dataH);
-    printf("Vysledok:\n %s\n", dataH->buffer);
+    printf("Vysledok:\n%s\n", dataH->buffer);
     // ci chce hrat znova
     char volba = ' ';
     char volba2 = ' ';
