@@ -7,7 +7,7 @@ void ukazKarty(DATA_H *data) {
     printf("Vase karty: ");
     for (int i = 0; i < 5; ++i) {
         if (data->karty[i] == '0') {
-            printf("10 ");
+            printf("10");
         } else {
             printf("%c ", data->karty[i]);
         }
@@ -16,32 +16,36 @@ void ukazKarty(DATA_H *data) {
     printf(", sucet: %d\n", *(data->skore));
 }
 
-int rozhodniHodnotuEsa(DATA_H *data) {
+void rozhodniHodnotuEsa(DATA_H *data, int pozicia) {
     char chr = ' ';
-    while (chr != 'y' || chr != 'n') {
+
+    while (chr != 'j' && chr != 'd') {
         printf("\n");
         printf("Dostali ste Eso, aku chcete aby malo hodnotu?\n");
-        printf(" (y - 1, n - 10)\n");
+        printf(" (j - 1, d - 10)\n");
         printf("vasa volba: ");
         scanf(" %c", &chr);
         printf("\n");
     }
-    if (chr == 'y') {
-        data->karty[*(data->pocetKariet)] = '1';
-    } else if (chr == 'n') {
-        data->karty[*(data->pocetKariet)] = '0';
+    if (chr == 'j') {
+        data->karty[pozicia] = '1';
+    } else if (chr == 'd') {
+        data->karty[pozicia] = '0';
     }
-    return 0;
+
+
+
 }
 
 void vypocitajSkore(DATA_H *data) {
     int sum = 0;
+    printf("%s %d\n",data->karty,*(data->pocetKariet));
     for (int i = 0; i < *(data->pocetKariet); ++i) {
         int karta = 0;
         char aktKarta = (data->karty[i]);
 
         switch (aktKarta) {
-            case 'A':
+            case '1':
                 karta = 1;
                 break;
             case '2':
@@ -70,11 +74,13 @@ void vypocitajSkore(DATA_H *data) {
                 break;
             case '0':
                 karta = 10;
+                break;
             default:
+                karta = 10;
                 break;
         }
-
         sum += karta;
+        printf("%d\n",sum);
     }
     data->skore = &sum;
 }
@@ -103,7 +109,7 @@ int hra(DATA_H *dataH) {
                 return 0;
             char volba = '0';
             while (1) {
-                while (volba != '1' && volba != '2' && volba != '3') {
+                while (volba != '1' && volba != '2') {
                     menu();
                     printf("Vasa volba: ");
                     bzero(buffer, 256);
@@ -119,12 +125,14 @@ int hra(DATA_H *dataH) {
                 if (volba == '1') {
                     // hrat, prisli mi karty
                     dataH->karty[0] = dataH->buffer[0];
+                    if (dataH->buffer[0] == 'A') {
+                        rozhodniHodnotuEsa(dataH, 0);
+                    }
                     dataH->karty[1] = dataH->buffer[1];
+                    if (dataH->buffer[1] == 'A') {
+                        rozhodniHodnotuEsa(dataH, 1);
+                    }
                     break;
-                } else if (volba == '2') {
-                    // historia
-//                    readMsg(*dataH);
-                    printf("\n%s\n\n", buffer);
                 } else {
                     // koniec
                     zaciatok = -1;
@@ -147,7 +155,7 @@ int hra(DATA_H *dataH) {
         bzero(buffer, 256);
         int volba = 0;
         hracTah();
-        while (volba != 1 && volba != 2 && volba != 3) {
+        while (volba != 1 && volba != 2) {
             printf("Vasa volba: ");
             bzero(buffer, 256);
             fgets(buffer, 255, stdin);
@@ -166,6 +174,9 @@ int hra(DATA_H *dataH) {
             dataH->karty[poc] = dataH->buffer[0];
             (*(dataH->pocetKariet))++;
             printf("Prisla mi karta %c\n", dataH->buffer[0]);
+            if (dataH->buffer[0] == 'A') {
+                rozhodniHodnotuEsa(dataH, poc);
+            }
             ukazKarty(dataH);
             printf("\n");
 
@@ -181,18 +192,18 @@ int hra(DATA_H *dataH) {
 //            vypocitajSkore(dataH);
 //            printf(", skore: %d\n", *(dataH->skore));
 
-        } else if (volba == 2) {
-            pocTahov = 5;
-            readMsg(*dataH);
         } else {
             // do nothing
         }
+
+        writeMsg(*dataH, dataH->karty);
     }
 
     if (zaciatok == -1) {
         return 0;
     }
 
+    readMsg(*dataH);
     // ----------------------------------- VYSLEDKY ---------------------------------------
 
     // vysledky
@@ -214,7 +225,7 @@ int hra(DATA_H *dataH) {
     writeMsg(*dataH, buffer); // zapise svoju volbu na server
     readMsg(*dataH); // precita si odpoved, bud y alebo n
     volba2 = dataH->buffer[0];
-    if (volba == 'y' && volba2 == 'y' ) {
+    if (volba == 'y' && volba2 == 'y') {
         hra(dataH);
     }
     writeMsg(*dataH, "q");
@@ -253,10 +264,10 @@ void *reading(void *args) {
     int n;
 
     do {
-        bzero(buffer, 256*sizeof(char));
+        bzero(buffer, 256 * sizeof(char));
         n = read(sockfd, buffer, 256);
         pthread_mutex_lock(dataH->mutex);
-        memcpy(dataH->buffer,buffer,256);
+        memcpy(dataH->buffer, buffer, 256);
         *(dataH->readFlag) = 1;
         pthread_mutex_unlock(dataH->mutex);
         pthread_cond_signal(dataH->canRead);
@@ -343,16 +354,9 @@ int main(int argc, char *argv[]) {
     pthread_t thread_read;
     pthread_create(&thread_read, NULL, reading, &dataH);
     printf("[INFO] - Thread started\n");
-    printf("\nVitajte v hre blackjack\n hrat 1\n historia 2\n koniec 3\n");
-    //start(&dataH);
     hra(&dataH);
     pthread_join(thread_read, NULL);
 
-//    printf("[INFO] - Thread initialized\n");
-
-//    printf("\nVitajte v hre blackjack\n hrat 1\n historia 2\n koniec 3\n");
-//    start(&dataH);
-//    hra(&dataH);
 
 //--------------------------- ukoncenie pripojenia na server ------------------------------------
     close(sockfd);

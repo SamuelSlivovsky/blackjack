@@ -25,7 +25,7 @@ typedef struct DataHrac {
 } DATA_H;
 
 void ukazKarty(DATA_H *data);
-int rozhodniHodnotuEsa(DATA_H *data);
+void rozhodniHodnotuEsa(DATA_H *data, int pozicia);
 void vypocitajSkore(DATA_H *data);
 int hra(DATA_H *data);
 

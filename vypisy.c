@@ -12,8 +12,7 @@ void menu() {
     printf("\n");
     printf("MENU:\n");
     printf("\t1 - hrat\n");
-    printf("\t2 - historia hier\n");
-    printf("\t3 - koniec\n");
+    printf("\t2 - koniec\n");
     printf("\n");
 }
 
@@ -29,8 +28,7 @@ void hracTah() {
     printf("\n");
     printf("Si na tahu, mozes:\n");
     printf("\t1 - si potiahnut kartu\n");
-    printf("\t2 - zamknut karty (uz si nebudete moct tahat)\n");
-    printf("\t3 - neurobit nic\n");
+    printf("\t2 - neurobit nic\n");
     printf("\n");
 }
 

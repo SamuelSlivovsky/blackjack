@@ -4,7 +4,7 @@
 int hra(DATA_K dataK, DATA_H dataH1, DATA_H dataH2, HISTORY history) {
 
     premiesajBalicek(dataK.balicek);
-
+    dataK.balicek[5] = 'A';
     char volba = ' ';
     int hraj = 0;
     int koniec = 0;
@@ -16,7 +16,7 @@ int hra(DATA_K dataK, DATA_H dataH1, DATA_H dataH2, HISTORY history) {
 
         if (pocitadlo % 2 != 0) {
             // HRAC 1
-            while (volba != '1' && volba != '2' && volba != '3') {
+            while (volba != '1' && volba != '2') {
                 menu();
                 printf("Vasa volba: ");
                 bzero(buffer, 256);
@@ -33,12 +33,6 @@ int hra(DATA_K dataK, DATA_H dataH1, DATA_H dataH2, HISTORY history) {
         switch (volba) {
             case '1':
                 hraj++;
-                break;
-            case '2':
-                if (pocitadlo % 2 == 0)
-                    writeMsg(dataK, history.historia);
-                else
-                    printf("historia hier: %s\n", history.historia);
                 break;
             default:
                 koniec++;
@@ -70,6 +64,7 @@ int hra(DATA_K dataK, DATA_H dataH1, DATA_H dataH2, HISTORY history) {
     printf("Karty hraca 2: \n");
     vylozitKarty(dataH2);
 
+    writeMsg(dataK,"cakaj");
     int pokracuj = porovnaj(dataH1, dataH2, dataK);
 
     //naplnenie historie
@@ -127,7 +122,7 @@ void tah(DATA_H dataH, DATA_K dataK) {
     char buffer[256];
     if (dataH.clsockfd == dataK.cl_2_sockfd) {
         hracTah();
-        while (volba != '1' && volba != '2' && volba != '3') {
+        while (volba != '1' && volba != '2') {
             printf("Vasa volba: ");
             bzero(buffer, 256);
             fgets(buffer, 255, stdin);
@@ -142,11 +137,19 @@ void tah(DATA_H dataH, DATA_K dataK) {
         case '1':
             dajKartu(dataK, dataH);
             break;
-        case '2':
-            *(dataH.lock) = 1;
-            break;
         default:
             break;
+    }
+
+    if (dataH.clsockfd != dataK.cl_2_sockfd) {
+
+        readMsg(dataK);
+        for (int i = 0; i < 5; ++i) {
+            dataH.karty[i] = dataK.buffer[i];
+            printf("%c\n",dataH.karty[i]);
+        }
+
+
     }
 }
 

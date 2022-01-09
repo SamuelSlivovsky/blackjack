@@ -1,1 +1,0 @@
-/usr/bin/cc -g CMakeFiles/posZapocet.dir/main.c.o CMakeFiles/posZapocet.dir/krupier.c.o -o posZapocet  -lpthread -lm 

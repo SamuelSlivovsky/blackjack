@@ -8,38 +8,38 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/tmp/tmp.RaCtpa1VE9/cmake-build-debug"/>
+				<Option working_dir="/tmp/tmp.O7cPGMuiFi/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -f &quot;/tmp/tmp.RaCtpa1VE9/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/gmake -f &quot;/tmp/tmp.RaCtpa1VE9/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -f &quot;/tmp/tmp.RaCtpa1VE9/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -f &quot;/tmp/tmp.RaCtpa1VE9/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -f &quot;/tmp/tmp.O7cPGMuiFi/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/gmake -f &quot;/tmp/tmp.O7cPGMuiFi/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -f &quot;/tmp/tmp.O7cPGMuiFi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -f &quot;/tmp/tmp.O7cPGMuiFi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/tmp/tmp.RaCtpa1VE9/cmake-build-debug"/>
+				<Option working_dir="/tmp/tmp.O7cPGMuiFi/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -f &quot;/tmp/tmp.RaCtpa1VE9/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/gmake -f &quot;/tmp/tmp.RaCtpa1VE9/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -f &quot;/tmp/tmp.RaCtpa1VE9/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -f &quot;/tmp/tmp.RaCtpa1VE9/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -f &quot;/tmp/tmp.O7cPGMuiFi/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/gmake -f &quot;/tmp/tmp.O7cPGMuiFi/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -f &quot;/tmp/tmp.O7cPGMuiFi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -f &quot;/tmp/tmp.O7cPGMuiFi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/tmp/tmp.RaCtpa1VE9/cmake-build-debug"/>
+				<Option working_dir="/tmp/tmp.O7cPGMuiFi/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -f &quot;/tmp/tmp.RaCtpa1VE9/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/gmake -f &quot;/tmp/tmp.RaCtpa1VE9/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -f &quot;/tmp/tmp.RaCtpa1VE9/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -f &quot;/tmp/tmp.RaCtpa1VE9/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -f &quot;/tmp/tmp.O7cPGMuiFi/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/gmake -f &quot;/tmp/tmp.O7cPGMuiFi/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -f &quot;/tmp/tmp.O7cPGMuiFi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -f &quot;/tmp/tmp.O7cPGMuiFi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="krupier">
-				<Option output="/tmp/tmp.RaCtpa1VE9/cmake-build-debug/krupier" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/tmp/tmp.RaCtpa1VE9/cmake-build-debug"/>
+				<Option output="/tmp/tmp.O7cPGMuiFi/cmake-build-debug/krupier" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/tmp/tmp.O7cPGMuiFi/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -50,15 +50,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -f &quot;/tmp/tmp.RaCtpa1VE9/cmake-build-debug/Makefile&quot;  VERBOSE=1 krupier"/>
-					<CompileFile command="/usr/bin/gmake -f &quot;/tmp/tmp.RaCtpa1VE9/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -f &quot;/tmp/tmp.RaCtpa1VE9/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -f &quot;/tmp/tmp.RaCtpa1VE9/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -f &quot;/tmp/tmp.O7cPGMuiFi/cmake-build-debug/Makefile&quot;  VERBOSE=1 krupier"/>
+					<CompileFile command="/usr/bin/gmake -f &quot;/tmp/tmp.O7cPGMuiFi/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -f &quot;/tmp/tmp.O7cPGMuiFi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -f &quot;/tmp/tmp.O7cPGMuiFi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="krupier/fast">
-				<Option output="/tmp/tmp.RaCtpa1VE9/cmake-build-debug/krupier" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/tmp/tmp.RaCtpa1VE9/cmake-build-debug"/>
+				<Option output="/tmp/tmp.O7cPGMuiFi/cmake-build-debug/krupier" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/tmp/tmp.O7cPGMuiFi/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -69,15 +69,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -f &quot;/tmp/tmp.RaCtpa1VE9/cmake-build-debug/Makefile&quot;  VERBOSE=1 krupier/fast"/>
-					<CompileFile command="/usr/bin/gmake -f &quot;/tmp/tmp.RaCtpa1VE9/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -f &quot;/tmp/tmp.RaCtpa1VE9/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -f &quot;/tmp/tmp.RaCtpa1VE9/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -f &quot;/tmp/tmp.O7cPGMuiFi/cmake-build-debug/Makefile&quot;  VERBOSE=1 krupier/fast"/>
+					<CompileFile command="/usr/bin/gmake -f &quot;/tmp/tmp.O7cPGMuiFi/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -f &quot;/tmp/tmp.O7cPGMuiFi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -f &quot;/tmp/tmp.O7cPGMuiFi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="hrac">
-				<Option output="/tmp/tmp.RaCtpa1VE9/cmake-build-debug/hrac" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/tmp/tmp.RaCtpa1VE9/cmake-build-debug"/>
+				<Option output="/tmp/tmp.O7cPGMuiFi/cmake-build-debug/hrac" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/tmp/tmp.O7cPGMuiFi/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -88,15 +88,15 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -f &quot;/tmp/tmp.RaCtpa1VE9/cmake-build-debug/Makefile&quot;  VERBOSE=1 hrac"/>
-					<CompileFile command="/usr/bin/gmake -f &quot;/tmp/tmp.RaCtpa1VE9/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -f &quot;/tmp/tmp.RaCtpa1VE9/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -f &quot;/tmp/tmp.RaCtpa1VE9/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -f &quot;/tmp/tmp.O7cPGMuiFi/cmake-build-debug/Makefile&quot;  VERBOSE=1 hrac"/>
+					<CompileFile command="/usr/bin/gmake -f &quot;/tmp/tmp.O7cPGMuiFi/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -f &quot;/tmp/tmp.O7cPGMuiFi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -f &quot;/tmp/tmp.O7cPGMuiFi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="hrac/fast">
-				<Option output="/tmp/tmp.RaCtpa1VE9/cmake-build-debug/hrac" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/tmp/tmp.RaCtpa1VE9/cmake-build-debug"/>
+				<Option output="/tmp/tmp.O7cPGMuiFi/cmake-build-debug/hrac" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/tmp/tmp.O7cPGMuiFi/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
@@ -107,34 +107,34 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/gmake -f &quot;/tmp/tmp.RaCtpa1VE9/cmake-build-debug/Makefile&quot;  VERBOSE=1 hrac/fast"/>
-					<CompileFile command="/usr/bin/gmake -f &quot;/tmp/tmp.RaCtpa1VE9/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -f &quot;/tmp/tmp.RaCtpa1VE9/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -f &quot;/tmp/tmp.RaCtpa1VE9/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/gmake -f &quot;/tmp/tmp.O7cPGMuiFi/cmake-build-debug/Makefile&quot;  VERBOSE=1 hrac/fast"/>
+					<CompileFile command="/usr/bin/gmake -f &quot;/tmp/tmp.O7cPGMuiFi/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -f &quot;/tmp/tmp.O7cPGMuiFi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -f &quot;/tmp/tmp.O7cPGMuiFi/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/tmp/tmp.RaCtpa1VE9/hrac.c">
+		<Unit filename="/tmp/tmp.O7cPGMuiFi/hrac.c">
 			<Option target="hrac"/>
 		</Unit>
-		<Unit filename="/tmp/tmp.RaCtpa1VE9/hrac.h">
+		<Unit filename="/tmp/tmp.O7cPGMuiFi/hrac.h">
 			<Option target="hrac"/>
 		</Unit>
-		<Unit filename="/tmp/tmp.RaCtpa1VE9/krupier.c">
+		<Unit filename="/tmp/tmp.O7cPGMuiFi/krupier.c">
 			<Option target="krupier"/>
 		</Unit>
-		<Unit filename="/tmp/tmp.RaCtpa1VE9/krupier.h">
+		<Unit filename="/tmp/tmp.O7cPGMuiFi/krupier.h">
 			<Option target="krupier"/>
 		</Unit>
-		<Unit filename="/tmp/tmp.RaCtpa1VE9/vypisy.c">
-			<Option target="krupier"/>
-			<Option target="hrac"/>
-		</Unit>
-		<Unit filename="/tmp/tmp.RaCtpa1VE9/vypisy.h">
+		<Unit filename="/tmp/tmp.O7cPGMuiFi/vypisy.c">
 			<Option target="krupier"/>
 			<Option target="hrac"/>
 		</Unit>
-		<Unit filename="/tmp/tmp.RaCtpa1VE9/CMakeLists.txt">
+		<Unit filename="/tmp/tmp.O7cPGMuiFi/vypisy.h">
+			<Option target="krupier"/>
+			<Option target="hrac"/>
+		</Unit>
+		<Unit filename="/tmp/tmp.O7cPGMuiFi/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>
