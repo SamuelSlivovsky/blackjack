@@ -41,6 +41,7 @@ void cakaj() {
 void vykresliKartu(char karta) {
 
     switch (karta) {
+        case '1':
         case 'A': {
             printf("*******\n");
             printf("*     *\n");

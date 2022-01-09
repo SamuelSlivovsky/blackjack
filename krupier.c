@@ -4,7 +4,6 @@
 int hra(DATA_K dataK, DATA_H dataH1, DATA_H dataH2, HISTORY history) {
 
     premiesajBalicek(dataK.balicek);
-    dataK.balicek[5] = 'A';
     char volba = ' ';
     int hraj = 0;
     int koniec = 0;
@@ -26,6 +25,7 @@ int hra(DATA_K dataK, DATA_H dataH1, DATA_H dataH2, HISTORY history) {
         } else {
             // HRAC 2
             writeMsg(dataK, "ides");
+            cakaj();
             readMsg(dataK);
             volba = dataK.buffer[0];
         }
@@ -46,6 +46,7 @@ int hra(DATA_K dataK, DATA_H dataH1, DATA_H dataH2, HISTORY history) {
     for (int i = 0; i < 3; ++i) {
         if (*(dataH1.lock) != 1)
             tah(dataH1, dataK);
+        cakaj();
         if (*(dataH2.lock) != 1) {
             writeMsg(dataK, "ides");
             tah(dataH2, dataK);
@@ -132,11 +133,9 @@ void tah(DATA_H dataH, DATA_K dataK) {
     if (volba == '1') {
         dajKartu(dataK, dataH);
         if (dataH.clsockfd == dataK.cl_1_sockfd) {
-
             readMsg(dataK);
             for (int i = 0; i < 5; ++i) {
                 dataH.karty[i] = dataK.buffer[i];
-                printf("%c\n", dataH.karty[i]);
             }
         }
     }
@@ -182,24 +181,25 @@ void premiesajBalicek(char *balicek) {
         }
 
     }
-    for (int i = 0; i < 52; ++i) {
-        printf("%c ", balicek[i]);
-    }
-    printf("\n");
+//    for (int i = 0; i < 52; ++i) {
+//        printf("%c ", balicek[i]);
+//    }
+   // printf("\n");
 }
 
 void rozdajKarty(DATA_K dataK, DATA_H dataH1, DATA_H dataH2) {
 
-    printf("rozdaj karty\n");
     for (int i = 0; i < 2; ++i) {
         dataH1.karty[i] = dataK.balicek[i + i * 1];
-        printf("%c \n", dataK.balicek[i + i * 1]);
         dataH2.karty[i] = dataK.balicek[i + 1 + i * 1];
-        printf("%c \n", dataK.balicek[i + 1 + i * 1]);
     }
 
-    printf("karty1 = %s\n", dataH1.karty);
-    printf("karty2 = %s\n", dataH2.karty);
+    for (int i = 0; i < *(dataH1.pocetKariet); ++i) {
+        if( dataH1.karty[i] =='A'){
+            rozhodniHodnotuEsa(&dataH1,i);
+        }
+    }
+    ukazKarty(dataH1);
 
     writeMsg(dataK, dataH2.karty);
 }
@@ -214,6 +214,9 @@ void dajKartu(DATA_K dataK, DATA_H dataH) {
     if (dataH.clsockfd == dataK.cl_1_sockfd)
         writeMsg(dataK, &karta);
     else {
+        if(karta == 'A'){
+            rozhodniHodnotuEsa(&dataH,poc);
+        }
         ukazKarty(dataH);
     }
 }
@@ -258,7 +261,7 @@ void vypocitajSkore(DATA_H *data) {
         int karta = 0;
 
         switch (data->karty[i]) {
-            case 'A':
+            case '1':
                 karta = 1;
                 break;
             case '2':
@@ -306,7 +309,7 @@ int porovnaj(DATA_H dataH1, DATA_H dataH2, DATA_K dataK) {
     int rozdielA = 21 - skoreA;
     int rozdielB = 21 - skoreB;
     char buffer[250];
-    char *msg;
+    char msg[250];
     bzero(buffer, 250 * sizeof(char));
 
     if (rozdielA >= 0 && rozdielA < rozdielB || rozdielB < 0 && rozdielA >= 0) {
@@ -323,7 +326,10 @@ int porovnaj(DATA_H dataH1, DATA_H dataH2, DATA_K dataK) {
         *(dataK.harabin) = 'N';
     }
 
-    msg = buffer;
+    for (int i = 0; i < 250; ++i) {
+        msg[i] = buffer[i];
+    }
+
     printf("%s", buffer);
     writeMsg(dataK, "nic");
 
@@ -340,9 +346,10 @@ int porovnaj(DATA_H dataH1, DATA_H dataH2, DATA_K dataK) {
     if (volba == 'y') {
         pokracuj++;
     }
-//    writeMsg(dataK, "ides");
-//    writeMsg(dataK, "msg");
-    writeMsg(dataK, msg);
+
+    writeMsg(dataK,dataH1.karty);
+    readMsg(dataK);
+    writeMsg(dataK,msg);
     readMsg(dataK);
 
     if (dataK.buffer[0] == 'y') {
@@ -364,7 +371,6 @@ int writeMsg(DATA_K dataK, char *msg) {
 }
 
 void readMsg(DATA_K dataK) {
-    cakaj();
     pthread_mutex_lock(dataK.mutex);
     while (*(dataK.readFlag) == 0) {
         pthread_cond_wait(dataK.canRead, dataK.mutex);
@@ -392,8 +398,8 @@ void *reading(void *args) {
             perror("Error reading from socket");
             break;
         } else {
-            printf("[INFO] - Succesfully read from socket n.%d\n", sockfd);
-            printf("[INFO] - buffer = %s\n", dataK->buffer);
+           // printf("[INFO] - Succesfully read from socket n.%d\n", sockfd);
+          //  printf("[INFO] - buffer = %s\n", dataK->buffer);
         }
         if (buffer[0] == 'q')
             break;
